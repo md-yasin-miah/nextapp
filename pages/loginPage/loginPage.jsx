@@ -1,3 +1,6 @@
+'use strict'
+import React from 'react';
+
 const LogInPage = () => {
   return (
     <>
