@@ -1,0 +1,20 @@
+.header_container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header_links > ul {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 14px;
+    list-style: none;
+}
+
+.header_profile {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 5px;
+}
