@@ -1,7 +1,7 @@
-import LogIn from "@/pages/login/login"
+import LogInPage from "@/pages/login/login"
 
-export const page = () => {
+export const LogIn = () => {
   return (
-    <LogIn />
+    <LogInPage />
   )
 }
