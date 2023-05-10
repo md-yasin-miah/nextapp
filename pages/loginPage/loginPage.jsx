@@ -1,12 +1,7 @@
-'use strict'
-import React from 'react';
-
-const LogInPage = () => {
+export default function LogInPage() {
   return (
-    <>
-      <h1>LogIn</h1>
-    </>
+    <div>
+      <h1>Log In Page</h1>
+    </div>
   )
 }
-
-export default LogInPage
