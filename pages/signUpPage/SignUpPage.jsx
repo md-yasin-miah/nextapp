@@ -1,18 +1,18 @@
 "use client"
+import React, { useState } from 'react'
+import signUp from '../../styles/pages/auth.module.css'
 import Image from 'next/image'
-import login from '../../styles/pages/auth.module.css'
-import { useState } from 'react'
 import Link from 'next/link'
-export default function LogInPage() {
+const SignUpPage = () => {
   const [showPassword, setShowPassword] = useState(false)
   return (
-    <div className={login.login}>
+    <div className={signUp.signUp}>
       <div className="authContainer">
         <div className="loginImgArea">
           <div className="imgBox">
             <div className="bg"></div>
             <Image
-              src="/../public/img/login.png"
+              src="/../public/img/signup.png"
               width={445}
               height={485}
               alt=""
@@ -20,26 +20,29 @@ export default function LogInPage() {
           </div>
         </div>
         <div className="formArea">
-          <h4>Login your Account</h4>
+          <h4>Create Account</h4>
           <div className='form'>
+            <div className='formControl'>
+              <label htmlFor="text">Full Name</label>
+              <input type="email" id="email" placeholder="Enter your full name" />
+            </div>
             <div className='formControl'>
               <label htmlFor="email">Email</label>
               <input type="email" id="email" placeholder="Enter your email" />
             </div>
             <div className='formControl'>
               <label htmlFor="password">Password</label>
-              <input type={showPassword ? "text" : "password"} id="password" placeholder="Enter your password" />
+              <input type={showPassword ? "text" : "password"} id="password" placeholder="Type your Password" />
             </div>
             <div className="controlPassword">
               <div className="showPassword">
                 <input onClick={() => setShowPassword(!showPassword)} type="checkbox" id="showPassword" />
                 <label htmlFor="showPassword">Show Password</label>
               </div>
-              <Link href="/forgotPassword" className="forgotPassword">Forgot Password?</Link>
             </div>
-            <button className='actionBtn'>Login</button>
+            <button className='actionBtn'>Create account</button>
             <div className="alternativeLigInOptions">
-              <p>Or login with</p>
+              <p>Or Sign up with</p>
               <div className="authIcon">
                 <Image
                   src="/../public/img/google.png"
@@ -55,8 +58,8 @@ export default function LogInPage() {
                 />
               </div>
               <div className='haveAccount'>
-                <p>Don’t  have an account?</p>
-                <Link href="/signUp" className='signUp'>Sign up</Link>
+                <p>Already have an account?</p>
+                <Link href="/login" className='login'>Login</Link>
               </div>
             </div>
           </div>
@@ -65,3 +68,5 @@ export default function LogInPage() {
     </div>
   )
 }
+
+export default SignUpPage

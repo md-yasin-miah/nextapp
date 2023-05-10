@@ -1,4 +1,7 @@
-.login {
+.login,
+.signUp,
+.forgotPass,
+.reset {
   width: 100%;
   min-height: 827px;
   height: 100vh;
@@ -8,28 +11,14 @@
   justify-content: center;
 }
 
-.container {
-  display: flex;
-  column-gap: 115px;
-  align-items: center;
-  justify-content: center;
+.mb_0 {
+  margin-bottom: 0px;
 }
 
-.imgBox {
-  position: relative;
-  width: 445px;
-  height: 485px;
-  border-radius: 5px;
-  z-index: 1;
+.mb_40 {
+  margin-bottom: 40px;
 }
 
-.bg {
-  position: absolute;
-  width: 450px;
-  height: 561px;
-  left: -38px;
-  top: -38px;
-  background: linear-gradient(47.36deg, #2DF1E6 12.24%, #3694B0 37.45%, #468DB3 39.38%, #6F79BA 44.93%, #8D6BBF 49.97%, #9F63C2 54.29%, #A660C3 57.37%);
-  border-radius: 5px;
-  z-index: -1;
+.mb_16 {
+  margin-bottom: 16px;
 }
