@@ -6,3 +6,179 @@
     'Fira Mono', 'Droid Sans Mono', 'Courier New', monospace;
 }
 
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+  outline: none;
+}
+
+button {
+  border: none;
+  cursor: pointer;
+}
+
+.formArea {
+  width: 500px;
+}
+
+.formArea h4 {
+  font-family: 'Ubuntu';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 32px;
+  color: #FFFFFD;
+  margin-bottom: 56px;
+}
+
+.form {
+  width: 100%;
+}
+
+.formControl {
+  display: flex;
+  flex-direction: column;
+  row-gap: 16px;
+  margin-bottom: 26px;
+}
+
+.formControl label {
+  font-family: 'Ubuntu';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 28px;
+  color: #FFFFFD;
+}
+
+.formControl input {
+  width: 100%;
+  height: 48px;
+  background: #1D1C2D;
+  border-radius: 8px;
+  border: none;
+  padding: 15px;
+  color: #FFFFFD;
+}
+
+.formControl input::placeholder {
+  font-family: 'Ubuntu';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 18px;
+  color: rgba(255, 255, 253, 0.6);
+}
+
+.formArea .controlPassword {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.forgotPassword {
+  font-family: 'Ubuntu';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 18px;
+  background: linear-gradient(0deg, #2DF1E6, #2DF1E6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  cursor: pointer;
+}
+
+.showPassword {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 16px;
+  flex-direction: row;
+  cursor: pointer;
+}
+
+.showPassword input {
+  width: 21px;
+  height: 21px;
+  background: #D9D9D9;
+  border-radius: 2px;
+}
+
+.showPassword label {
+  font-family: 'Ubuntu';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 21px;
+  color: #FFFFFD;
+}
+
+.form .actionBtn {
+  padding: 13.5px 32px;
+  width: 100%;
+  height: 48px;
+  background: linear-gradient(90deg, #23AFB7 1.46%, #169AA4 79.47%);
+  border-radius: 8px;
+  font-family: 'Ubuntu';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 21px;
+  text-align: center;
+  color: #FFF8F8;
+  margin-top: 40px;
+}
+
+.alternativeLigInOptions {
+  text-align: center;
+  margin-top: 32px;
+}
+
+.alternativeLigInOptions p {
+  font-family: 'Ubuntu';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 21px;
+  color: #FFFFFD;
+}
+
+.alternativeLigInOptions .haveAccount p {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 18px;
+}
+
+.alternativeLigInOptions .signUp {
+  font-weight: 700;
+  font-size: 16px;
+  background: linear-gradient(55.41deg, #2DF1E6 12.79%, #3694B0 54.92%, #468DB3 58.14%, #6F79BA 67.42%, #8D6BBF 75.85%, #9F63C2 83.06%, #A660C3 88.21%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.alternativeLigInOptions .authIcon {
+  padding: 24px 0 16px 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  column-gap: 32px;
+  align-items: center;
+}
+
+.alternativeLigInOptions .haveAccount {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  column-gap: 8px;
+  align-items: center;
+}
