@@ -1,9 +1,10 @@
 import MainLayout from "../../components/layouts/MainLayout";
+import CreateMusic from "./createMusic/createMusic";
 
 export default function HomePage() {
   return (
     <MainLayout>
-      <h1>Home Page</h1>
+      <CreateMusic />
     </MainLayout>
   )
 }
