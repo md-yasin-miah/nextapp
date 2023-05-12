@@ -1,20 +1,5 @@
-import MusicCard from '@/components/headerComponents/musicCard';
 import createMusic from '../../../styles/pages/create-music.module.css'
-
-const cards = [
-  {
-    imageSrc: '/img/create-music/cloud.png',
-    title: 'Upload Song',
-  },
-  {
-    imageSrc: '/img/create-music/vibes.png',
-    title: 'License Voice',
-  },
-  {
-    imageSrc: '/img/create-music/music-arrow.png',
-    title: 'Create Music',
-  }
-];
+import Image from 'next/image';
 
 export default function CreateMusic() {
   return (
@@ -24,14 +9,46 @@ export default function CreateMusic() {
         <p>Upload your song idea, pick any voice in our catalog and let a professional perform your next hit.</p>
       </div>
       <div className={createMusic.card_container}>
-      {cards.map((card, index) => {
-        return (
-          <div key={index} className={createMusic.card_wrapper}>
-            <MusicCard imageSrc={card.imageSrc} title={card.title} />
+        <div className={createMusic.card_wrapper}>
+          <div className={createMusic.card}>
+            <div className={createMusic.up_image}>
+              <Image src='/img/create-music/cloud.png' width={103} height={69} alt="alt" />
+            </div>
           </div>
-        );
-      })}
-    </div>
-    </div>
+          <div className={createMusic.card_border}>
+            <Image src='/img/create-music/border-music.png' width={339} height={164} alt="alt" />
+          </div>
+          <div className={createMusic.card_content}>
+            <p>Upload Song</p>
+          </div>
+        </div>
+        <div className={createMusic.card_wrapper}>
+          <div className={createMusic.card}>
+            <div className={createMusic.up_image}>
+              <Image src='/img/create-music/vibes.png' width={81} height={81} alt="alt" />
+            </div>
+          </div>
+          <div className={createMusic.card_border}>
+            <Image src='/img/create-music/border-music.png' width={339} height={164} alt="alt" />
+          </div>
+          <div className={createMusic.card_content}>
+            <p>License Voice</p>
+          </div>
+        </div>
+        <div className={createMusic.card_wrapper}>
+          <div className={createMusic.card}>
+            <div className={createMusic.up_image}>
+              <Image src='/img/create-music/music-arrow.png' width={81} height={81} alt="alt" />
+            </div>
+          </div>
+          <div className={createMusic.card_border}>
+            <Image src='/img/create-music/border-music.png' width={339} height={164} alt="alt" />
+          </div>
+          <div className={createMusic.card_content}>
+            <p>Create Music</p>
+          </div>
+        </div>
+      </div>
+    </div >
   )
 }
