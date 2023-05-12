@@ -8,11 +8,11 @@ import Stream from "./stream/stream";
 export default function HomePage() {
   return (
     <MainLayout>
-      <MakeDemo />
-      <CreateMusic />
-      <Stream />
-      <Shop />
-      <GetStarted />
+        <MakeDemo />
+        <CreateMusic />
+        <Stream />
+        <Shop />
+        <GetStarted />
     </MainLayout>
   )
 }
