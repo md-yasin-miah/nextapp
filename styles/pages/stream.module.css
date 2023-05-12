@@ -4,10 +4,9 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(2, 1fr);
-  grid-gap: 100px;
+  grid-gap: 120px;
   align-items: center;
-  margin-top: 100px;
-  padding: 0px 40px 0px 40px;
+  margin-top: 150px;
 }
 
 .right_text_div {
