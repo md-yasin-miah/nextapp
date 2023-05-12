@@ -9,7 +9,7 @@ const Header = () => {
       </div>
       <div className={header.header_links}>
         <ul>
-          <li>Create</li>
+          <li className={header.active}>Create</li>
           <li>Stream</li>
           <li>Shop</li>
           <li>Pricing</li>
@@ -22,8 +22,8 @@ const Header = () => {
         <p>Username</p>
       </div> */}
       <div className={header.header_profile}>
-        <button>Sign In</button>
-        <button>Sign Up</button>
+        <span className={header.sign_in}>Sign In</span>
+        <span className={header.sign_up}>Sign Up</span>
       </div>
     </header>
   )
