@@ -46,17 +46,24 @@
 }
 
 .card {
-  background-color: #fff;
-  border: 1px solid #ccc;
-  padding: 20px;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-}
-
-.card_image {
-  text-align: center;
-  margin-bottom: 10px;
+  box-sizing: border-box;
+  width: 339px;
+  height: 164px;
+  border-radius: 10px;
+  background: #2D2D2D;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .card_title {
-  text-align: center;
+  font-family: 'Ubuntu';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 28px;
+  line-height: 32px;
+  color: #FFFFFF;
+  width: fit-content;
+  height: 32px;
 }
