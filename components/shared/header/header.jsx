@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import header from './../../../styles/pages/header.module.css';
+import Link from 'next/link';
 
 const Header = () => {
   return (
@@ -17,15 +18,15 @@ const Header = () => {
             <li>Join</li>
             <li>Contact</li>
           </ul>
+          <div className={header.header_profile}>
+            <Link href="/login" className={header.sign_in}>Sign In</Link>
+            <Link href="/signUp" className={header.sign_up}>Sign Up</Link>
+          </div>
         </div>
         {/* <div className={header.header_profile}>
         <Image src="/img/header/profile.png" width={40} height={40} alt='profile' />
         <p>Username</p>
       </div> */}
-        <div className={header.header_profile}>
-          <span className={header.sign_in}>Sign In</span>
-          <span className={header.sign_up}>Sign Up</span>
-        </div>
         <div className={header.bar}>
           <Image src="/img/header/burger.png" width={16.5} height={10.5} alt='bar' />
         </div>

@@ -12,6 +12,14 @@
   box-sizing: border-box;
 }
 
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
 input:focus,
 select:focus,
 textarea:focus,

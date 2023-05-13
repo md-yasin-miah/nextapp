@@ -4,9 +4,9 @@ import Header from "../shared/header/header";
 export default function MainLayout({ children }) {
   return (
     <div>
-      <Header />
+      {/* <Header /> */}
       {/* {children} */}
-      {/* <Footer /> */}
+      <Footer />
     </div>
   )
 }
