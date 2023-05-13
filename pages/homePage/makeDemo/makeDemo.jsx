@@ -1,5 +1,9 @@
+import MainLayout from "@/components/layouts/MainLayout";
+
 export default function MakeDemo() {
   return (
-    <h1>Hero Section</h1>
+    <MainLayout>
+      <div>MakeDemo</div>
+    </MainLayout>
   )
 }

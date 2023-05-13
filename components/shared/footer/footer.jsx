@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import fo from '../../../styles/pages/footer.module.css';
 const Footer = () => {
   return (
@@ -35,13 +36,23 @@ const Footer = () => {
             <h4>Subscribe to our newsletter</h4>
             <ul>
               <li>
-                <form className='SubscribeForm'>
-                  <input type="text" placeholder="Enter your email address" />
+                <form action='#' className='subscribeForm'>
+                  <input type="text" placeholder="Enter your email" />
                   <button class type="submit">Subscribe now</button>
                 </form>
               </li>
             </ul>
           </div>
+        </div>
+        <div className={fo.divider}></div>
+        <div className={fo.social}>
+          <p className={fo.terms}>©️ 2023 AnyDemo, Inc . Privacy . Terms . Sitemap</p>
+          <ul className={fo.icons}>
+            <li><Image src='/img/footer/facebook.png' width={32} height={32} /></li>
+            <li><Image src='/img/footer/youtube.png' width={32} height={32} /></li>
+            <li><Image src='/img/footer/instagram.png' width={32} height={32} /></li>
+            <li><Image src='/img/footer/twitter.png' width={32} height={32} /></li>
+          </ul>
         </div>
       </div>
     </div>

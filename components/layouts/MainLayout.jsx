@@ -4,8 +4,8 @@ import Header from "../shared/header/header";
 export default function MainLayout({ children }) {
   return (
     <div>
-      {/* <Header /> */}
-      {/* {children} */}
+      <Header />
+      {children}
       <Footer />
     </div>
   )
