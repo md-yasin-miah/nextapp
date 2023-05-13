@@ -216,3 +216,24 @@ button {
   column-gap: 8px;
   align-items: center;
 }
+
+@media only screen and (max-width: 1100px) {
+  .authContainer {
+    flex-direction: column;
+    padding: 110px 24px;
+  }
+}
+
+@media only screen and (max-width: 570px) {
+  .authContainer {
+    width: 100%;
+  }
+
+  .authContainer .loginImgArea {
+    display: none;
+  }
+
+  .authContainer .formArea {
+    width: 100%;
+  }
+}
