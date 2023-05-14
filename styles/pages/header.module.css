@@ -3,13 +3,11 @@
     height: 116px;
     display: flex;
     align-items: center;
-    background: #0F0E19;
 
 }
 
 .header_container {
-    width: 1200px;
-    margin: auto;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -79,7 +77,9 @@
 }
 
 .sign_in {
+    border: 1px solid;
     border-image-source: linear-gradient(47.36deg, #2DF1E6 12.24%, #3694B0 37.45%, #468DB3 39.38%, #6F79BA 44.93%, #8D6BBF 49.97%, #9F63C2 54.29%, #A660C3 57.37%);
+    border-image-slice: 1;
 }
 
 .bar {
@@ -88,12 +88,13 @@
 }
 
 @media only screen and (max-width: 1200px) {
-    .header_container {
-        width: 80%;
-    }
 
     .header_links {
-        column-gap: 15%;
+        column-gap: 0;
+    }
+
+    .header_profile {
+        margin-left: 30px;
     }
 }
 

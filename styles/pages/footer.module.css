@@ -9,7 +9,7 @@
 
 .container {
   padding: 72px 0;
-  width: 1200px;
+  width: 100%;
   min-height: 365px;
 }
 
@@ -78,11 +78,7 @@
   column-gap: 16px;
 }
 
-@media only screen and (max-width: 1200px) {
-  .container {
-    width: 80%;
-  }
-}
+@media only screen and (max-width: 1200px) {}
 
 @media only screen and (max-width: 424px) {
   .social {
