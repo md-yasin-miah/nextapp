@@ -1,10 +1,11 @@
 "use client"
-import React from 'react'
-import d from '../../styles/pages/demo.module.css'
-import MainLayout from '@/components/layouts/MainLayout'
-import Image from 'next/image'
-import { Splide, SplideSlide } from '@splidejs/react-splide'
+import React from 'react';
+import d from '../../styles/pages/demo.module.css';
+import MainLayout from '@/components/layouts/MainLayout';
+import Image from 'next/image';
+import { Splide, SplideSlide } from '@splidejs/react-splide';
 import '@splidejs/react-splide/css';
+import PickVoice from '@/components/demo/PickVoice';
 
 const MakeDemo = () => {
   const options = {
@@ -63,6 +64,7 @@ const MakeDemo = () => {
             <Image src="/img/plus.png" width={50} height={50} alt='plus' />
           </button>
         </div>
+        <PickVoice />
         <div className={d.latestDemo}>
           <h4>Latest Demo</h4>
           <div className={d.latestDemo__content}>
