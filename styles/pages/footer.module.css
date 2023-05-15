@@ -1,6 +1,5 @@
 .footer {
   width: 100%;
-<<<<<<< HEAD
   height: fit-content;
 }
 
@@ -116,7 +115,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-=======
   min-height: 509px;
   background: #0F0E19;
   display: flex;
@@ -201,5 +199,4 @@
   .social {
     justify-content: center;
   }
->>>>>>> b7601e32affaba99211a72ee9284ab13e2acef9a
 }
