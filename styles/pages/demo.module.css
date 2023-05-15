@@ -262,6 +262,24 @@
   color: #FFFFFF;
 }
 
+.getDemoBtn {
+  text-align: center;
+  margin: 104px 0 333px 0;
+}
+
+.getDemoBtn button {
+  padding: 24px 200px;
+  width: 565px;
+  height: 76px;
+  background: linear-gradient(212.36deg, #B843B7 27.16%, #A548B2 29.91%, #7D51A9 36.6%, #6058A2 42.71%, #4E5C9E 47.98%, #485E9C 51.81%, #4393BB 66.42%, #39EEF2 89.85%);
+  border-radius: 8px;
+
+  font-weight: 500;
+  font-size: 24px;
+  text-align: center;
+  color: #FFF8F8;
+}
+
 @media only screen and (max-width: 1200px) {
   .upload {
     width: 100%

@@ -1,0 +1,39 @@
+.package {
+  margin: 48px 0 64px 0;
+}
+
+.package .box {
+  width: 296px;
+  height: 38px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+}
+
+.monthly,
+.yearly {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 400;
+  font-size: 16px;
+  color: #1E1E1E;
+  background: #E9E9E9;
+  transition: color 0.2s ease-in;
+  width: 50%;
+  height: 100%;
+  cursor: pointer;
+}
+
+.monthly {
+  border-radius: 8px 0 0 8px;
+}
+
+.yearly {
+  border-radius: 0px 8px 8px 0px;
+}
+
+.box .active {
+  background: linear-gradient(90deg, #23AFB7 1.46%, #169AA4 79.47%);
+  color: #FFFFFD;
+}

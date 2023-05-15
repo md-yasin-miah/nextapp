@@ -50,23 +50,26 @@ const MakeDemo = () => {
             <span>02</span>
             <div className={d.circle}></div>
           </div>
-          <div className={`${d.target}`}>
+          <div className={`${d.target} ${step3 ? d.active : ''}`}>
             <span>03</span>
             <div className={d.circle}></div>
           </div>
           <div className={d.line}>
             <div className={d.line1 + ' ' + (step2 ? d.solid : '')}></div>
-            <div className={d.line1}></div>
+            <div className={d.line1 + ' ' + (step3 ? d.solid : '')}></div>
           </div>
         </div>
         {
-          step2 ?
+          step2 && !step3 ?
             <div className={d.pickVoice}>
               <h4>Pick a voice</h4>
               <div className={d.p_v_cards}>
                 {
                   [...Array(10)].map((e, i) => (
-                    <div key={i} className={d.p_v_card}>
+                    <div key={i} className={d.p_v_card}
+                      // conditional onClick if not premium
+                      onClick={() => i < 4 ? setStep3(true) : null}
+                    >
                       <div className={d.imgArea}>
                         <Image className={d.asBG} src='/img/voice.png' width={380} height={296} alt='' />
                         {i === 0 &&
@@ -87,6 +90,7 @@ const MakeDemo = () => {
                           <button>Try now</button>
                         </div>
                       </div>
+                      {/* conditional if premium */}
                       {i >= 4 &&
                         <div className={d.premium}>
                           <span>Get Premium</span>
@@ -99,14 +103,21 @@ const MakeDemo = () => {
               </div>
             </div>
             :
-            <div className={d.upload}>
-              <h4>Upload Your Recording</h4>
-              <button onClick={() => setStep2(true)}>
-                <Image src="/img/plus.png" width={50} height={50} alt='plus' />
-              </button>
-            </div>
+            (!step3
+              && <div className={d.upload}>
+                <h4>Upload Your Recording</h4>
+                <button onClick={() => setStep2(true)}>
+                  <Image src="/img/plus.png" width={50} height={50} alt='plus' />
+                </button>
+              </div>
+            )
         }
-
+        {
+          step2 && step3 &&
+          <div className={d.getDemoBtn}>
+            <button >Get your demo</button>
+          </div>
+        }
         <div className={d.latestDemo}>
           <h4>Latest Demo</h4>
           <div className={d.latestDemo__content}>
