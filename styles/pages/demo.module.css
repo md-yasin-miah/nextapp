@@ -117,6 +117,118 @@
   font-size: 40px;
   line-height: 46px;
   color: #32E5EB;
+  margin-bottom: 34px;
+}
+
+.p_v_card {
+  width: 380px;
+  height: 451px;
+  background: linear-gradient(179.92deg, #3B343F 0.07%, #1D1F27 82.76%);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.imgArea {
+  width: 100%;
+  height: 296px;
+  position: relative;
+}
+
+.imgArea .checkIcon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.imgArea .asBG {
+  object-fit: cover;
+  object-position: center;
+}
+
+.imgArea .tag {
+  position: absolute;
+  top: 22.5px;
+  left: 0;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 130%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #FFFFFF;
+  min-width: 102px;
+  height: 42px;
+  background: #232229;
+  border-radius: 0px 12px 12px 0px;
+}
+
+.p_v_cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  row-gap: 40px;
+}
+
+.p_v_card .contentArea {
+  padding: 14px;
+}
+
+.contentArea .category {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 300;
+  font-size: 18px;
+  line-height: 27px;
+  color: #8F8F8F;
+  margin-top: 10px;
+}
+
+.p_v_titleArea {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.p_v_titleArea h3 {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 130%;
+  color: #FFFFFD;
+}
+
+.p_v_titleArea .rating {
+  display: flex;
+  align-items: center;
+}
+
+.p_v_titleArea .rating span {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 300;
+  font-size: 12px;
+  line-height: 4px;
+  margin-left: 2.5px;
+  color: #FFFFFD;
+}
+
+.p_v_btn {
+  text-align: end;
+}
+
+.p_v_btn button {
+  padding: 10px 30px;
+  width: 124px;
+  height: 40px;
+  background: linear-gradient(47.36deg, #2DF1E6 12.24%, #3694B0 37.45%, #468DB3 39.38%, #6F79BA 44.93%, #8D6BBF 49.97%, #9F63C2 54.29%, #A660C3 57.37%);
+  border-radius: 6px;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  color: #FFFFFD;
 }
 
 @media only screen and (max-width: 1200px) {
