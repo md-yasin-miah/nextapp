@@ -1,12 +1,12 @@
-import style from '../../../styles/pages/footer.module.css';
-
+import Image from 'next/image';
+import fo from '../../../styles/pages/footer.module.css';
 const Footer = () => {
   return (
-    <footer className={style.footer}>
-      <div className={style.footer__container}>
-        <div className={style.footer__container__up}>
-          <div className={style.footer__container__up__nav_links}>
-            <h3>Product</h3>
+    <div className={fo.footer}>
+      <div className={fo.container}>
+        <div className={fo.row}>
+          <div className={fo.col}>
+            <h4>Product</h4>
             <ul>
               <li><a href="#">Features</a></li>
               <li><a href="#">Integrations</a></li>
@@ -14,8 +14,8 @@ const Footer = () => {
               <li><a href="#">Product updates</a></li>
             </ul>
           </div>
-          <div className={style.footer__container__up__nav_links}>
-            <h3>Resource</h3>
+          <div className={fo.col}>
+            <h4>Resources</h4>
             <ul>
               <li><a href="#">Blog</a></li>
               <li><a href="#">User guides</a></li>
@@ -25,35 +25,37 @@ const Footer = () => {
               <li><a href="#">Privacy</a></li>
             </ul>
           </div>
-          <div className={style.footer__container__up__nav_links}>
-            <h3>Company</h3>
+          <div className={fo.col}>
+            <h4>Company</h4>
             <ul>
               <li><a href="#">About us</a></li>
               <li><a href="#">Careers</a></li>
             </ul>
           </div>
-          <div className={style.footer__container__up__nav_links}>
-            <h3>Subscribe to our newsletter</h3>
-            <div className={style.footer__container__up__nav_links__input}>
-              <input type="text" placeholder="Enter your mail" />
-              <span>Subscribe</span>
-            </div>
-          </div>
-        </div>
-        <hr />
-        <div className={style.footer__container__down}>
-          <div className={style.footer__container__down__left}>
-            <p>© 2021. All rights reserved.</p>
-          </div>
-          <div className={style.footer__container__down__right}>
+          <div className={fo.col}>
+            <h4>Subscribe to our newsletter</h4>
             <ul>
-              <li><a href="#">Terms of Service</a></li>
-              <li><a href="#">Privacy Policy</a></li>
+              <li>
+                <form action='#' className='subscribeForm'>
+                  <input type="text" placeholder="Enter your email" />
+                  <button class type="submit">Subscribe now</button>
+                </form>
+              </li>
             </ul>
           </div>
         </div>
+        <div className={fo.divider}></div>
+        <div className={fo.social}>
+          <p className={fo.terms}>©️ 2023 AnyDemo, Inc . Privacy . Terms . Sitemap</p>
+          <ul className={fo.icons}>
+            <li><Image src='/img/footer/facebook.png' width={32} height={32} /></li>
+            <li><Image src='/img/footer/youtube.png' width={32} height={32} /></li>
+            <li><Image src='/img/footer/instagram.png' width={32} height={32} /></li>
+            <li><Image src='/img/footer/twitter.png' width={32} height={32} /></li>
+          </ul>
+        </div>
       </div>
-    </footer>
+    </div>
   )
 }
 

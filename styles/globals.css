@@ -12,6 +12,18 @@
   box-sizing: border-box;
 }
 
+body {
+  background: #0F0E19;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
 input:focus,
 select:focus,
 textarea:focus,
@@ -22,6 +34,41 @@ button:focus {
 button {
   border: none;
   cursor: pointer;
+}
+
+.container {
+  width: 1200px;
+  margin: auto;
+}
+
+.pageTitle {
+  text-align: center;
+  font-family: 'Ubuntu';
+  font-style: normal;
+}
+
+.pageTitle h1 {
+  font-weight: 500;
+  color: #FFF8F8;
+  font-size: 56px;
+  line-height: 64px;
+}
+
+.pageTitle h1 span {
+  background: linear-gradient(57.89deg, #2DF1E6 61.08%, #3694B0 67.87%, #468DB3 68.39%, #6F79BA 69.88%, #8D6BBF 71.24%, #9F63C2 72.4%, #A660C3 73.23%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+}
+
+.pageTitle p {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 27px;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.7);
+  margin-top: 24PX;
 }
 
 .formArea {
@@ -215,4 +262,76 @@ button {
   justify-content: center;
   column-gap: 8px;
   align-items: center;
+}
+
+.subscribeForm {
+  width: fit-content;
+  position: relative;
+}
+
+.subscribeForm button {
+  position: absolute;
+  top: 0px;
+  right: -66px;
+  font-family: 'Ubuntu';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 18px;
+  color: #FFFFFF;
+  width: 142px;
+  height: 48px;
+  background: #1FC2C7;
+  border-radius: 0px 8px 8px 0px;
+}
+
+.subscribeForm input {
+  position: relative;
+  font-family: 'Ubuntu';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 18px;
+  color: #FFFFFF;
+  border: solid 2px transparent;
+  border-radius: 8px 0px 0px 8px;
+  width: calc(360px - 120px);
+  height: 48px;
+  background: #0F0E19;
+}
+
+@media only screen and (max-width: 1200px) {
+  .container {
+    width: 90%;
+    margin: auto;
+  }
+
+  .authContainer {
+    flex-direction: column;
+    padding: 110px 24px;
+  }
+}
+
+@media only screen and (max-width: 424px) {
+
+  /* solide slider css */
+  .splide__slide {
+    width: fit-content !important;
+  }
+
+  /* solide slider css */
+}
+
+@media only screen and (max-width: 570px) {
+  .authContainer {
+    width: 100%;
+  }
+
+  .authContainer .loginImgArea {
+    display: none;
+  }
+
+  .authContainer .formArea {
+    width: 100%;
+  }
 }
