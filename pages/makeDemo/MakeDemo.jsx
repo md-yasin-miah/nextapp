@@ -5,10 +5,12 @@ import MainLayout from '@/components/layouts/MainLayout';
 import Image from 'next/image';
 import { Splide, SplideSlide } from '@splidejs/react-splide';
 import '@splidejs/react-splide/css';
+import LoadingProgressModal from '@/components/LoadingProgressModal';
 
 const MakeDemo = () => {
   const [step2, setStep2] = useState(false);
   const [step3, setStep3] = useState(false);
+  const [openProgress, setOpenProgress] = useState(true);
   const options = {
     perPage: 3,
     gap: '16px',
@@ -114,7 +116,10 @@ const MakeDemo = () => {
         }
         {
           step2 && step3 &&
-          <div className={d.getDemoBtn}>
+          <div
+            className={d.getDemoBtn}
+            // open loading progress
+            onClick={() => setOpenProgress(true)}>
             <button >Get your demo</button>
           </div>
         }
@@ -134,6 +139,14 @@ const MakeDemo = () => {
             </Splide>
           </div>
         </div>
+        {
+          openProgress &&
+          <LoadingProgressModal
+            title='AI preparing your music'
+            open={openProgress}
+            setOpen={setOpenProgress}
+            percent={'65%'} />
+        }
       </div>
     </MainLayout>
   )
