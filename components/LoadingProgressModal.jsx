@@ -1,35 +1,7 @@
 "use client"
-
 import Image from "next/image"
-
-// import { useEffect } from 'react'
-
 const LoadingProgressModal = (props) => {
-  const { title, open, setOpen, percent } = props
-  // useEffect(() => {
-  //   const rootElement = document.getElementById('root');
-
-  //   // Function to disable scrolling
-  //   const disableScroll = () => {
-  //     rootElement.classList.add('modal-open');
-  //   };
-
-  //   // Function to enable scrolling
-  //   const enableScroll = () => {
-  //     rootElement.classList.remove('modal-open');
-  //   };
-
-  //   if (open) {
-  //     disableScroll();
-  //   } else {
-  //     enableScroll();
-  //   }
-
-  //   // Cleanup function to enable scrolling when the component unmounts
-  //   return () => {
-  //     enableScroll();
-  //   };
-  // }, [open]);
+  const { title, open, setOpen, percent } = props;
   return (
     <div className='modal'>
       <div className='modal-content'>

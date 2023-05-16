@@ -11,12 +11,12 @@ const Header = () => {
         </div>
         <div className={header.header_links}>
           <ul>
-            <li className={header.active}>Create</li>
-            <li>Stream</li>
-            <li>Shop</li>
-            <li>Pricing</li>
-            <li>Join</li>
-            <li>Contact</li>
+            <li className={header.active}><Link href="/make_a_demo" >Create</Link></li>
+            <li><Link href="#" >Stream</Link></li>
+            <li><Link href="#" >Shop</Link></li>
+            <li><Link href="/subscriptionPlan" >Pricing</Link></li>
+            <li><Link href="#" >Join</Link></li>
+            <li><Link href="/contact" >Contact</Link></li>
           </ul>
           <div className={header.header_profile}>
             <Link href="/login" className={header.sign_in}>Sign In</Link>

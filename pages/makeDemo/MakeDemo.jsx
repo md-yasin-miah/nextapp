@@ -6,11 +6,13 @@ import Image from 'next/image';
 import { Splide, SplideSlide } from '@splidejs/react-splide';
 import '@splidejs/react-splide/css';
 import LoadingProgressModal from '@/components/LoadingProgressModal';
+import { useRouter } from 'next/navigation';
 
 const MakeDemo = () => {
+  const router = useRouter();
   const [step2, setStep2] = useState(false);
   const [step3, setStep3] = useState(false);
-  const [openProgress, setOpenProgress] = useState(true);
+  const [openProgress, setOpenProgress] = useState(false);
   const options = {
     perPage: 3,
     gap: '16px',
@@ -94,7 +96,10 @@ const MakeDemo = () => {
                       </div>
                       {/* conditional if premium */}
                       {i >= 4 &&
-                        <div className={d.premium}>
+                        <div className={d.premium}
+                          // redirect to subscribe page
+                          onClick={() => router.push('/subscriptionPlan')}
+                        >
                           <span>Get Premium</span>
                         </div>
                       }
