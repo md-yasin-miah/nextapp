@@ -11,7 +11,7 @@ const ResetPassword = () => {
           <div className="imgBox">
             <div className="bg"></div>
             <Image
-              src="/../public/img/password.png"
+              src="/img/password.png"
               width={445}
               height={485}
               alt=""

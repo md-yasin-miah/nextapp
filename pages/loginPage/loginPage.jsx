@@ -12,7 +12,7 @@ export default function LogInPage() {
           <div className="imgBox">
             <div className="bg"></div>
             <Image
-              src="/../public/img/login.png"
+              src="/img/login.png"
               width={445}
               height={485}
               alt=""
@@ -42,13 +42,13 @@ export default function LogInPage() {
               <p>Or login with</p>
               <div className="authIcon">
                 <Image
-                  src="/../public/img/google.png"
+                  src="/img/google.png"
                   width={32}
                   height={32}
                   alt="google"
                 />
                 <Image
-                  src="/../public/img/facebook.png"
+                  src="/img/facebook.png"
                   width={32}
                   height={32}
                   alt="facebook"
