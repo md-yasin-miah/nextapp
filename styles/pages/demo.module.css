@@ -110,7 +110,7 @@
   height: 363px;
   margin: auto;
   cursor: pointer;
-  background: url("../img/demo01.png") no-repeat center center / cover;
+  background: url("/img/demo01.png") no-repeat center center / cover;
   ;
 }
 
