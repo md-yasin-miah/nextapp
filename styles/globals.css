@@ -18,6 +18,7 @@ body {
 
 a {
   text-decoration: none;
+  color: inherit;
 }
 
 ul {
@@ -41,6 +42,80 @@ button {
   margin: auto;
 }
 
+.modal {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.modal-content {
+  position: absolute;
+  width: 85%;
+  height: 85%;
+  left: 50%;
+  top: 50%;
+  background: linear-gradient(179.92deg, #3B343F 0.07%, #1D1F27 82.76%);
+  transform: translate(-50%, -50%);
+  border-radius: 20px;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content div {
+  width: 100%;
+}
+
+.progressTitle h1 {
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 46px;
+  color: #FFFFFF;
+  text-align: center;
+}
+
+.progress .track {
+  position: relative;
+  margin: auto;
+  margin-top: 100px;
+  width: 70%;
+  height: 47px;
+  background: #2F4668;
+  border-radius: 20px;
+}
+
+.progress .percent {
+  position: absolute;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: linear-gradient(47.36deg, #2DF1E6 12.24%, #3694B0 37.45%, #468DB3 39.38%, #6F79BA 44.93%, #8D6BBF 49.97%, #9F63C2 54.29%, #A660C3 57.37%);
+  border-radius: 20px;
+}
+
+.progress .percentTag {
+  position: absolute;
+  top: -25px;
+  font-weight: 500;
+  font-size: 24px;
+  color: #FFFFFF;
+  transform: translate(-100%, -50%);
+}
+
+.modal .crossBtn {
+  position: absolute;
+  top: 28px;
+  right: 28px;
+  width: 37.5px;
+  height: 37.5px;
+  background: transparent;
+}
+
 .pageTitle {
   text-align: center;
   font-family: 'Ubuntu';
@@ -53,6 +128,7 @@ button {
   font-size: 56px;
   line-height: 64px;
 }
+
 
 .pageTitle h1 span {
   background: linear-gradient(57.89deg, #2DF1E6 61.08%, #3694B0 67.87%, #468DB3 68.39%, #6F79BA 69.88%, #8D6BBF 71.24%, #9F63C2 72.4%, #A660C3 73.23%);
@@ -314,12 +390,12 @@ button {
 
 @media only screen and (max-width: 424px) {
 
-  /* solide slider css */
+  /* solide slider css start */
   .splide__slide {
     width: fit-content !important;
   }
 
-  /* solide slider css */
+  /* solide slider css end*/
 }
 
 @media only screen and (max-width: 570px) {
@@ -333,5 +409,38 @@ button {
 
   .authContainer .formArea {
     width: 100%;
+  }
+
+  .modal-content {
+    width: 335px;
+    height: 222px;
+    top: 273px;
+  }
+
+  .progressTitle h1 {
+    font-size: 20px;
+    line-height: 23px;
+  }
+
+  .progress .track {
+    height: 13px;
+    margin-top: 67px;
+  }
+
+  .progress .percentTag {
+    font-size: 14px;
+    top: -12px;
+  }
+
+  .modal .crossBtn {
+    width: 18.75px;
+    height: 18.75px;
+    top: 15.62px;
+    right: 15.62px;
+  }
+
+  .modal .crossBtn img {
+    width: 100%;
+    height: 100%;
   }
 }

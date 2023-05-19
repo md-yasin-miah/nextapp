@@ -38,7 +38,7 @@ const Footer = () => {
               <li>
                 <form action='#' className='subscribeForm'>
                   <input type="text" placeholder="Enter your email" />
-                  <button class type="submit">Subscribe now</button>
+                  <button type="submit">Subscribe now</button>
                 </form>
               </li>
             </ul>
@@ -48,10 +48,10 @@ const Footer = () => {
         <div className={fo.social}>
           <p className={fo.terms}>©️ 2023 AnyDemo, Inc . Privacy . Terms . Sitemap</p>
           <ul className={fo.icons}>
-            <li><Image src='/img/footer/facebook.png' width={32} height={32} /></li>
-            <li><Image src='/img/footer/youtube.png' width={32} height={32} /></li>
-            <li><Image src='/img/footer/instagram.png' width={32} height={32} /></li>
-            <li><Image src='/img/footer/twitter.png' width={32} height={32} /></li>
+            <li><Image src='/img/footer/facebook.png' width={32} height={32} alt='facebook' /></li>
+            <li><Image src='/img/footer/youtube.png' width={32} height={32} alt='youtube' /></li>
+            <li><Image src='/img/footer/instagram.png' width={32} height={32} alt='instagram' /></li>
+            <li><Image src='/img/footer/twitter.png' width={32} height={32} alt='twitter' /></li>
           </ul>
         </div>
       </div>

@@ -12,7 +12,7 @@ const SignUpPage = () => {
           <div className="imgBox">
             <div className="bg"></div>
             <Image
-              src="/../public/img/signup.png"
+              src="/img/signup.png"
               width={445}
               height={485}
               alt=""
@@ -45,13 +45,13 @@ const SignUpPage = () => {
               <p>Or Sign up with</p>
               <div className="authIcon">
                 <Image
-                  src="/../public/img/google.png"
+                  src="/img/google.png"
                   width={32}
                   height={32}
                   alt="google"
                 />
                 <Image
-                  src="/../public/img/facebook.png"
+                  src="/img/facebook.png"
                   width={32}
                   height={32}
                   alt="facebook"
