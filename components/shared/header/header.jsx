@@ -1,15 +1,23 @@
+'use client';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import header from './../../../styles/pages/header.module.css';
 import Link from 'next/link';
 
+
 const Header = () => {
+  const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const toggleMobileMenu = () => {
+    setMobileMenuOpen(!isMobileMenuOpen);
+  };
   return (
     <div className={header.header}>
       <header className={header.header_container}>
         <div className={header.header_logo}>
           <Image src="/img/header/logo.png" width={40} height={40} alt='logo' />
         </div>
-        <div className={header.header_links}>
+        <div className={`${header.header_links} ${isMobileMenuOpen ? header.showMenu : ''}`}>
           <ul>
             <li className={header.active}><Link href="/make_a_demo" >Create</Link></li>
             <li><Link href="#" >Stream</Link></li>
@@ -27,7 +35,7 @@ const Header = () => {
         <Image src="/img/header/profile.png" width={40} height={40} alt='profile' />
         <p>Username</p>
       </div> */}
-        <div className={header.bar}>
+        <div className={header.bar} onClick={toggleMobileMenu}>
           <Image src="/img/header/burger.png" width={16.5} height={10.5} alt='bar' />
         </div>
       </header>
