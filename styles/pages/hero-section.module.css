@@ -1,0 +1,66 @@
+.heroSection {
+  width: 100%;
+  height: fit-content;
+  padding: 20px 0px 120px 0px;
+  background-image: url('/img/hero/Group-1.png'), url('/img/hero/Group-91.png'), url('/img/hero/Ellipse-5.png');
+  background-repeat: no-repeat, no-repeat, no-repeat;
+  background-position: 421px 308px, 930px -10px, 1120px 450px;
+}
+
+.heroSection__container {
+  width: 1200px;
+  height: fit-content;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.heroSection__container__text {
+  height: 366px;
+  width: 513px;
+  border-radius: 0px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.heroSection__container__text h1 {
+  height: 192px;
+  width: 435px;
+  font-family: Ubuntu;
+  font-size: 56px;
+  font-weight: 500;
+  line-height: 64px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+
+.heroSection__container__text h1>span {
+  color: #32E5EB;
+}
+
+.heroSection__container__text p {
+  width: 379px;
+  height: 58px;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 30px;
+  color: #989898;
+  margin-top: 20px;
+}
+
+.heroSection__container__text span {
+  margin-top: 40px;
+}
+
+.heroSection__container__image {
+  height: 400px;
+  width: 580px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
