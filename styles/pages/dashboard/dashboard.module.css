@@ -1,0 +1,11 @@
+.dashboardBody {
+  display: flex;
+  align-items: flex-start;
+  gap: 117px;
+}
+
+.mainArea {
+  width: 291px;
+  min-height: 668px;
+  height: fit-content;
+}

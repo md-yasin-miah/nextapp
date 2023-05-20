@@ -47,7 +47,8 @@ img {
   margin: auto;
 }
 
-.mainLayout {
+.mainLayout,
+.dashboardLayout {
   position: relative;
 }
 
