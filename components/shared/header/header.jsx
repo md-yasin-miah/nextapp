@@ -18,7 +18,7 @@ const Header = () => {
             <li><Link href="#" >Stream</Link></li>
             <li><Link href="#" >Shop</Link></li>
             <li><Link href="/subscriptionPlan" >Pricing</Link></li>
-            <li><Link href="#" >Join</Link></li>
+            <li><Link href="/join" >Join</Link></li>
             <li><Link href="/contact" >Contact</Link></li>
           </ul>
           <div className={header.header_profile}>

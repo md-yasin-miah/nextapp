@@ -120,10 +120,6 @@
   margin-bottom: 64px;
 }
 
-.form textarea {
-  max-height: 150px;
-}
-
 .btn {
   width: 220px;
   margin-left: auto;
