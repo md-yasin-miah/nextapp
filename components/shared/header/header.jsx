@@ -6,18 +6,13 @@ import Link from 'next/link';
 
 
 const Header = () => {
-  const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
-
-  const toggleMobileMenu = () => {
-    setMobileMenuOpen(!isMobileMenuOpen);
-  };
   return (
     <div className={header.header}>
       <header className={header.header_container}>
         <div className={header.header_logo}>
           <Image src="/img/header/logo.png" width={40} height={40} alt='logo' />
         </div>
-        <div className={`${header.header_links} ${isMobileMenuOpen ? header.showMenu : ''}`}>
+        <div className={header.header_links}>
           <ul>
             <li className={header.active}><Link href="/make_a_demo" >Create</Link></li>
             <li><Link href="#" >Stream</Link></li>

@@ -103,7 +103,7 @@
         position: relative;
     }
 
-    .header_links.showMenu {
+    .header_links {
         position: absolute;
         width: 230px;
         height: 482px;
