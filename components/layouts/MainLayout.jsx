@@ -3,7 +3,9 @@ import Header from "../shared/header/header";
 
 export default function MainLayout({ children }) {
   return (
-    <div>
+    <div className="mainLayout">
+      <div className="bgEffect1"></div>
+      <div className="bgEffect2"></div>
       <Header />
       {children}
       <Footer />

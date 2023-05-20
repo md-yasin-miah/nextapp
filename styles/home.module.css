@@ -1,11 +1,7 @@
 .home {
   margin: 0;
   padding: 0;
-  background: #0F0E19;
   color: #fff;
-  /* background-image: url('/img/hero/Ellipse-11.png'), url('/img/hero/Ellipse-12.png'), url('/img/hero/Ellipse-9.png');
-  background-repeat: no-repeat, no-repeat, no-repeat;
-  background-position: 0 0, top right, top right; */
   background-image: url('/img/hero/Ellipse-11.png');
   background-repeat: no-repeat;
 }
