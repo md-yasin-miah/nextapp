@@ -199,4 +199,8 @@
   .social {
     justify-content: center;
   }
+
+  .col:last-child {
+    width: 100%;
+  }
 }

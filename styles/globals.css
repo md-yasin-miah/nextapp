@@ -37,9 +37,40 @@ button {
   cursor: pointer;
 }
 
+img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
 .container {
   width: 1200px;
   margin: auto;
+}
+
+.mainLayout {
+  position: relative;
+}
+
+.bgEffect1 {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  left: -30px;
+  top: 22px;
+  background: #B843B7;
+  filter: blur(200px);
+  z-index: -1;
+}
+
+.bgEffect2 {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  right: -30px;
+  bottom: 400px;
+  background: #B843B7;
+  filter: blur(200px);
+  z-index: -1;
 }
 
 .modal {
@@ -193,6 +224,10 @@ button {
   width: 100%;
 }
 
+.form textarea {
+  max-height: 150px;
+}
+
 .formControl {
   display: flex;
   flex-direction: column;
@@ -209,8 +244,10 @@ button {
   color: #FFFFFD;
 }
 
-.formControl input {
+.formControl input,
+.formControl textarea {
   width: 100%;
+  max-width: 100%;
   height: 48px;
   background: #1D1C2D;
   border-radius: 8px;
@@ -219,7 +256,8 @@ button {
   color: #FFFFFD;
 }
 
-.formControl input::placeholder {
+.formControl input::placeholder,
+.formControl textarea::placeholder {
   font-family: 'Ubuntu';
   font-style: normal;
   font-weight: 400;
@@ -272,7 +310,7 @@ button {
   color: #FFFFFD;
 }
 
-.form .actionBtn {
+.actionBtn {
   padding: 13.5px 32px;
   width: 100%;
   height: 48px;
@@ -286,6 +324,11 @@ button {
   text-align: center;
   color: #FFF8F8;
   margin-top: 40px;
+}
+
+.actionBtn_secondary {
+  background: transparent;
+  border: 1px solid #2DF1E6;
 }
 
 .alternativeLigInOptions {
@@ -396,6 +439,26 @@ button {
   }
 
   /* solide slider css end*/
+  .pageTitle h1 {
+    font-size: 32px;
+    line-height: 37px;
+  }
+
+  .pageTitle p {
+    font-size: 16px;
+    line-height: 130%;
+  }
+
+  .formControl {
+    margin-bottom: 24px;
+    row-gap: 10px;
+  }
+
+  .formControl label {
+    font-size: 18px;
+    line-height: 21px;
+  }
+
 }
 
 @media only screen and (max-width: 570px) {
