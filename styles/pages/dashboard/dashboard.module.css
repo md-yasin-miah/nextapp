@@ -5,9 +5,19 @@
 }
 
 .mainArea {
+  position: relative;
   min-width: 291px;
   min-height: 668px;
   height: fit-content;
+}
+
+.divider {
+  position: absolute;
+  top: 0px;
+  right: -59px;
+  height: 100%;
+  width: 1px;
+  background: #FFFFFD;
 }
 
 .imgArea {
@@ -65,11 +75,29 @@
   border-radius: 8px;
   display: flex;
   align-items: center;
+  transition: all 0.3s ease-in-out;
+}
+
+.lists li:not(:last-child) {
+  margin-bottom: 12px;
 }
 
 .lists .active {
+  position: relative;
   background: linear-gradient(90deg, #23AFB7 1.46%, #169AA4 79.47%);
   padding-left: 24px;
+}
+
+.lists .active::before {
+  content: "";
+  width: 1px;
+  height: 100%;
+  background: #32E5EB;
+  position: absolute;
+  right: -59px;
+  top: 0px;
+  z-index: 1;
+  border-radius: 0 50% 50% 0;
 }
 
 .lists li {

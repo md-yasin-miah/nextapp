@@ -5,28 +5,57 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useState } from 'react';
 import Overview from '@/pages/dashboard/Overview';
+import { useRouter } from 'next/navigation';
+
 const DashboardLayout = () => {
-  const [activeChildren, setActiveChildren] = useState('overview');
-  const setChildren = (children) => {
-    setActiveChildren(children)
+  const [activeChildren, setActiveChildren] = useState(0);
+  const router = useRouter();
+  const setChildren = (children, link) => {
+    link ? router.push(link) : setActiveChildren(children);
   }
   const Children = () => {
     switch (activeChildren) {
-      case 'overview':
+      case 0:
         return <Overview />
-      case 'downloads':
+      case 1:
         return <div>downloads</div>
-      case 'myMusic':
+      case 2:
         return <div>myMusic</div>
-      case 'manageSubscription':
+      case 3:
         return <div>manageSubscription</div>
-      case 'userAccount':
+      case 4:
         return <div>userAccount</div>
       default:
         return <Overview />
     }
   }
-
+  const lists = [
+    {
+      icon: '/svg/UserCircleOutline.svg',
+      title: 'Overview',
+    },
+    {
+      icon: '/svg/DownloadOutline.svg',
+      title: 'Downloads',
+    },
+    {
+      icon: '/svg/ic_outline-music-note.svg',
+      title: 'My Music',
+    },
+    {
+      icon: '/svg/Mask group.svg',
+      title: 'Manage Subscription',
+    },
+    {
+      icon: '/svg/mdi_user-outline.svg',
+      title: 'User Account',
+    },
+    {
+      icon: '/svg/LogoutOutline.svg',
+      title: 'Log Out',
+      link: '/login'
+    }
+  ]
   return (
     <div className='dashboardLayout'>
       <div className="bgEffect1"></div>
@@ -46,43 +75,18 @@ const DashboardLayout = () => {
             <h4>Md. Yasin Miah</h4>
           </div>
           <ul className={d.lists}>
-            <li className={d.active} onClick={() => setChildren('overview')}>
-              <div className={d.icon}>
-                <Image src='/svg/UserCircleOutline.svg' width={28} height={28} />
-              </div>
-              <span>Overview</span>
-            </li>
-            <li onClick={() => setChildren('downloads')}>
-              <div className={d.icon}>
-                <Image src='/svg/DownloadOutline.svg' width={24} height={24} />
-              </div>
-              <span>Downloads</span>
-            </li>
-            <li onClick={() => setChildren('myMusic')}>
-              <div className={d.icon}>
-                <Image src='/svg/ic_outline-music-note.svg' width={28} height={28} />
-              </div>
-              <span>My Music</span>
-            </li>
-            <li onClick={() => setChildren('manageSubscription')}>
-              <div className={d.icon}>
-                <Image src='/svg/Mask group.svg' width={28} height={28} />
-              </div>
-              <span>Manage Subscription</span>
-            </li>
-            <li onClick={() => setChildren('userAccount')}>
-              <div className={d.icon}>
-                <Image src='/svg/mdi_user-outline.svg' width={28} height={28} />
-              </div>
-              <span>User Account</span>
-            </li>
-            <li>
-              <div className={d.icon}>
-                <Image src='/svg/LogoutOutline.svg' width={28} height={28} />
-              </div>
-              <span>Log Out</span>
-            </li>
+            {
+              lists.map((list, index) => (
+                <li key={index} className={activeChildren === index && d.active} onClick={() => setChildren(index, list?.link)}>
+                  <div className={d.icon}>
+                    <Image src={list.icon} width={28} height={28} />
+                  </div>
+                  <span>{list.title}</span>
+                </li>
+              ))
+            }
           </ul>
+          <div className={d.divider}></div>
         </div>
         <div className={d.childrenArea}>
           <Children />

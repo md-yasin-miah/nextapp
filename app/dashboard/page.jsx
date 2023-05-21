@@ -5,4 +5,5 @@ const dashboardPage = () => {
     <DashboardLayout />
   )
 }
+
 export default dashboardPage
