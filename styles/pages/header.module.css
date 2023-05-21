@@ -62,6 +62,7 @@
 
 .header_profile_logo {
   gap: 8px;
+  cursor: pointer;
 }
 
 .header_profile_logo P {
@@ -101,6 +102,62 @@
   display: none;
   padding: 10px;
 }
+
+.profile {
+  position: relative;
+}
+
+.profile_links {
+  position: absolute;
+  width: 230px;
+  height: fit-content;
+  right: 0px;
+  padding: 21px 18px;
+  align-items: start;
+  top: 42px;
+  background: linear-gradient(179.92deg, #3B343F 0.07%, #1D1F27 82.76%);
+  border-radius: 5px;
+  flex-direction: column;
+  z-index: 10;
+}
+
+.profile_links ul {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: fit-content;
+  gap: 0;
+}
+
+.profile_links ul li {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  gap: 16px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 18px;
+  color: #FFFFFD;
+  width: 100%;
+  text-align: start;
+}
+
+.profile_links ul li:not(:last-child, :first-child) {
+  padding: 20px 0;
+}
+
+.profile_links ul li:not(:last-child) {
+  border-bottom: 1px solid #505050;
+}
+
+.profile_links ul li:last-child {
+  padding-top: 20px;
+}
+
+.profile_links ul li:first-child {
+  padding-bottom: 20px;
+}
+
 
 @media only screen and (max-width: 1200px) {
 
@@ -181,6 +238,10 @@
 
   .bar {
     display: block;
+  }
+
+  .profile_links {
+    display: none;
   }
 }
 
