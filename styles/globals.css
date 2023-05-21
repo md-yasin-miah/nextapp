@@ -421,12 +421,78 @@ button {
   background: #0F0E19;
 }
 
+.dashboard_children_title .title {
+  margin-bottom: 40px;
+}
+
 .dashboard_children_title {
   font-weight: 700;
   font-size: 28px;
   line-height: 32px;
   color: #FFFFFF;
-  margin-bottom: 40px;
+}
+
+.dashboard_children_title:not(:first-child) {
+  margin-top: 52px;
+}
+
+.subscriptionPlanCard {
+  width: 100%;
+  background: linear-gradient(90deg, #206983 24.29%, #2F5377 79.78%);
+  border-radius: 4px;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+}
+
+.subscriptionPlanCard:not(:last-child) {
+  margin-bottom: 52px;
+}
+
+.subscriptionPlanCard_header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.subscriptionPlanCard_header button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 131px;
+  height: 34px;
+  background: linear-gradient(179.92deg, #3B343F 0.07%, #1D1F27 82.76%);
+  border-radius: 6px;
+  font-size: 16px;
+  line-height: 18px;
+  color: #FFFFFD;
+}
+
+.subscriptionPlanCard_header h4 {
+  font-weight: 500;
+  font-size: 28px;
+  line-height: 32px;
+  color: #FFFFFF;
+}
+
+.featuresItems {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+}
+
+.featuresItem {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.featuresItem span {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 18px;
+  color: #FFFFFD;
 }
 
 @media only screen and (max-width: 1200px) {

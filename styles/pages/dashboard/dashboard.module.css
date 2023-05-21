@@ -124,4 +124,5 @@
 
 .childrenArea {
   width: calc(100% - 291px + 117px);
+  padding-bottom: 150px;
 }
