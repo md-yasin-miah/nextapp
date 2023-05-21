@@ -3,10 +3,44 @@ import Image from 'next/image';
 import header from './../../../styles/pages/header.module.css';
 import Link from 'next/link';
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 const Header = () => {
+  const router = useRouter();
   const [activeMobNav, setActiveMobNav] = useState(false);
   const [isLogin, setIsLogin] = useState(true);
+  const lists = [
+    {
+      icon: '/svg/UserCircleOutline.svg',
+      title: 'Overview',
+      path: '/dashboard/overview'
+    },
+    {
+      icon: '/svg/DownloadOutline.svg',
+      title: 'Downloads',
+      path: '/dashboard/downloads'
+    },
+    {
+      icon: '/svg/ic_outline-music-note.svg',
+      title: 'My Music',
+      path: '/dashboard/myMusic'
+    },
+    {
+      icon: '/svg/Mask group.svg',
+      title: 'Manage Subscription',
+      path: '/dashboard/manageSubscription'
+    },
+    {
+      icon: '/svg/mdi_user-outline.svg',
+      title: 'User Account',
+      path: '/dashboard/userAccount'
+    },
+    {
+      icon: '/svg/LogoutOutline.svg',
+      title: 'Log Out',
+      path: '/login'
+    }
+  ]
   return (
     <div className={header.header}>
       <header className={header.header_container}>
@@ -23,9 +57,25 @@ const Header = () => {
             <li><Link href="/contact" >Contact</Link></li>
           </ul>
           {isLogin ?
-            <div className={header.header_profile + ' ' + header.header_profile_logo}>
-              <Image src="/img/header/profile.png" width={40} height={40} alt='profile' />
-              <p>Username</p>
+            <div className={header.profile}>
+              <div className={header.header_profile + ' ' + header.header_profile_logo} onClick={() => setActiveMobNav(!activeMobNav)}>
+                <Image src="/img/header/profile.png" width={40} height={40} alt='profile' />
+                <p>Username</p>
+              </div>
+              {activeMobNav && <div className={header.profile_links}>
+                <ul>
+                  {
+                    lists.map((list, index) => (
+                      <li key={index} onClick={() => router.push('/dashboard')}>
+                        <div>
+                          <Image src={list.icon} width={28} height={28} alt='icon' />
+                        </div>
+                        <span>{list.title}</span>
+                      </li>
+                    ))
+                  }
+                </ul>
+              </div>}
             </div>
             :
             <div className={header.header_profile}>

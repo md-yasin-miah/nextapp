@@ -6,10 +6,15 @@ import Image from 'next/image';
 import { useState } from 'react';
 import Overview from '@/pages/dashboard/Overview';
 import { useRouter } from 'next/navigation';
+import Downloads from '@/pages/dashboard/Downloads';
+import MyMusic from '@/pages/dashboard/MyMusic';
+import ManageSubscription from '@/pages/dashboard/ManageSubscription';
+import UserAccount from '@/pages/dashboard/UserAccount';
 
 const DashboardLayout = () => {
   const [activeChildren, setActiveChildren] = useState(0);
   const router = useRouter();
+
   const setChildren = (children, link) => {
     link ? router.push(link) : setActiveChildren(children);
   }
@@ -18,13 +23,13 @@ const DashboardLayout = () => {
       case 0:
         return <Overview />
       case 1:
-        return <div>downloads</div>
+        return <Downloads />
       case 2:
-        return <div>myMusic</div>
+        return <MyMusic />
       case 3:
-        return <div>manageSubscription</div>
+        return <ManageSubscription />
       case 4:
-        return <div>userAccount</div>
+        return <UserAccount />
       default:
         return <Overview />
     }
@@ -79,7 +84,7 @@ const DashboardLayout = () => {
               lists.map((list, index) => (
                 <li key={index} className={activeChildren === index && d.active} onClick={() => setChildren(index, list?.link)}>
                   <div className={d.icon}>
-                    <Image src={list.icon} width={28} height={28} />
+                    <Image src={list.icon} width={28} height={28} alt='icon' />
                   </div>
                   <span>{list.title}</span>
                 </li>
