@@ -421,6 +421,14 @@ button {
   background: #0F0E19;
 }
 
+.dashboard_children_title {
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 32px;
+  color: #FFFFFF;
+  margin-bottom: 40px;
+}
+
 @media only screen and (max-width: 1200px) {
   .container {
     width: 90%;
