@@ -6,13 +6,11 @@
   padding: 0px;
   gap: 48px;
   width: 100%;
-  height: "auto";
   margin-top: 300px;
 }
 
 .shop_title>h1 {
   width: 100%;
-  height: 46px;
   font-family: 'Ubuntu';
   font-style: normal;
   font-weight: 700;
@@ -24,7 +22,6 @@
 
 .shop_title>p {
   width: 516px;
-  height: 35px;
   font-family: 'Ubuntu';
   font-style: normal;
   font-weight: 400;
@@ -128,4 +125,28 @@
   order: 1;
   flex-grow: 0;
   cursor: pointer;
+}
+
+@media only screen and (max-width: 424px) {
+  .shop_container {
+    margin-top: 100px;
+  }
+
+  .shop_title>h1 {
+    width: 100%;
+  }
+
+  .shop_title>p {
+    width: 100%;
+  }
+
+  .card_wrapper {
+    grid-template-columns: repeat(1, 1fr);
+
+    gap: 32px;
+  }
+
+  .card {
+    width: 100%;
+  }
 }
