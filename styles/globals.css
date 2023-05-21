@@ -37,10 +37,10 @@ button {
   cursor: pointer;
 }
 
-img {
+/* img {
   max-width: 100%;
   max-height: 100%;
-}
+} */
 
 .container {
   width: 1200px;
