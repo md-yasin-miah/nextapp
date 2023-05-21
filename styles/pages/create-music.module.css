@@ -92,7 +92,7 @@
     padding: 0px;
     gap: 16px;
     width: 342px;
-    height: 125px;
+    height: fit-content;
   }
 
   .createMusic_title h1 {
@@ -116,6 +116,19 @@
     line-height: 24px;
     text-align: center;
     color: rgba(255, 255, 255, 0.7);
+    margin-top: 0;
 
+  }
+}
+
+@media only screen and (max-width: 424px) {
+  .card_container {
+    justify-content: center;
+    gap: 32px;
+    margin-top: 24px;
+  }
+
+  .createMusic_container {
+    gap: 0px;
   }
 }

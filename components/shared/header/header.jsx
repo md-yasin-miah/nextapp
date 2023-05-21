@@ -6,6 +6,7 @@ import { useState } from 'react';
 
 const Header = () => {
   const [activeMobNav, setActiveMobNav] = useState(false);
+  const [isLogin, setIsLogin] = useState(true);
   return (
     <div className={header.header}>
       <header className={header.header_container}>
@@ -21,15 +22,17 @@ const Header = () => {
             <li><Link href="/join" >Join</Link></li>
             <li><Link href="/contact" >Contact</Link></li>
           </ul>
-          <div className={header.header_profile}>
-            <Link href="/login" className={header.sign_in}>Sign In</Link>
-            <Link href="/signUp" className={header.sign_up}>Sign Up</Link>
-          </div>
+          {isLogin ?
+            <div className={header.header_profile + ' ' + header.header_profile_logo}>
+              <Image src="/img/header/profile.png" width={40} height={40} alt='profile' />
+              <p>Username</p>
+            </div>
+            :
+            <div className={header.header_profile}>
+              <Link href="/login" className={header.sign_in}>Sign In</Link>
+              <Link href="/signUp" className={header.sign_up}>Sign Up</Link>
+            </div>}
         </div>
-        {/* <div className={header.header_profile}>
-        <Image src="/img/header/profile.png" width={40} height={40} alt='profile' />
-        <p>Username</p>
-      </div> */}
         <div className={header.bar} onClick={() => setActiveMobNav(!activeMobNav)}>
           <Image src="/img/header/burger.png" width={16.5} height={10.5} alt='bar' />
         </div>

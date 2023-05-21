@@ -53,12 +53,23 @@
 .header_profile {
   display: flex;
   flex-direction: row;
-  align-items: flex-start;
+  align-items: center;
   padding: 0px;
   gap: 24px;
-  width: 196px;
+  width: fit-content;
   height: 40px;
+}
 
+.header_profile_logo {
+  gap: 8px;
+}
+
+.header_profile_logo P {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 18px;
+
+  color: #FFFFFF;
 }
 
 .sign_up,
@@ -82,8 +93,8 @@
 
 .sign_in {
   border: 1px solid;
-  border-image-source: linear-gradient(47.36deg, #2DF1E6 12.24%, #3694B0 37.45%, #468DB3 39.38%, #6F79BA 44.93%, #8D6BBF 49.97%, #9F63C2 54.29%, #A660C3 57.37%);
-  border-image-slice: 1;
+  border-image: linear-gradient(47.36deg, #2DF1E6 12.24%, #3694B0 37.45%, #468DB3 39.38%, #6F79BA 44.93%, #8D6BBF 49.97%, #9F63C2 54.29%, #A660C3 57.37%) 1;
+  border-radius: 10px;
 }
 
 .bar {
