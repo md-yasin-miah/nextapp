@@ -5,7 +5,11 @@
 }
 
 .mainArea {
-  width: 291px;
+  min-width: 291px;
   min-height: 668px;
   height: fit-content;
+}
+
+.childrenArea {
+  width: calc(100% - 291px + 117px);
 }

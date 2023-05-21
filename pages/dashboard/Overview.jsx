@@ -1,10 +1,9 @@
 import React from 'react'
-import ContactUs from '../contactUs/ContactUs'
 
 const Overview = () => {
   return (
     <div>
-      <ContactUs />
+      Overview
     </div>
   )
 }
