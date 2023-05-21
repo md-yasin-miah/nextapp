@@ -1,20 +1,20 @@
 .getStarted {
   width: 100%;
-  height: 400px;
+  height: fit-content;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   margin: 100px auto;
-  overflow: hidden;
-}
-
-.getStarted__container {
-  width: 1200px;
+  /* overflow: hidden; */
   background: url(/img/get-started/get-explore.png);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+}
+
+.getStarted__container {
+  width: 110%;
   padding: 100px;
 }
 
@@ -25,7 +25,7 @@
   gap: 32px;
 }
 
-.getStarted__container__text > h1 {
+.getStarted__container__text>h1 {
   font-family: 'Ubuntu';
   font-style: normal;
   font-weight: 700;
@@ -34,26 +34,38 @@
   color: #FFFFFF;
 }
 
-.getStarted__container__text > p {
+.getStarted__container__text>p {
   font-family: 'Ubuntu';
   font-style: normal;
   font-weight: 400;
   font-size: 18px;
   line-height: 140%;
   color: #FFFFFF;
-  width: 341px;
 }
 
-.getStarted__container__text > span {
+.getStarted__container__text>span {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
   padding: 13.5px 16px;
   gap: 8px;
-  width: 136px;
   height: 48px;
   background: linear-gradient(90deg, #23AFB7 1.46%, #169AA4 79.47%);
   border-radius: 8px;
   cursor: pointer;
+}
+
+@media only screen and (max-width: 424px) {
+  .getStarted {
+    margin: 100px auto 0 auto;
+  }
+
+  .getStarted__container {
+    padding: 32px 43px;
+  }
+
+  .getStarted__container__text {
+    gap: 8px;
+  }
 }

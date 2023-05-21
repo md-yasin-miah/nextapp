@@ -5,11 +5,9 @@ export default function Stream() {
   return (
     <div className={stream.stream_container}>
       <div className={stream.left_img_div}>
-        <div className={stream.left_img_div_img}>
-          <Image className={stream.img_one} src="/img/stream/1.png" width={102} height={102} alt="circle" />
-          <Image className={stream.img_two} src="/img/stream/2.png" width={550} height={400} alt="circle" />
-          <Image className={stream.img_three} src="/img/stream/3.png" width={91} height={91} alt="circle" />
-        </div>
+        <Image className={stream.img_one} src="/img/stream/1.png" width={102} height={102} alt="circle" />
+        <Image className={stream.img_two} src="/img/stream/2.png" width={550} height={400} alt="circle" />
+        <Image className={stream.img_three} src="/img/stream/3.png" width={91} height={91} alt="circle" />
       </div>
       <div className={stream.right_text_div}>
         <div className={stream.right_text_div_title}>
