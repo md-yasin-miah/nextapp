@@ -118,6 +118,8 @@
 
 .left_img_div_img {
   position: absolute;
+  width: 100%;
+  height: 100%;
 }
 
 .img_two {
@@ -144,4 +146,12 @@
   left: 474px;
   top: 324px;
   z-index: 0;
+}
+
+@media only screen and (max-width: 990px) {
+  .stream_container {
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 0px;
+    margin-top: 0px;
+  }
 }

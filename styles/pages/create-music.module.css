@@ -83,3 +83,39 @@
   line-height: 32px;
   color: #FFFFFF;
 }
+
+@media only screen and (max-width: 990px) {
+  .createMusic_title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0px;
+    gap: 16px;
+    width: 342px;
+    height: 125px;
+  }
+
+  .createMusic_title h1 {
+    width: 200px;
+    height: 37px;
+    font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 37px;
+    color: #FFFFFF;
+  }
+
+  .createMusic_title p {
+    width: 300px;
+    height: 72px;
+    font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.7);
+
+  }
+}

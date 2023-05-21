@@ -64,3 +64,52 @@
   justify-content: space-between;
   align-items: center;
 }
+
+@media only screen and (max-width: 990px) {
+  .heroSection__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 318px;
+    height: 273px;
+  }
+
+  .heroSection__container__image {
+    display: none;
+  }
+
+  .heroSection__container__text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0px;
+    gap: 10px;
+    width: 318px;
+    height: 273px;
+  }
+
+  .heroSection__container__text h1 {
+    width: 318px;
+    height: 144px;
+    font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 40px;
+    line-height: 48px;
+    text-align: center;
+    color: #FFF8F8;
+  }
+
+  .heroSection__container__text p {
+    width: 318px;
+    height: 58px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 30px;
+    text-align: center;
+    color: #989898;
+  }
+}
