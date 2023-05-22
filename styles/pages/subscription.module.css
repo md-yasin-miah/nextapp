@@ -204,6 +204,72 @@
   display: none;
 }
 
+.subCard {
+  width: 75%;
+  background: #1D1B2D;
+  border-radius: 4px;
+  padding: 17px 38px 17px 21px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 25px;
+}
+
+.subCard button {
+  padding: 8px 24px;
+  gap: 15px;
+  width: 195px;
+  height: 34px;
+  background: linear-gradient(90deg, #23AFB7 1.46%, #169AA4 79.47%);
+  border-radius: 6px;
+
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 18px;
+  color: #FFFFFD;
+}
+
+.subCard .p_info {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.subCard .p_info span {
+  font-weight: 500;
+  font-size: 20px;
+  color: #FFFFFF;
+}
+
+.subCard .management_count {
+  font-size: 24px;
+}
+
+.subCard .textBtn {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 23px;
+  color: #1FC2C7;
+  cursor: pointer;
+}
+
+.subCard .history small {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 18px;
+  color: #FFFFFF;
+}
+
+.subCard .history {
+  row-gap: 11px;
+  width: fit-content;
+}
+
+.subscriptionHistory {
+  flex-wrap: wrap;
+  column-gap: 40px;
+}
+
 @media only screen and (max-width: 1200px) {
   .s_card {
     width: 342px;
