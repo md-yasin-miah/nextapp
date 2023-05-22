@@ -15,6 +15,8 @@
 body {
   width: 100%;
   background: #0F0E19;
+  font-family: 'Ubuntu';
+  font-style: normal;
 }
 
 a {
@@ -326,6 +328,21 @@ button {
   text-align: center;
   color: #FFF8F8;
   margin-top: 40px;
+}
+
+.s_btn {
+  padding: 8px 24px;
+  color: #FFFFFD;
+  background: linear-gradient(90deg, #23AFB7 1.46%, #169AA4 79.47%);
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 18px;
+}
+
+.s_btn_t {
+  background: transparent;
+  border: 1px solid #2DF1E6;
 }
 
 .actionBtn_secondary {

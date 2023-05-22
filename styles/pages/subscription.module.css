@@ -215,20 +215,6 @@
   gap: 25px;
 }
 
-.subCard button {
-  padding: 8px 24px;
-  gap: 15px;
-  width: 195px;
-  height: 34px;
-  background: linear-gradient(90deg, #23AFB7 1.46%, #169AA4 79.47%);
-  border-radius: 6px;
-
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 18px;
-  color: #FFFFFD;
-}
-
 .subCard .p_info {
   display: flex;
   flex-direction: column;
