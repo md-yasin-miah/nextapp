@@ -16,7 +16,7 @@ const ManageSubscription = () => {
             <span>Recurring Purchases</span>
             <span>1 year 2month</span>
           </div>
-          <button>Cancel Subscription</button>
+          <button className='s_btn'>Cancel Subscription</button>
         </div>
       </div>
       <div className="dashboard_children_title">

@@ -2,6 +2,8 @@ import LogInPage from "@/pages/loginPage/loginPage"
 
 export default function LogIn() {
   return (
-    <LogInPage />
+    <div className="container">
+      <LogInPage />
+    </div>
   )
 }

@@ -53,7 +53,7 @@ const Overview = () => {
       <div className="dashboard_children_title">
         <div className={o.profileTitle}>
           <h4 className={o.p_title + ' ' + 'title'}>Profile</h4>
-          <button className={o.p_edit}>Edit Profile</button>
+          <button className='s_btn'>Edit Profile</button>
         </div>
         <div className={o.profile_info}>
           <div className={o.p_info}>

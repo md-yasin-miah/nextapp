@@ -8,7 +8,9 @@ export const metadata = {
 const joinPage = () => {
   return (
     <MainLayout>
-      <Join />
+      <div className="container">
+        <Join />
+      </div>
     </MainLayout>
   )
 }

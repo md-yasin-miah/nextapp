@@ -60,17 +60,6 @@
   margin-bottom: 40px;
 }
 
-.profileTitle .p_edit {
-  width: 133px;
-  color: #FFFFFD;
-  height: 34px;
-  background: linear-gradient(90deg, #23AFB7 1.46%, #169AA4 79.47%);
-  border-radius: 6px;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 18px;
-}
-
 .profileTitle .p_title {
   margin-bottom: 0px;
 }

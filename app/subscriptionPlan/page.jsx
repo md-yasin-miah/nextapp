@@ -8,7 +8,9 @@ export const metadata = {
 const Subscription = () => {
   return (
     <MainLayout>
-      <SubscriptionPlan />
+      <div className="container">
+        <SubscriptionPlan />
+      </div>
     </MainLayout>
   )
 }

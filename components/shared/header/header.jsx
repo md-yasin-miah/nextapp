@@ -43,52 +43,56 @@ const Header = () => {
   ]
   return (
     <div className={header.header}>
-      <header className={header.header_container}>
-        <div className={header.header_logo}>
-          <Image src="/img/header/logo.png" width={40} height={40} alt='logo' />
-        </div>
-        <div className={header.header_links} style={activeMobNav ? { display: 'flex' } : { opacity: 1 }}>
-          <ul>
-            <li className={header.active}><Link href="/make_a_demo" >Create</Link></li>
-            <li><Link href="#" >Stream</Link></li>
-            <li><Link href="#" >Shop</Link></li>
-            <li><Link href="/subscriptionPlan" >Pricing</Link></li>
-            <li><Link href="/join" >Join</Link></li>
-            <li><Link href="/contact" >Contact</Link></li>
-          </ul>
-          {isLogin ?
-            <div className={header.profile}>
-              <div className={header.header_profile + ' ' + header.header_profile_logo} onClick={() => setActiveMobNav(!activeMobNav)}>
-                <Image src="/img/header/profile.png" width={40} height={40} alt='profile' />
-                <p>Username</p>
+      <div className="container">
+        <header className={header.header_container}>
+          <div className={header.header_logo}>
+            <Link href={isLogin ? '/dashboard/overview' : '/'}>
+              <Image src="/img/header/logo.png" width={40} height={40} alt='logo' />
+            </Link>
+          </div>
+          <div className={header.header_links} style={activeMobNav ? { display: 'flex' } : { opacity: 1 }}>
+            <ul>
+              <li className={header.active}><Link href="/make_a_demo" >Create</Link></li>
+              <li><Link href="#" >Stream</Link></li>
+              <li><Link href="#" >Shop</Link></li>
+              <li><Link href="/subscriptionPlan" >Pricing</Link></li>
+              <li><Link href="/join" >Join</Link></li>
+              <li><Link href="/contact" >Contact</Link></li>
+            </ul>
+            {isLogin ?
+              <div className={header.profile}>
+                <div className={header.header_profile + ' ' + header.header_profile_logo} onClick={() => setActiveMobNav(!activeMobNav)}>
+                  <Image src="/img/header/profile.png" width={40} height={40} alt='profile' />
+                  <p>Username</p>
+                </div>
+                {activeMobNav && <div className={header.profile_links}>
+                  <ul>
+                    {
+                      lists.map((list, index) => (
+                        <Link href={list.path}>
+                          <li key={index}>
+                            <div>
+                              <Image src={list.icon} width={28} height={28} alt='icon' />
+                            </div>
+                            <span>{list.title}</span>
+                          </li>
+                        </Link>
+                      ))
+                    }
+                  </ul>
+                </div>}
               </div>
-              {activeMobNav && <div className={header.profile_links}>
-                <ul>
-                  {
-                    lists.map((list, index) => (
-                      <Link href={list.path}>
-                        <li key={index}>
-                          <div>
-                            <Image src={list.icon} width={28} height={28} alt='icon' />
-                          </div>
-                          <span>{list.title}</span>
-                        </li>
-                      </Link>
-                    ))
-                  }
-                </ul>
+              :
+              <div className={header.header_profile}>
+                <Link href="/login" className={header.sign_in}>Sign In</Link>
+                <Link href="/signUp" className={header.sign_up}>Sign Up</Link>
               </div>}
-            </div>
-            :
-            <div className={header.header_profile}>
-              <Link href="/login" className={header.sign_in}>Sign In</Link>
-              <Link href="/signUp" className={header.sign_up}>Sign Up</Link>
-            </div>}
-        </div>
-        <div className={header.bar} onClick={() => setActiveMobNav(!activeMobNav)}>
-          <Image src="/img/header/burger.png" width={16.5} height={10.5} alt='bar' />
-        </div>
-      </header>
+          </div>
+          <div className={header.bar} onClick={() => setActiveMobNav(!activeMobNav)}>
+            <Image src="/img/header/burger.png" width={16.5} height={10.5} alt='bar' />
+          </div>
+        </header>
+      </div>
     </div>
   )
 }
