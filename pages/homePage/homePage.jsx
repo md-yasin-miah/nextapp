@@ -8,10 +8,12 @@ import HeroSection from "./heroSection/heroSection";
 export default function HomePage() {
   return (
     <MainLayout>
-      <HeroSection />
-      <CreateMusic />
-      <Stream />
-      <Shop />
+      <div className="container">
+        <HeroSection />
+        <CreateMusic />
+        <Stream />
+        <Shop />
+      </div>
       <GetStarted />
     </MainLayout>
   )

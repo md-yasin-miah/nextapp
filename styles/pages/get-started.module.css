@@ -1,5 +1,5 @@
 .getStarted {
-  width: 100%;
+  width: 1200px;
   height: fit-content;
   display: flex;
   justify-content: center;
@@ -14,7 +14,6 @@
 }
 
 .getStarted__container {
-  width: 110%;
   padding: 100px;
 }
 
@@ -59,6 +58,7 @@
 @media only screen and (max-width: 424px) {
   .getStarted {
     margin: 100px auto 0 auto;
+    width: 100%;
   }
 
   .getStarted__container {

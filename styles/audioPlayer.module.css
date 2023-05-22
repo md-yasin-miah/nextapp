@@ -1,7 +1,7 @@
 .player {
-  position: absolute;
-  bottom: 0;
-  right: 0;
+  /* position: absolute; */
+  padding: 15px 22px;
+  /* bottom: 0; */
   width: 100%;
   background: #ffffff;
 }

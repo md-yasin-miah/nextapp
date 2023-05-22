@@ -10,6 +10,7 @@ import MyMusic from '@/pages/dashboard/MyMusic';
 import ManageSubscription from '@/pages/dashboard/ManageSubscription';
 import UserAccount from '@/pages/dashboard/UserAccount';
 import { useRouter } from 'next/navigation';
+import AudioPlayer from '../shared/AudioPlayer';
 
 const DashboardLayout = () => {
   const [activeChildren, setActiveChildren] = useState(0);
@@ -65,37 +66,40 @@ const DashboardLayout = () => {
       <div className="bgEffect1"></div>
       <div className="bgEffect2"></div>
       <Header />
-      <div className={d.dashboardBody}>
-        <div className={d.mainArea}>
-          <div className={d.profile}>
-            <div className={d.imgArea}>
-              <div className={d.profileImage}>
-                <Image src='/img/header/profile.png' width={120} height={120} alt='profile' />
+      <div className="container">
+        <div className={d.dashboardBody}>
+          <div className={d.mainArea}>
+            <div className={d.profile}>
+              <div className={d.imgArea}>
+                <div className={d.profileImage}>
+                  <Image src='/img/header/profile.png' width={120} height={120} alt='profile' />
+                </div>
+                <div className={d.edit}>
+                  <Image src='/svg/Plus.svg' width={20} height={20} alt='edit' />
+                </div>
               </div>
-              <div className={d.edit}>
-                <Image src='/svg/Plus.svg' width={20} height={20} alt='edit' />
-              </div>
+              <h4>Md. Yasin Miah</h4>
             </div>
-            <h4>Md. Yasin Miah</h4>
+            <ul className={d.lists}>
+              {
+                lists.map((list, index) => (
+                  <li key={index} className={activeChildren === index && d.active} onClick={() => setChildren(index, list?.link)}>
+                    <div className={d.icon}>
+                      <Image src={list.icon} width={28} height={28} alt='icon' />
+                    </div>
+                    <span>{list.title}</span>
+                  </li>
+                ))
+              }
+            </ul>
+            <div className={d.divider}></div>
           </div>
-          <ul className={d.lists}>
-            {
-              lists.map((list, index) => (
-                <li key={index} className={activeChildren === index && d.active} onClick={() => setChildren(index, list?.link)}>
-                  <div className={d.icon}>
-                    <Image src={list.icon} width={28} height={28} alt='icon' />
-                  </div>
-                  <span>{list.title}</span>
-                </li>
-              ))
-            }
-          </ul>
-          <div className={d.divider}></div>
-        </div>
-        <div className={d.childrenArea}>
-          <Children />
+          <div className={d.childrenArea}>
+            <Children />
+          </div>
         </div>
       </div>
+      {activeChildren === 2 && <AudioPlayer />}
     </div>
   )
 }

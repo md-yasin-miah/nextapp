@@ -5,6 +5,8 @@ export const metadata = {
 }
 export default function createDemo() {
   return (
-    <MakeDemo />
+    <div className="container">
+      <MakeDemo />
+    </div>
   )
 }
