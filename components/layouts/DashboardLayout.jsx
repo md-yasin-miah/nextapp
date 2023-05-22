@@ -5,16 +5,15 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useState } from 'react';
 import Overview from '@/pages/dashboard/Overview';
-import { useRouter } from 'next/navigation';
 import Downloads from '@/pages/dashboard/Downloads';
 import MyMusic from '@/pages/dashboard/MyMusic';
 import ManageSubscription from '@/pages/dashboard/ManageSubscription';
 import UserAccount from '@/pages/dashboard/UserAccount';
+import { useRouter } from 'next/navigation';
 
 const DashboardLayout = () => {
   const [activeChildren, setActiveChildren] = useState(0);
   const router = useRouter();
-
   const setChildren = (children, link) => {
     link ? router.push(link) : setActiveChildren(children);
   }

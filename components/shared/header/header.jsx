@@ -66,12 +66,14 @@ const Header = () => {
                 <ul>
                   {
                     lists.map((list, index) => (
-                      <li key={index} onClick={() => router.push('/dashboard')}>
-                        <div>
-                          <Image src={list.icon} width={28} height={28} alt='icon' />
-                        </div>
-                        <span>{list.title}</span>
-                      </li>
+                      <Link href={list.path}>
+                        <li key={index}>
+                          <div>
+                            <Image src={list.icon} width={28} height={28} alt='icon' />
+                          </div>
+                          <span>{list.title}</span>
+                        </li>
+                      </Link>
                     ))
                   }
                 </ul>
