@@ -13,8 +13,8 @@ const ManageSubscription = () => {
         <h4 className='title'>Purchases</h4>
         <div className={s.subCard}>
           <div className={s.p_info}>
-            <span>Recurring Purchases</span>
-            <span>1 year 2month</span>
+            <span className={s.name}>Recurring Purchases</span>
+            <span className={s.time}>1 year 2month</span>
           </div>
           <button className='s_btn'>Cancel Subscription</button>
         </div>
@@ -23,7 +23,7 @@ const ManageSubscription = () => {
         <h4 className='title'>Device Management</h4>
         <div className={s.subCard}>
           <div className={s.p_info}>
-            <span>No of Device</span>
+            <span className={s.name}>No of Device</span>
             <span className={s.management_count}>3</span>
           </div>
           <span className={s.textBtn}>Manage</span>
