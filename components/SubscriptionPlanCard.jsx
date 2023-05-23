@@ -6,7 +6,7 @@ const SubscriptionPlanCard = ({ selected }) => {
     <div className='subscriptionPlanCard'>
       <div className="subscriptionPlanCard_header">
         <h4>Subscription Plan</h4>
-        {!selected && <button><span>Select Plan</span></button>}
+        {!selected && <button className='plan_btn'><span>Select Plan</span></button>}
       </div>
       <div className="subscriptionPlanCard_feature">
         <div className="featuresItems">
@@ -22,6 +22,7 @@ const SubscriptionPlanCard = ({ selected }) => {
           }
         </div>
       </div>
+      {!selected && <button className='plan_btn sm_plan_btn'><span>Select Plan</span></button>}
     </div>
   )
 }

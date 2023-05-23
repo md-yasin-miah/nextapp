@@ -438,15 +438,15 @@ button {
   background: #0F0E19;
 }
 
-.dashboard_children_title .title {
-  margin-bottom: 40px;
+.dashboard_children_title {
+  color: #FFFFFF;
 }
 
-.dashboard_children_title {
+.dashboard_children_title .title {
+  margin-bottom: 40px;
   font-weight: 700;
   font-size: 28px;
   line-height: 32px;
-  color: #FFFFFF;
 }
 
 .dashboard_children_title:not(:first-child) {
@@ -473,7 +473,7 @@ button {
   justify-content: space-between;
 }
 
-.subscriptionPlanCard_header button {
+.plan_btn {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -484,6 +484,10 @@ button {
   font-size: 16px;
   line-height: 18px;
   color: #FFFFFD;
+}
+
+.sm_plan_btn {
+  display: none;
 }
 
 .subscriptionPlanCard_header h4 {
@@ -552,6 +556,45 @@ button {
     line-height: 21px;
   }
 
+  .dashboard_children_title .title {
+    font-size: 20px;
+    line-height: 23px;
+  }
+
+  .s_btn {
+    padding: 7px 18px;
+    font-size: 12px;
+    line-height: 14px;
+  }
+
+  .subscriptionPlanCard_header h4 {
+    font-size: 18px;
+    line-height: 21px;
+  }
+
+  .featuresItem span {
+    font-size: 14px;
+    line-height: 16px;
+  }
+
+  .checkIcon img {
+    width: 20px;
+    height: 20px;
+  }
+
+  .featuresItems {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .plan_btn {
+    display: none;
+  }
+
+  .sm_plan_btn {
+    display: block;
+    width: 100%;
+    margin-top: 16px;
+  }
 }
 
 @media only screen and (max-width: 570px) {
