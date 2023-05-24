@@ -25,6 +25,7 @@
   text-align: center;
   color: #FFFFFF;
   opacity: 0.4;
+  transition: all 0.3s ease-in-out;
 }
 
 .target .circle {
@@ -36,6 +37,10 @@
 
 .active .circle {
   background: linear-gradient(90deg, #19A7AD 11.69%, #1D8093 79.78%);
+}
+
+.target.active span {
+  opacity: 1;
 }
 
 .line {
@@ -109,8 +114,32 @@
   height: 363px;
   margin: auto;
   cursor: pointer;
-  background: url("/img/demo01.png") no-repeat center center / cover;
-  ;
+  position: relative;
+}
+
+.demoCard:hover .playBtn {
+  opacity: 1;
+}
+
+.demoCard:hover {
+  background: radial-gradient(49.86% 49.86% at 50% 49.86%, #3B343F 0%, #1D1F27 83.03%);
+  opacity: 0.7;
+}
+
+.demoCard__img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.playBtn {
+  opacity: 0;
+  transition: all 0.3s ease-in-out;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .pickVoice {
@@ -228,7 +257,6 @@
 }
 
 .p_v_btn button {
-  padding: 10px 30px;
   width: 124px;
   height: 40px;
   background: linear-gradient(47.36deg, #2DF1E6 12.24%, #3694B0 37.45%, #468DB3 39.38%, #6F79BA 44.93%, #8D6BBF 49.97%, #9F63C2 54.29%, #A660C3 57.37%);
@@ -260,6 +288,7 @@
   font-weight: 500;
   font-size: 32px;
   color: #FFFFFF;
+  white-space: nowrap;
 }
 
 .getDemoBtn {

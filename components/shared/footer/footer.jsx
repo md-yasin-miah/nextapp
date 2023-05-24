@@ -40,6 +40,7 @@ const Footer = () => {
                   <form action='#' className='subscribeForm'>
                     <input type="text" placeholder="Enter your email" />
                     <button type="submit">Subscribe now</button>
+                    <div className="gradientBorder"></div>
                   </form>
                 </li>
               </ul>

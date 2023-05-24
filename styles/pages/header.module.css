@@ -93,9 +93,21 @@
 }
 
 .sign_in {
-  border: 1px solid;
-  border-image: linear-gradient(47.36deg, #2DF1E6 12.24%, #3694B0 37.45%, #468DB3 39.38%, #6F79BA 44.93%, #8D6BBF 49.97%, #9F63C2 54.29%, #A660C3 57.37%) 1;
+  --full: linear-gradient(47.36deg, #2DF1E6 12.24%, #3694B0 37.45%, #468DB3 39.38%, #6F79BA 44.93%, #8D6BBF 49.97%, #9F63C2 54.29%, #A660C3 57.37%);
+  border: solid 1px transparent;
   border-radius: 10px;
+  background: linear-gradient(to right bottom, #2DF1E6, #A660C3) border-box;
+
+  @supports (-webkit-mask-clip: text) {
+    /* -webkit-text-fill-color: transparent; */
+    -webkit-mask: var(--full) text, var(--full) padding-box, var(--full);
+    -webkit-mask-composite: xor;
+    transition: all 0.5s ease-in-out;
+  }
+}
+
+.sign_in:hover {
+  -webkit-mask: none;
 }
 
 .bar {

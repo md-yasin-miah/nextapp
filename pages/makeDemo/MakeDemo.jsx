@@ -136,7 +136,12 @@ const MakeDemo = () => {
                 ['1', '2', '3', '4'].map((demo, index) => {
                   return (
                     <SplideSlide key={index}>
-                      <div className={d.demoCard}></div>
+                      <div className={d.demoCard}>
+                        <div className={d.demoCard__img}>
+                          <Image src='/img/demo01.png' width={295} height={363} alt='' />
+                        </div>
+                        <Image className={d.playBtn} src='/svg/play.svg' width={64} height={64} alt='' />
+                      </div>
                     </SplideSlide>
                   )
                 })
