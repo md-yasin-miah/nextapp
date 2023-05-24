@@ -1,9 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap');
+
 :root {
   --max-width: 1100px;
   --border-radius: 12px;
-  --font-mono: ui-monospace, Menlo, Monaco, 'Cascadia Mono', 'Segoe UI Mono',
-    'Roboto Mono', 'Oxygen Mono', 'Ubuntu Monospace', 'Source Code Pro',
-    'Fira Mono', 'Droid Sans Mono', 'Courier New', monospace;
 }
 
 * {
@@ -248,6 +247,10 @@ button {
   color: #FFFFFD;
 }
 
+.dashboardLayout .for label {
+  font-weight: 700;
+}
+
 .formControl input,
 .formControl textarea {
   width: 100%;
@@ -438,15 +441,15 @@ button {
   background: #0F0E19;
 }
 
-.dashboard_children_title .title {
-  margin-bottom: 40px;
+.dashboard_children_title {
+  color: #FFFFFF;
 }
 
-.dashboard_children_title {
+.dashboard_children_title .title {
+  margin-bottom: 40px;
   font-weight: 700;
   font-size: 28px;
   line-height: 32px;
-  color: #FFFFFF;
 }
 
 .dashboard_children_title:not(:first-child) {
@@ -473,7 +476,7 @@ button {
   justify-content: space-between;
 }
 
-.subscriptionPlanCard_header button {
+.plan_btn {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -484,6 +487,10 @@ button {
   font-size: 16px;
   line-height: 18px;
   color: #FFFFFD;
+}
+
+.sm_plan_btn {
+  display: none;
 }
 
 .subscriptionPlanCard_header h4 {
@@ -522,36 +529,6 @@ button {
     flex-direction: column;
     padding: 110px 24px;
   }
-}
-
-@media only screen and (max-width: 424px) {
-
-  /* solide slider css start */
-  .splide__slide {
-    width: fit-content !important;
-  }
-
-  /* solide slider css end*/
-  .pageTitle h1 {
-    font-size: 32px;
-    line-height: 37px;
-  }
-
-  .pageTitle p {
-    font-size: 16px;
-    line-height: 130%;
-  }
-
-  .formControl {
-    margin-bottom: 24px;
-    row-gap: 10px;
-  }
-
-  .formControl label {
-    font-size: 18px;
-    line-height: 21px;
-  }
-
 }
 
 @media only screen and (max-width: 570px) {
@@ -598,5 +575,90 @@ button {
   .modal .crossBtn img {
     width: 100%;
     height: 100%;
+  }
+}
+
+@media only screen and (max-width: 424px) {
+
+  /* solide slider css start */
+  .splide__slide {
+    width: fit-content !important;
+  }
+
+  /* solide slider css end*/
+  .pageTitle h1 {
+    font-size: 32px;
+    line-height: 37px;
+  }
+
+  .pageTitle p {
+    font-size: 16px;
+    line-height: 130%;
+  }
+
+  .formControl {
+    margin-bottom: 24px;
+    row-gap: 10px;
+  }
+
+  .formControl label {
+    font-size: 18px;
+    line-height: 21px;
+  }
+
+  .dashboard_children_title .title {
+    font-size: 20px;
+    line-height: 23px;
+    margin-bottom: 28px;
+  }
+
+  .s_btn {
+    padding: 7px 18px;
+    font-size: 12px;
+    line-height: 14px;
+    white-space: nowrap;
+  }
+
+  .subscriptionPlanCard_header h4 {
+    font-size: 18px;
+    line-height: 21px;
+  }
+
+  .featuresItem span {
+    font-size: 14px;
+    line-height: 16px;
+  }
+
+  .checkIcon img {
+    width: 20px;
+    height: 20px;
+  }
+
+  .featuresItems {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .plan_btn {
+    display: none;
+  }
+
+  .sm_plan_btn {
+    display: block;
+    width: 100%;
+    margin-top: 16px;
+  }
+
+  .subscriptionPlanCard:not(:last-child) {
+    margin-bottom: 40px;
+  }
+
+  .dashboard_children_title:not(:first-child) {
+    margin-top: 40px;
+  }
+
+  .dashboardLayout .for label {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 21px;
   }
 }

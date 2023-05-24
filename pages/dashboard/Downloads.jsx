@@ -22,8 +22,8 @@ const Downloads = () => {
                 </div>
 
                 <div className={d.info}>
-                  <span>Bettles</span>
-                  <span>5:21</span>
+                  <span className={d.category}>Bettles</span>
+                  <span className={d.time}>5:21</span>
                   <div className={d.icons}>
                     <div className={d.playIcon}>
                       <Image width={32} height={32} src="/svg/play.svg" alt="" />

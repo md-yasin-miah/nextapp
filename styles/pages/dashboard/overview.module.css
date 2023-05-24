@@ -87,3 +87,34 @@
   font-size: 16px;
   line-height: 18px;
 }
+
+@media only screen and (max-width: 424px) {
+  .card {
+    width: 156px;
+    height: 80px;
+  }
+
+  .overviewCards {
+    column-gap: 30px;
+    row-gap: 20px;
+    justify-content: center;
+  }
+
+  .content .counter {
+    font-size: 20px;
+    line-height: 23px;
+  }
+
+  .content .name {
+    font-size: 12px;
+    line-height: 14px;
+  }
+
+  .profile_info .name {
+    font-size: 16px;
+  }
+
+  .profile_info .info {
+    font-size: 14px;
+  }
+}
