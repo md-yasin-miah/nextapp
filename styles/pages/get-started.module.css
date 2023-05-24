@@ -2,8 +2,7 @@
   width: 1200px;
   height: fit-content;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: start;
   flex-direction: column;
   margin: 100px auto;
   /* overflow: hidden; */
@@ -14,7 +13,8 @@
 }
 
 .getStarted__container {
-  padding: 100px;
+  padding: 100px 72px;
+  width: 43%;
 }
 
 .getStarted__container__text {

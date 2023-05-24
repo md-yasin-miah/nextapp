@@ -38,7 +38,7 @@ const Overview = () => {
             </div>
           </div>
         </div>
-        <div className={o.card}>
+        <div className={o.card} style={{ display: 'none' }}>
           <div>
             <div className={o.icon}>
               <Image src="/svg/grow.svg" width={18} height={18} alt="icon" />
