@@ -73,43 +73,6 @@
   color: #FFFFFF;
 }
 
-.sign_up,
-.sign_in {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  padding: 0px;
-  gap: 40px;
-  width: 89px;
-  height: 40px;
-  color: #FFF8F8;
-  border-radius: 8px;
-  cursor: pointer;
-}
-
-.sign_up {
-  background: linear-gradient(90deg, #23AFB7 1.46%, #169AA4 79.47%);
-}
-
-.sign_in {
-  --full: linear-gradient(47.36deg, #2DF1E6 12.24%, #3694B0 37.45%, #468DB3 39.38%, #6F79BA 44.93%, #8D6BBF 49.97%, #9F63C2 54.29%, #A660C3 57.37%);
-  border: solid 1px transparent;
-  border-radius: 10px;
-  background: linear-gradient(to right bottom, #2DF1E6, #A660C3) border-box;
-
-  @supports (-webkit-mask-clip: text) {
-    /* -webkit-text-fill-color: transparent; */
-    -webkit-mask: var(--full) text, var(--full) padding-box, var(--full);
-    -webkit-mask-composite: xor;
-    transition: all 0.5s ease-in-out;
-  }
-}
-
-.sign_in:hover {
-  -webkit-mask: none;
-}
-
 .bar {
   display: none;
   padding: 10px;

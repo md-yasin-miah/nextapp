@@ -84,8 +84,8 @@ const Header = () => {
               </div>
               :
               <div className={header.header_profile}>
-                <Link href="/login" className={header.sign_in}>Sign In</Link>
-                <Link href="/signUp" className={header.sign_up}>Sign Up</Link>
+                <Link href="/login" className='primaryBtn btnTransparent'>Sign In</Link>
+                <Link href="/signUp" className='primaryBtn fillBtn'>Sign Up</Link>
               </div>}
           </div>
           <div className={header.bar} onClick={() => setActiveMobNav(!activeMobNav)}>
