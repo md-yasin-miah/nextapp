@@ -50,11 +50,13 @@ const Header = () => {
     },
     {
       title: 'stream',
-      path: '#'
+      path: '#',
+      status: 'disabled'
     },
     {
       title: 'shop',
-      path: '#'
+      path: '#',
+      status: 'disabled'
     },
     {
       title: 'pricing',
@@ -75,15 +77,19 @@ const Header = () => {
       <div className="container">
         <header className={header.header_container}>
           <div className={header.header_logo}>
-            <Link href={isLogin ? '/dashboard/overview' : '/'}>
+            <Link href='/'>
               <Image src="/img/header/logo.png" width={40} height={40} alt='logo' />
             </Link>
           </div>
           <div className={header.header_links} style={activeMobNav ? { display: 'flex' } : { opacity: 1 }}>
             <ul>
               {mainMenu.map((menu, index) => (
-                <li key={index} className={pathName.includes(menu.path) ? header.active : ''}>
-                  <Link href={menu.path}>{menu.title}</Link>
+                <li key={index} style={{ opacity: menu.status === 'disabled' ? .4 : 1 }} className={pathName.includes(menu.path) ? header.active : ''}>
+                  {
+                    menu.status === 'disabled' ?
+                      <span>{menu.title}</span> :
+                      <Link href={menu.path}>{menu.title}</Link>
+                  }
                 </li>
               ))}
               <li className='lg_d_none'>

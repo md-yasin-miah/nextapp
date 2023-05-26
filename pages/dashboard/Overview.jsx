@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import o from '../../styles/pages/dashboard/overview.module.css';
 import SubscriptionPlanCard from '@/components/SubscriptionPlanCard';
+import Link from 'next/link';
 const Overview = () => {
   return (
     <div className='dashboard_children'>
@@ -53,7 +54,9 @@ const Overview = () => {
       <div className="dashboard_children_title">
         <div className={o.profileTitle}>
           <h4 className={o.p_title + ' ' + 'title'}>Profile</h4>
-          <button className='s_btn'>Edit Profile</button>
+          <Link href='/dashboard/userAccount'>
+            <button className='s_btn'>Edit Profile</button>
+          </Link>
         </div>
         <div className={o.profile_info}>
           <div className={o.p_info}>
