@@ -165,7 +165,7 @@
     flex-direction: column;
     z-index: 10;
     display: none;
-    flex-direction: column-reverse;
+    /* flex-direction: column-reverse; */
   }
 
   .header_links ul {
@@ -205,11 +205,24 @@
 
   .header_profile {
     height: fit-content;
-    margin-bottom: 20px;
+    margin-top: 30px;
     gap: 12px;
     width: 100%;
+    flex-direction: column;
   }
 
+  .header_profile_logo {
+    flex-direction: row;
+  }
+
+  .profile_sm {
+    flex-direction: column-reverse;
+  }
+
+  .profile_sm .header_profile_logo {
+    margin-top: 0;
+    margin-bottom: 30px;
+  }
 
   .auth {
     width: 100%;
