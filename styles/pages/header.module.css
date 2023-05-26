@@ -43,6 +43,7 @@
   font-size: 18px;
   line-height: 21px;
   text-align: center;
+  text-transform: capitalize;
   color: #FFFFFF;
 }
 
@@ -84,7 +85,7 @@
 
 .profile_links {
   position: absolute;
-  width: 230px;
+  width: 235px;
   height: fit-content;
   right: 0px;
   padding: 21px 18px;
@@ -112,6 +113,7 @@
   font-weight: 500;
   font-size: 16px;
   line-height: 18px;
+  white-space: nowrap;
   color: #FFFFFD;
   width: 100%;
   text-align: start;
@@ -153,7 +155,7 @@
   .header_links {
     position: absolute;
     width: 230px;
-    height: 482px;
+    min-height: 482px;
     right: 0px;
     padding: 21px 18px;
     align-items: start;
@@ -163,6 +165,7 @@
     flex-direction: column;
     z-index: 10;
     display: none;
+    flex-direction: column-reverse;
   }
 
   .header_links ul {
@@ -201,13 +204,14 @@
   }
 
   .header_profile {
-    flex-direction: column;
     height: fit-content;
-    margin-top: 30px;
+    margin-bottom: 20px;
+    gap: 12px;
+    width: 100%;
   }
 
-  .sign_in,
-  .sign_up {
+
+  .auth {
     width: 100%;
   }
 

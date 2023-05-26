@@ -37,4 +37,23 @@
     grid-template-columns: repeat(1, 1fr);
     row-gap: 0px;
   }
+
+  .subCard {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .subCard p {
+    width: 100%;
+  }
+
+  .btnArea {
+    flex-direction: row-reverse;
+    margin-top: 16px;
+    gap: 16px;
+  }
+
+  .btnArea button {
+    width: 100%;
+  }
 }

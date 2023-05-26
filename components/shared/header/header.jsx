@@ -3,12 +3,14 @@ import Image from 'next/image';
 import header from './../../../styles/pages/header.module.css';
 import Link from 'next/link';
 import { useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
 
 const Header = () => {
   const router = useRouter();
+  const pathName = usePathname();
+  console
   const [activeMobNav, setActiveMobNav] = useState(false);
-  const [isLogin, setIsLogin] = useState(false);
+  const [isLogin, setIsLogin] = useState(true);
   const lists = [
     {
       icon: '/svg/UserCircleOutline.svg',
@@ -41,6 +43,33 @@ const Header = () => {
       path: '/login'
     }
   ]
+  const mainMenu = [
+    {
+      title: 'create',
+      path: '/create'
+    },
+    {
+      title: 'stream',
+      path: '#'
+    },
+    {
+      title: 'shop',
+      path: '#'
+    },
+    {
+      title: 'pricing',
+      path: '/pricing'
+    },
+    {
+      title: 'join',
+      path: '/join'
+    },
+    {
+      title: 'contact',
+      path: '/contact'
+    }
+  ]
+
   return (
     <div className={header.header}>
       <div className="container">
@@ -52,12 +81,15 @@ const Header = () => {
           </div>
           <div className={header.header_links} style={activeMobNav ? { display: 'flex' } : { opacity: 1 }}>
             <ul>
-              <li className={header.active}><Link href="/make_a_demo" >Create</Link></li>
-              <li><Link href="#" >Stream</Link></li>
-              <li><Link href="#" >Shop</Link></li>
-              <li><Link href="/subscriptionPlan" >Pricing</Link></li>
-              <li><Link href="/join" >Join</Link></li>
-              <li><Link href="/contact" >Contact</Link></li>
+              {mainMenu.map((menu, index) => (
+                <li key={index} className={pathName.includes(menu.path) ? header.active : ''}>
+                  <Link href={menu.path}>{menu.title}</Link>
+                </li>
+              ))}
+              <li className='lg_d_none'>
+                <Link href="/signUp" style={{ gap: '18px' }} className={header.auth + ' ' + 'primaryBtn fillBtn'}>
+                  <Image src='/svg/LogoutOutline.svg' width={18} height={18} alt='icon' />
+                  Log Out</Link></li>
             </ul>
             {isLogin ?
               <div className={header.profile}>
@@ -65,27 +97,28 @@ const Header = () => {
                   <Image src="/img/header/profile.png" width={40} height={40} alt='profile' />
                   <p>Username</p>
                 </div>
-                {activeMobNav && <div className={header.profile_links}>
-                  <ul>
-                    {
-                      lists.map((list, index) => (
-                        <Link href={list.path}>
-                          <li key={index}>
-                            <div>
-                              <Image src={list.icon} width={28} height={28} alt='icon' />
-                            </div>
-                            <span>{list.title}</span>
-                          </li>
-                        </Link>
-                      ))
-                    }
-                  </ul>
-                </div>}
+                {activeMobNav &&
+                  <div className={header.profile_links}>
+                    <ul>
+                      {
+                        lists.map((list, index) => (
+                          <Link key={index} href={list.path}>
+                            <li >
+                              <div>
+                                <Image src={list.icon} width={28} height={28} alt='icon' />
+                              </div>
+                              <span>{list.title}</span>
+                            </li>
+                          </Link>
+                        ))
+                      }
+                    </ul>
+                  </div>}
               </div>
               :
               <div className={header.header_profile}>
-                <Link href="/login" className='primaryBtn btnTransparent'>Sign In</Link>
-                <Link href="/signUp" className='primaryBtn fillBtn'>Sign Up</Link>
+                <Link href="/login" className={header.auth + ' ' + 'primaryBtn btnTransparent'}>Sign In</Link>
+                <Link href="/signUp" className={header.auth + ' ' + 'primaryBtn fillBtn'}>Sign Up</Link>
               </div>}
           </div>
           <div className={header.bar} onClick={() => setActiveMobNav(!activeMobNav)}>

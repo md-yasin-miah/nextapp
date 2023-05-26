@@ -186,6 +186,10 @@ button {
   -webkit-mask: none;
 }
 
+.lg_d_none {
+  display: none;
+}
+
 .pageTitle {
   text-align: center;
   font-family: 'Ubuntu';
@@ -582,6 +586,10 @@ button {
 }
 
 @media only screen and (max-width: 570px) {
+  .lg_d_none {
+    display: block;
+  }
+
   .authContainer {
     width: 100%;
   }

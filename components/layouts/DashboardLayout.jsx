@@ -1,7 +1,6 @@
 'use client'
 import Header from '../shared/header/header';
 import d from '../../styles/pages/dashboard/dashboard.module.css';
-import Link from 'next/link';
 import Image from 'next/image';
 import { useState } from 'react';
 import Overview from '@/pages/dashboard/Overview';
@@ -9,26 +8,25 @@ import Downloads from '@/pages/dashboard/Downloads';
 import MyMusic from '@/pages/dashboard/MyMusic';
 import ManageSubscription from '@/pages/dashboard/ManageSubscription';
 import UserAccount from '@/pages/dashboard/UserAccount';
-import { useRouter } from 'next/navigation';
+import { useParams, useRouter } from 'next/navigation';
 import AudioPlayer from '../shared/AudioPlayer';
+import Link from 'next/link';
 
 const DashboardLayout = () => {
   const [activeChildren, setActiveChildren] = useState(0);
   const router = useRouter();
-  const setChildren = (children, link) => {
-    link ? router.push(link) : setActiveChildren(children);
-  }
+  const param = useParams();
   const Children = () => {
-    switch (activeChildren) {
-      case 0:
+    switch (param.category) {
+      case 'overview':
         return <Overview />
-      case 1:
+      case 'downloads':
         return <Downloads />
-      case 2:
+      case 'myMusic':
         return <MyMusic />
-      case 3:
+      case 'manageSubscription':
         return <ManageSubscription />
-      case 4:
+      case 'userAccount':
         return <UserAccount />
       default:
         return <Overview />
@@ -37,27 +35,32 @@ const DashboardLayout = () => {
   const lists = [
     {
       icon: '/svg/UserCircleOutline.svg',
-      title: 'Overview',
+      title: 'overview',
+      link: '/dashboard/overview'
     },
     {
       icon: '/svg/DownloadOutline.svg',
-      title: 'Downloads',
+      title: 'downloads',
+      link: '/dashboard/downloads'
     },
     {
       icon: '/svg/ic_outline-music-note.svg',
-      title: 'My Music',
+      title: 'my music',
+      link: '/dashboard/myMusic'
     },
     {
       icon: '/svg/Mask group.svg',
-      title: 'Manage Subscription',
+      title: 'manage subscription',
+      link: '/dashboard/manageSubscription'
     },
     {
       icon: '/svg/mdi_user-outline.svg',
-      title: 'User Account',
+      title: 'user account',
+      link: '/dashboard/userAccount'
     },
     {
       icon: '/svg/LogoutOutline.svg',
-      title: 'Log Out',
+      title: 'log out',
       link: '/login'
     }
   ]
@@ -83,12 +86,14 @@ const DashboardLayout = () => {
             <ul className={d.lists}>
               {
                 lists.map((list, index) => (
-                  <li key={index} className={activeChildren === index && d.active} onClick={() => setChildren(index, list?.link)}>
-                    <div className={d.icon}>
-                      <Image src={list.icon} width={28} height={28} alt='icon' />
-                    </div>
-                    <span>{list.title}</span>
-                  </li>
+                  <Link key={index} href={list?.link}>
+                    <li className={list.link.includes(param.category) ? d.active : ''}>
+                      <div className={d.icon}>
+                        <Image src={list.icon} width={28} height={28} alt='icon' />
+                      </div>
+                      <span>{list.title}</span>
+                    </li>
+                  </Link>
                 ))
               }
             </ul>

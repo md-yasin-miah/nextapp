@@ -7,6 +7,15 @@
   background-position: 421px 308px, 930px -10px, 1120px 450px;
 }
 
+.heroBtn {
+  width: 147px;
+  height: 48px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 18px;
+  margin-top: 48px;
+}
+
 .heroSection__container {
   width: 1200px;
   height: fit-content;
