@@ -5,12 +5,18 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 export default function LogInPage() {
+  const [formDate, setFormDate] = useState({ email: '', password: '' })
   const [showPassword, setShowPassword] = useState(false)
   const router = useRouter()
   const handleLogin = () => {
     // add isLogin state in localstorage
-    localStorage.setItem('isLogin', true);
-    router.push('/');
+    // localStorage.setItem('isLogin', true);
+    // router.push('/');
+    console.log(formDate);
+  }
+  const handleForm = (e) => {
+    e.preventDefault();
+    setFormDate({ ...formDate, [e.target.name]: e.target.value });
   }
   return (
     <div>
@@ -38,11 +44,11 @@ export default function LogInPage() {
             <div className='form'>
               <div className='formControl'>
                 <label htmlFor="email">Email</label>
-                <input type="email" id="email" placeholder="Enter your email" />
+                <input onChange={handleForm} type="email" name='email' id="email" placeholder="Enter your email" />
               </div>
               <div className='formControl'>
                 <label htmlFor="password">Password</label>
-                <input type={showPassword ? "text" : "password"} id="password" placeholder="Enter your password" />
+                <input onChange={handleForm} type={showPassword ? "text" : "password"} name='password' id="password" placeholder="Enter your password" />
               </div>
               <div className="controlPassword">
                 <div className="showPassword">
