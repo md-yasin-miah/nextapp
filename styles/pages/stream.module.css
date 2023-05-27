@@ -140,6 +140,14 @@
   z-index: 0;
 }
 
+.musicIcon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}
+
 @media only screen and (max-width: 990px) {
   .stream_container {
     grid-template-columns: repeat(1, 1fr);
@@ -176,6 +184,11 @@
     bottom: -4px;
   }
 
+  .musicIcon {
+    width: 44px;
+    height: 44px;
+  }
+
   .right_text_div {
     width: 100%;
     height: fit-content;
@@ -185,5 +198,20 @@
   .right_text_div h2,
   .right_text_div p {
     text-align: center;
+  }
+
+  .right_text_div_title h2,
+  .right_text_div_title h2 span {
+    font-size: 32px;
+    line-height: 45px;
+    text-align: center;
+  }
+
+  .right_text_div_title {
+    align-items: center;
+  }
+
+  .right_text_div_title p {
+    font-size: 16px;
   }
 }

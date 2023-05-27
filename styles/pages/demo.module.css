@@ -59,7 +59,7 @@
   width: 50%;
   height: 0;
   color: transparent;
-  border-bottom: 2px #4E4A88;
+  border-bottom: 3px #4E4A88;
   border-style: dashed;
 }
 
@@ -173,6 +173,12 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: all 0.3s ease-in-out;
+}
+
+.imgArea:hover .checkIcon {
+  opacity: 1;
 }
 
 .imgArea .asBG {
@@ -303,7 +309,6 @@
   height: 76px;
   background: linear-gradient(212.36deg, #B843B7 27.16%, #A548B2 29.91%, #7D51A9 36.6%, #6058A2 42.71%, #4E5C9E 47.98%, #485E9C 51.81%, #4393BB 66.42%, #39EEF2 89.85%);
   border-radius: 8px;
-
   font-weight: 500;
   font-size: 24px;
   text-align: center;
@@ -321,6 +326,10 @@
 }
 
 @media only screen and (max-width: 424px) {
+  .demo {
+    padding: 0 0 32px 0;
+  }
+
   .demoCard {
     width: 154px;
     height: 190px;
@@ -328,9 +337,50 @@
 
   .getDemoBtn {
     padding: 0 12px;
+    margin: 92px 0 218px 0;
   }
 
   .upload {
     margin: 40px auto 100px auto;
+  }
+
+  .upload h4 {
+    font-size: 16px;
+    line-height: 18px;
+  }
+
+  .latestDemo h4 {
+    font-size: 24px;
+    line-height: 28px;
+    margin-bottom: 16px;
+  }
+
+  .progress {
+    margin-top: 40px;
+  }
+
+  .target span {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
+  }
+
+  .target .circle {
+    width: 12px;
+    height: 12px;
+  }
+
+  .line {
+    top: 66%
+  }
+
+  .line1,
+  .line2 {
+    border-bottom: 1px #4E4A88;
+    border-style: dashed;
+  }
+
+  .solid {
+    border-style: solid;
   }
 }

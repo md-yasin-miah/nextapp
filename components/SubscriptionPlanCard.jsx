@@ -1,12 +1,17 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import React from 'react'
 
-const SubscriptionPlanCard = ({ selected }) => {
+const SubscriptionPlanCard = ({ data }) => {
   return (
     <div className='subscriptionPlanCard'>
       <div className="subscriptionPlanCard_header">
         <h4>Subscription Plan</h4>
-        {!selected && <button className='plan_btn'><span>Select Plan</span></button>}
+        {data?.selected ?
+          <button className='plan_btn'><span>Change Plan</span></button>
+          :
+          <Link href='/pricing'><button className='plan_btn'><span>Select Plan</span></button></Link>
+        }
       </div>
       <div className="subscriptionPlanCard_feature">
         <div className="featuresItems">
@@ -22,7 +27,12 @@ const SubscriptionPlanCard = ({ selected }) => {
           }
         </div>
       </div>
-      {!selected && <button className='plan_btn sm_plan_btn'><span>Select Plan</span></button>}
+      {/* for mobile version */}
+      {data?.selected ?
+        <button className='plan_btn sm_plan_btn'><span>Change Plan</span></button>
+        :
+        <Link href='/pricing'><button className='plan_btn sm_plan_btn'><span>Select Plan</span></button></Link>
+      }
     </div>
   )
 }

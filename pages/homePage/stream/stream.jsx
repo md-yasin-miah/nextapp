@@ -8,6 +8,7 @@ export default function Stream() {
         <Image className={stream.img_one} src="/img/stream/1.png" width={102} height={102} alt="circle" />
         <Image className={stream.img_two} src="/img/stream/2.png" width={550} height={400} alt="circle" />
         <Image className={stream.img_three} src="/img/stream/3.png" width={91} height={91} alt="circle" />
+        <Image className={stream.musicIcon} src="/img/musicBtn.svg" width={80} height={80} alt="play" />
       </div>
       <div className={stream.right_text_div}>
         <div className={stream.right_text_div_title}>

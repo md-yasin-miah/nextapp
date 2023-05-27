@@ -7,7 +7,7 @@ const ManageSubscription = () => {
     <div className='dashboard_children'>
       <div className="dashboard_children_title">
         <h4 className='title'>Your Subscription Plan</h4>
-        <SubscriptionPlanCard selected={true} />
+        <SubscriptionPlanCard data={{ selected: true }} />
       </div>
       <div className="dashboard_children_title">
         <h4 className='title'>Purchases</h4>
@@ -44,8 +44,8 @@ const ManageSubscription = () => {
       </div>
       <div className="dashboard_children_title">
         <h4 className='title'>Subscription Plan</h4>
-        <SubscriptionPlanCard />
-        <SubscriptionPlanCard />
+        <SubscriptionPlanCard data={{ selected: false }} />
+        <SubscriptionPlanCard data={{ selected: false }} />
       </div>
     </div>
   )

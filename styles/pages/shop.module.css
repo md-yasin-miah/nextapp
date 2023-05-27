@@ -74,7 +74,7 @@
 }
 
 .card_text {
-  height: 62px;
+  height: fit-content;
   width: 100%;
   left: 16px;
   top: 18px;
@@ -84,6 +84,18 @@
   letter-spacing: 0px;
   text-align: left;
   color: #FFFFFD;
+}
+
+.card_text h2 {
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 130%;
+}
+
+.card_footer_text span {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 130%;
 }
 
 .card_content {
@@ -148,10 +160,13 @@
 
   .shop_title>h1 {
     width: 100%;
+    font-size: 32px;
+    line-height: 37px;
   }
 
   .shop_title>p {
     width: 100%;
+    font-size: 16px;
   }
 
   .card_wrapper {
@@ -162,5 +177,22 @@
 
   .card {
     width: 100%;
+    min-height: 405px;
+    gap: 30px;
   }
+
+
+  .card_text h2 {
+    font-size: 18px;
+  }
+
+  .card_footer_text h3 {
+    font-weight: 500;
+    font-size: 14px;
+  }
+
+  .card_footer {
+    margin-top: 18px;
+  }
+
 }

@@ -79,7 +79,7 @@ const Overview = () => {
       </div>
       <div className="dashboard_children_title">
         <h4 className='title'>Your Current Plan</h4>
-        <SubscriptionPlanCard />
+        <SubscriptionPlanCard data={{ selected: true }} />
       </div>
     </div>
   )

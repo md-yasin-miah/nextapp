@@ -76,9 +76,7 @@ const MakeDemo = () => {
                     >
                       <div className={d.imgArea}>
                         <Image className={d.asBG} src='/img/voice.png' width={380} height={296} alt='' />
-                        {i === 0 &&
-                          <Image className={d.checkIcon} src='/img/check.png' width={80} height={80} alt='' />
-                        }
+                        <Image className={d.checkIcon} src='/img/check.png' width={80} height={80} alt='' />
                         <div className={d.tag}><p>Jass</p></div>
                       </div>
                       <div className={d.contentArea}>

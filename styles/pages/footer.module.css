@@ -203,4 +203,31 @@
   .col:last-child {
     width: 100%;
   }
+
+  .col h4 {
+    font-size: 20px;
+  }
+
+  .col li a {
+    font-size: 16px;
+    line-height: 18px;
+  }
+
+  .row {
+    gap: 56px;
+  }
+
+  .social p {
+    font-size: 12px;
+    line-height: 14px;
+  }
+
+  .icons {
+    column-gap: 24px;
+  }
+
+  .icons li img {
+    width: 24px;
+    height: 24px;
+  }
 }
