@@ -7,7 +7,9 @@ export const metadata = {
 const contact = () => {
   return (
     <MainLayout>
-      <ContactUs />
+      <div className="container">
+        <ContactUs />
+      </div>
     </MainLayout>
   )
 }

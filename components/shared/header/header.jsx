@@ -2,13 +2,23 @@
 import Image from 'next/image';
 import header from './../../../styles/pages/header.module.css';
 import Link from 'next/link';
-import { useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { useEffect, useState } from 'react';
+import { useRouter, usePathname } from 'next/navigation';
 
 const Header = () => {
   const router = useRouter();
+  const pathName = usePathname();
   const [activeMobNav, setActiveMobNav] = useState(false);
-  const [isLogin, setIsLogin] = useState(true);
+  const [isLogin, setIsLogin] = useState(false);
+  useEffect(() => {
+    // add isLogin state in localstorage
+    localStorage.getItem('isLogin') === 'true' ? setIsLogin(true) : setIsLogin(false);
+  }, [])
+  const handleLogout = () => {
+    localStorage.setItem('isLogin', false);
+    setIsLogin(false);
+    router.push('/login');
+  }
   const lists = [
     {
       icon: '/svg/UserCircleOutline.svg',
@@ -35,58 +45,110 @@ const Header = () => {
       title: 'User Account',
       path: '/dashboard/userAccount'
     },
+    // {
+    //   icon: '/svg/LogoutOutline.svg',
+    //   title: 'Log Out',
+    //   path: '/login'
+    // }
+  ]
+  const mainMenu = [
     {
-      icon: '/svg/LogoutOutline.svg',
-      title: 'Log Out',
-      path: '/login'
+      title: 'create',
+      path: '/create'
+    },
+    {
+      title: 'stream',
+      path: '#',
+      status: 'disabled'
+    },
+    {
+      title: 'shop',
+      path: '#',
+      status: 'disabled'
+    },
+    {
+      title: 'pricing',
+      path: '/pricing'
+    },
+    {
+      title: 'join',
+      path: '/join'
+    },
+    {
+      title: 'contact',
+      path: '/contact'
     }
   ]
+
   return (
     <div className={header.header}>
-      <header className={header.header_container}>
-        <div className={header.header_logo}>
-          <Image src="/img/header/logo.png" width={40} height={40} alt='logo' />
-        </div>
-        <div className={header.header_links} style={activeMobNav ? { display: 'flex' } : { opacity: 1 }}>
-          <ul>
-            <li className={header.active}><Link href="/make_a_demo" >Create</Link></li>
-            <li><Link href="#" >Stream</Link></li>
-            <li><Link href="#" >Shop</Link></li>
-            <li><Link href="/subscriptionPlan" >Pricing</Link></li>
-            <li><Link href="/join" >Join</Link></li>
-            <li><Link href="/contact" >Contact</Link></li>
-          </ul>
-          {isLogin ?
-            <div className={header.profile}>
-              <div className={header.header_profile + ' ' + header.header_profile_logo} onClick={() => setActiveMobNav(!activeMobNav)}>
-                <Image src="/img/header/profile.png" width={40} height={40} alt='profile' />
-                <p>Username</p>
-              </div>
-              {activeMobNav && <div className={header.profile_links}>
-                <ul>
+      <div className="container">
+        <header className={header.header_container}>
+          <div className={header.header_logo}>
+            <Link href='/'>
+              <Image src="/img/header/logo.png" width={40} height={40} alt='logo' />
+            </Link>
+          </div>
+          <div className={header.header_links + ' ' + (isLogin ? header.profile_sm : '')} style={{ display: activeMobNav ? 'flex' : '' }}>
+            <ul>
+              {mainMenu.map((menu, index) => (
+                <li key={index} style={{ opacity: menu.status === 'disabled' ? .4 : 1 }} className={pathName.includes(menu.path) ? header.active : ''}>
                   {
-                    lists.map((list, index) => (
-                      <li key={index} onClick={() => router.push('/dashboard')}>
-                        <div>
-                          <Image src={list.icon} width={28} height={28} alt='icon' />
-                        </div>
-                        <span>{list.title}</span>
-                      </li>
-                    ))
+                    menu.status === 'disabled' ?
+                      <span>{menu.title}</span> :
+                      <Link href={menu.path}>{menu.title}</Link>
                   }
-                </ul>
-              </div>}
-            </div>
-            :
-            <div className={header.header_profile}>
-              <Link href="/login" className={header.sign_in}>Sign In</Link>
-              <Link href="/signUp" className={header.sign_up}>Sign Up</Link>
-            </div>}
-        </div>
-        <div className={header.bar} onClick={() => setActiveMobNav(!activeMobNav)}>
-          <Image src="/img/header/burger.png" width={16.5} height={10.5} alt='bar' />
-        </div>
-      </header>
+                </li>
+              ))}
+              {isLogin && <li className='lg_d_none' onClick={() => handleLogout()}>
+                <Link href="" style={{ gap: '18px' }} className={header.auth + ' ' + 'primaryBtn fillBtn'}>
+                  <Image src='/svg/LogoutOutline.svg' width={18} height={18} alt='icon' />
+                  Log Out</Link>
+              </li>
+              }
+            </ul>
+            {isLogin ?
+              <div className={header.profile}>
+                <div className={header.header_profile + ' ' + header.header_profile_logo} onClick={() => setActiveMobNav(!activeMobNav)}>
+                  <Image src="/img/header/profile.png" width={40} height={40} alt='profile' />
+                  <p>Username</p>
+                </div>
+                {activeMobNav &&
+                  <div className={header.profile_links}>
+                    <ul>
+                      {
+                        lists.map((list, index) => (
+                          <Link key={index} href={list.path}>
+                            <li >
+                              <div>
+                                <Image src={list.icon} width={28} height={28} alt='icon' />
+                              </div>
+                              <span>{list.title}</span>
+                            </li>
+                          </Link>
+                        ))
+                      }
+                      <li onClick={() => handleLogout()} style={{ paddingTop: '20px' }}>
+                        <div>
+                          <Image src='/svg/LogoutOutline.svg' width={28} height={28} alt='icon' />
+                        </div>
+                        <span>Log Out</span>
+                      </li>
+                    </ul>
+                  </div>}
+              </div>
+              :
+              <div className={header.header_profile}>
+                <Link href="/login" className={header.auth + ' ' + 'primaryBtn btnTransparent'}>Sign In</Link>
+                <Link href="/signUp" className={header.auth + ' ' + 'primaryBtn fillBtn'}>Sign Up</Link>
+              </div>
+            }
+          </div>
+          <div className={header.bar} onClick={() => setActiveMobNav(!activeMobNav)}>
+            <Image src="/img/header/burger.png" width={16.5} height={10.5} alt='bar' />
+          </div>
+        </header>
+      </div>
     </div>
   )
 }
