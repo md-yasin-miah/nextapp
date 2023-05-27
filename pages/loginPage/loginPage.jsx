@@ -3,8 +3,15 @@ import Image from 'next/image'
 import login from '../../styles/pages/auth.module.css'
 import { useState } from 'react'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 export default function LogInPage() {
   const [showPassword, setShowPassword] = useState(false)
+  const router = useRouter()
+  const handleLogin = () => {
+    // add isLogin state in localstorage
+    localStorage.setItem('isLogin', true);
+    router.push('/');
+  }
   return (
     <div>
       <div className={login.header_logo}>
@@ -44,7 +51,7 @@ export default function LogInPage() {
                 </div>
                 <Link href="/forgotPassword" className="forgotPassword">Forgot Password?</Link>
               </div>
-              <button className='actionBtn'>Login</button>
+              <button onClick={() => handleLogin()} className='actionBtn'>Login</button>
               <div className="alternativeLigInOptions">
                 <p>Or login with</p>
                 <div className="authIcon">

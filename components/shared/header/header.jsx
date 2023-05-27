@@ -2,15 +2,23 @@
 import Image from 'next/image';
 import header from './../../../styles/pages/header.module.css';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
 
 const Header = () => {
   const router = useRouter();
   const pathName = usePathname();
-  console
   const [activeMobNav, setActiveMobNav] = useState(false);
-  const [isLogin, setIsLogin] = useState(true);
+  const [isLogin, setIsLogin] = useState(false);
+  useEffect(() => {
+    // add isLogin state in localstorage
+    localStorage.getItem('isLogin') === 'true' ? setIsLogin(true) : setIsLogin(false);
+  }, [])
+  const handleLogout = () => {
+    localStorage.setItem('isLogin', false);
+    setIsLogin(false);
+    router.push('/login');
+  }
   const lists = [
     {
       icon: '/svg/UserCircleOutline.svg',
@@ -37,11 +45,11 @@ const Header = () => {
       title: 'User Account',
       path: '/dashboard/userAccount'
     },
-    {
-      icon: '/svg/LogoutOutline.svg',
-      title: 'Log Out',
-      path: '/login'
-    }
+    // {
+    //   icon: '/svg/LogoutOutline.svg',
+    //   title: 'Log Out',
+    //   path: '/login'
+    // }
   ]
   const mainMenu = [
     {
@@ -81,7 +89,7 @@ const Header = () => {
               <Image src="/img/header/logo.png" width={40} height={40} alt='logo' />
             </Link>
           </div>
-          <div className={header.header_links} style={activeMobNav ? { display: 'flex' } : { opacity: 1 }}>
+          <div className={header.header_links + ' ' + (isLogin ? header.profile_sm : '')} style={{ display: activeMobNav ? 'flex' : '' }}>
             <ul>
               {mainMenu.map((menu, index) => (
                 <li key={index} style={{ opacity: menu.status === 'disabled' ? .4 : 1 }} className={pathName.includes(menu.path) ? header.active : ''}>
@@ -92,10 +100,12 @@ const Header = () => {
                   }
                 </li>
               ))}
-              <li className='lg_d_none'>
-                <Link href="/signUp" style={{ gap: '18px' }} className={header.auth + ' ' + 'primaryBtn fillBtn'}>
+              {isLogin && <li className='lg_d_none' onClick={() => handleLogout()}>
+                <Link href="" style={{ gap: '18px' }} className={header.auth + ' ' + 'primaryBtn fillBtn'}>
                   <Image src='/svg/LogoutOutline.svg' width={18} height={18} alt='icon' />
-                  Log Out</Link></li>
+                  Log Out</Link>
+              </li>
+              }
             </ul>
             {isLogin ?
               <div className={header.profile}>
@@ -118,6 +128,12 @@ const Header = () => {
                           </Link>
                         ))
                       }
+                      <li onClick={() => handleLogout()} style={{ paddingTop: '20px' }}>
+                        <div>
+                          <Image src='/svg/LogoutOutline.svg' width={28} height={28} alt='icon' />
+                        </div>
+                        <span>Log Out</span>
+                      </li>
                     </ul>
                   </div>}
               </div>
@@ -125,7 +141,8 @@ const Header = () => {
               <div className={header.header_profile}>
                 <Link href="/login" className={header.auth + ' ' + 'primaryBtn btnTransparent'}>Sign In</Link>
                 <Link href="/signUp" className={header.auth + ' ' + 'primaryBtn fillBtn'}>Sign Up</Link>
-              </div>}
+              </div>
+            }
           </div>
           <div className={header.bar} onClick={() => setActiveMobNav(!activeMobNav)}>
             <Image src="/img/header/burger.png" width={16.5} height={10.5} alt='bar' />
