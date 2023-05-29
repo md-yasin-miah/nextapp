@@ -110,15 +110,24 @@
   font-weight: 500;
   font-size: 16px;
   color: #FFFFFF;
+  white-space: nowrap;
 }
 
 .options li:not(:last-child) {
   border-bottom: 1px solid #B843B7;
 }
 
+.player {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
 @media only screen and (max-width: 424px) {
   .container {
     margin-top: 32px;
+    margin-bottom: 75px;
   }
 
   .songs {

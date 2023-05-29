@@ -269,6 +269,7 @@ button {
 
 .form textarea {
   max-height: 150px;
+  min-height: 96px;
 }
 
 .formControl {

@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import d from '../../styles/pages/dashboard/downloads.module.css';
 import Image from 'next/image';
+import AudioPlayer from '@/components/shared/AudioPlayer';
 const Downloads = () => {
   const [showOptions, setShowOptions] = useState(null);
   return (
@@ -45,6 +46,9 @@ const Downloads = () => {
             ))
           }
         </div>
+      </div>
+      <div className={d.player}>
+        <AudioPlayer />
       </div>
     </div>
   )

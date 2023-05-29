@@ -63,7 +63,7 @@ const ContactUs = () => {
             </div>
             <div className='formControl'>
               <label htmlFor="message">Message</label>
-              <textarea type="text" id="message" placeholder='Write your message...' />
+              <textarea rows="4" type="text" id="message" placeholder='Write your message...' />
             </div>
             <div className={c.btn}>
               <button className='actionBtn'>Send Message</button>
