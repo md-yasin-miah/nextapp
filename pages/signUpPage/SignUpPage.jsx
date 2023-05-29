@@ -3,8 +3,29 @@ import React, { useState } from 'react'
 import signUp from '../../styles/pages/auth.module.css'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useDispatch, useSelector } from 'react-redux';
+import { registerUser } from '../../axios/axios';
+
 const SignUpPage = () => {
   const [showPassword, setShowPassword] = useState(false)
+  const dispatch = useDispatch();
+  const { loading, error } = useSelector((state) => state.auth);
+
+  const handleRegistration = async () => {
+    const fullName = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+
+    const userData = {
+      fullName,
+      email,
+      password,
+    };
+
+    dispatch(registerUser(userData));
+    console.log(dispatch(registerUser(userData)))
+  };
+
   return (
     <div>
       <div className={signUp.header_logo}>
@@ -30,7 +51,7 @@ const SignUpPage = () => {
             <div className='form'>
               <div className='formControl'>
                 <label htmlFor="text">Full Name</label>
-                <input type="email" id="email" placeholder="Enter your full name" />
+                <input type="text" id="name" placeholder="Enter your full name" />
               </div>
               <div className='formControl'>
                 <label htmlFor="email">Email</label>
@@ -46,7 +67,7 @@ const SignUpPage = () => {
                   <label htmlFor="showPassword">Show Password</label>
                 </div>
               </div>
-              <button className='actionBtn'>Create account</button>
+              <button className='actionBtn' onClick={handleRegistration}>Create account</button>
               <div className="alternativeLigInOptions">
                 <p>Or Sign up with</p>
                 <div className="authIcon">
