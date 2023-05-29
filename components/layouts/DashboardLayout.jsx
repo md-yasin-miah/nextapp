@@ -104,7 +104,9 @@ const DashboardLayout = () => {
           </div>
         </div>
       </div>
-      {activeChildren === 2 && <AudioPlayer />}
+      <div>
+        {activeChildren === 2 && <AudioPlayer />}
+      </div>
     </div>
   )
 }

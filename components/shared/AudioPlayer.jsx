@@ -4,14 +4,19 @@ import a from '../../styles/audioPlayer.module.css';
 const AudioPlayer = () => {
   return (
     <div className={a.player}>
-      <div className={a.songInfo}>
-        <div className={a.playerImg}>
-          <Image width={48} height={48} src="/img/song.png" alt="songPoster" />
+      <div className={a.songInfoContainer}>
+        <div className={a.songInfo}>
+          <div className={a.playerImg}>
+            <Image width={48} height={48} src="/img/song.png" alt="songPoster" />
+          </div>
+          <div className={a.sName}>
+            <p>i don't know</p>
+            <span>random rain</span>
+          </div>
         </div>
-        <div className={a.sName}>
-          <p>i don't know</p>
-          <span>random rain</span>
-        </div>
+        <svg className={a.sm_option} width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M3.75 3.375L0.75 5.25V1.5L3.75 3.375ZM11.25 3.75H6V4.5H11.25V3.75ZM11.25 6.75V7.5H0.75V6.75H11.25ZM11.25 10.5V9.75H0.75V10.5H11.25Z" fill="#B2B2B2" />
+        </svg>
       </div>
       <div className={a.controlArea}>
         <div className={a.controller}>
@@ -79,7 +84,6 @@ const AudioPlayer = () => {
           </svg>
           <div className={a.volumeProgressFill}>
             <div className={a.volumeProgressFillInner} style={{ width: '20%' }}>
-
             </div>
           </div>
 
