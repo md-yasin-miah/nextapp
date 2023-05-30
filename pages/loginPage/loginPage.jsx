@@ -5,6 +5,7 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import Verify from '@/components/shared/Verify'
+import ResendEmail from '@/components/shared/ResendEmail'
 export default function LogInPage() {
   const [formDate, setFormDate] = useState({ email: '', password: '' })
   const [showPassword, setShowPassword] = useState(false)
@@ -26,7 +27,7 @@ export default function LogInPage() {
           <Image src="/img/header/logo.png" width={40} height={40} alt='logo' />
         </Link>
       </div>
-      {/* <div className={login.login}>
+      <div className={login.login}>
 
         <div className="authContainer">
           <div className="loginImgArea">
@@ -83,8 +84,9 @@ export default function LogInPage() {
             </div>
           </div>
         </div>
-      </div> */}
+      </div>
       <Verify />
+      {/* <ResendEmail /> */}
     </div>
   )
 }
