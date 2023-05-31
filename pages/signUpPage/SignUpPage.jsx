@@ -9,7 +9,8 @@ import { registerUser } from '../../axios/axios';
 const SignUpPage = () => {
   const [showPassword, setShowPassword] = useState(false)
   const dispatch = useDispatch();
-  const { loading, error } = useSelector((state) => state.auth);
+  const loading = useSelector((state) => state.auth.loading);
+  const error = useSelector((state) => state.auth.error);
 
   const handleRegistration = async () => {
     const fullName = document.getElementById('name').value;
