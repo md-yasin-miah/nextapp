@@ -85,7 +85,7 @@ export default function LogInPage() {
           </div>
         </div>
       </div>
-      <Verify />
+      {/* <Verify /> */}
       {/* <ResendEmail /> */}
     </div>
   )
