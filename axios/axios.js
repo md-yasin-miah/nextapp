@@ -41,3 +41,22 @@ export const loginUser = createAsyncThunk(
     }
   }
 );
+
+// Async thunk action to handle forget Password
+export const forgetPassword = createAsyncThunk(
+  'auth/forgetPassword',
+  async (email, { rejectWithValue }) => {
+    try {
+      const response = await axios.post(`${baseURL}/auth/forgot-password`, { email }, {
+        headers: {
+          'Content-Type': 'application/json',
+        }
+      });
+      toast.success(response?.data?.message);
+      return response.data;
+    } catch (error) {
+      toast.error(error?.response?.data?.message);
+      return rejectWithValue(error.response.data);
+    }
+  }
+);
