@@ -24,7 +24,6 @@ const SignUpPage = () => {
     };
 
     dispatch(registerUser(userData));
-    console.log(dispatch(registerUser(userData)))
   };
 
   return (
