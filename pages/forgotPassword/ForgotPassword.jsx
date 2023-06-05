@@ -9,8 +9,15 @@ import { forgetPassword } from '../../axios/axios';
 const ForgotPassword = () => {
   const router = useRouter();
   const dispatch = useDispatch();
-  const [showPassword, setShowPassword] = useState(false)
-  
+  const [showPassword, setShowPassword] = useState(false);
+  const [userMail, setUserMail] = useState(null);
+  const handleForgotPassword = () => {
+    const email = {
+      email: userMail,
+    }
+    console.log(email);
+    dispatch(forgetPassword(email)); // Use dispatch instead of useDispatch
+  }
   return (
     <div className={forgotPass.forgotPass}>
       <div className="authContainer">
@@ -30,9 +37,9 @@ const ForgotPassword = () => {
           <div className='form'>
             <div className={`formControl ${forgotPass.mb_0}`}>
               <label htmlFor="email">Email</label>
-              <input type="email" id="email" placeholder="Enter your email" />
+              <input onChange={(e) => setUserMail(e.target.value)} type="email" id="email" placeholder="Enter your email" />
             </div>
-            <button onClick={() => router.push('/resetPassword')} className='actionBtn'>Reset password</button>
+            <button onClick={() => handleForgotPassword()} className='actionBtn'>Reset password</button>
           </div>
         </div>
       </div>

@@ -1,32 +1,33 @@
 "use client"
 import Image from 'next/image'
 import login from '../../styles/pages/auth.module.css'
-import { useState } from 'react'
+import { use, useEffect, useState } from 'react'
 import Link from 'next/link'
-// import { useRouter } from 'next/navigation'
+import { useRouter } from 'next/navigation';
 import Verify from '@/components/shared/Verify'
 import ResendEmail from '@/components/shared/ResendEmail'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { loginUser } from '../../axios/axios';
 
 export default function LogInPage() {
   const [formData, setFormData] = useState({ email: '', password: '' })
   const [showPassword, setShowPassword] = useState(false)
   const dispatch = useDispatch();
-  // const router = useRouter()
+  const router = useRouter();
+  const user = useSelector((state) => state.auth.user);
 
   const handleLogin = () => {
-    console.log(formData);
     const userData = {
       email: formData.email,
       password: formData.password
     }
-
     dispatch(loginUser(userData)); // Use dispatch instead of useDispatch
-    // add isLogin state in local storage
-    localStorage.setItem('isLogin', true);
   }
-
+  useEffect(() => {
+    if (user) {
+      router.push('/');
+    }
+  }, [user])
   const handleForm = (e) => {
     e.preventDefault();
     setFormData({ ...formData, [e.target.name]: e.target.value });

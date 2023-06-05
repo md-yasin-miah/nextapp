@@ -4,18 +4,27 @@ import header from './../../../styles/pages/header.module.css';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
+import { useDispatch, useSelector } from 'react-redux';
+import { getUserDetails } from '@/axios/axios';
 
 const Header = () => {
   const router = useRouter();
   const pathName = usePathname();
+  const dispatch = useDispatch();
   const [activeMobNav, setActiveMobNav] = useState(false);
   const [isLogin, setIsLogin] = useState(false);
+
+
   useEffect(() => {
-    // add isLogin state in localstorage
-    localStorage.getItem('isLogin') === 'true' ? setIsLogin(true) : setIsLogin(false);
-  }, [])
+    if (localStorage.getItem('accessToken')) {
+      setIsLogin(true);
+      dispatch(getUserDetails());
+    }
+  }, []);
+  const user = useSelector((state) => state.auth.user);
+  console.log('user', user);
   const handleLogout = () => {
-    localStorage.setItem('isLogin', false);
+    localStorage.removeItem('accessToken');
     setIsLogin(false);
     router.push('/login');
   }
