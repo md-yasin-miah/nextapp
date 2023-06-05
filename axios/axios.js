@@ -33,7 +33,7 @@ export const loginUser = createAsyncThunk(
           'Content-Type': 'application/json',
         }
       });
-      toast.success(response?.data?.message)
+      toast.success("Logged In Successfully!")
       return response.data;
     } catch (error) {
       toast.error(error?.response?.data?.message);
