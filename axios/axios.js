@@ -28,9 +28,15 @@ export const loginUser = createAsyncThunk(
   'auth/loginUser',
   async (userData, { rejectWithValue }) => {
     try {
-      const response = await axios.post(`${baseURL}/auth/login`, userData);
+      const response = await axios.post(`${baseURL}/auth/login`, userData, {
+        headers: {
+          'Content-Type': 'application/json',
+        }
+      });
+      toast.success(response?.data?.message)
       return response.data;
     } catch (error) {
+      toast.error(error?.response?.data?.message);
       return rejectWithValue(error.response.data);
     }
   }

@@ -3,23 +3,35 @@ import Image from 'next/image'
 import login from '../../styles/pages/auth.module.css'
 import { useState } from 'react'
 import Link from 'next/link'
-import { useRouter } from 'next/navigation'
+// import { useRouter } from 'next/navigation'
 import Verify from '@/components/shared/Verify'
 import ResendEmail from '@/components/shared/ResendEmail'
+import { useDispatch } from 'react-redux';
+import { loginUser } from '../../axios/axios';
+
 export default function LogInPage() {
-  const [formDate, setFormDate] = useState({ email: '', password: '' })
+  const [formData, setFormData] = useState({ email: '', password: '' })
   const [showPassword, setShowPassword] = useState(false)
-  const router = useRouter()
+  const dispatch = useDispatch();
+  // const router = useRouter()
+
   const handleLogin = () => {
-    // add isLogin state in localstorage
-    // localStorage.setItem('isLogin', true);
-    // router.push('/');
-    console.log(formDate);
+    console.log(formData);
+    const userData = {
+      email: formData.email,
+      password: formData.password
+    }
+
+    dispatch(loginUser(userData)); // Use dispatch instead of useDispatch
+    // add isLogin state in local storage
+    localStorage.setItem('isLogin', true);
   }
+
   const handleForm = (e) => {
     e.preventDefault();
-    setFormDate({ ...formDate, [e.target.name]: e.target.value });
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   }
+
   return (
     <div>
       <div className={login.header_logo}>
