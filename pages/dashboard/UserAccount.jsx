@@ -1,6 +1,34 @@
+'use client'
 import u from '../../styles/pages/dashboard/userAccount.module.css';
+import { useState } from 'react';
+import { updateProfile } from '../../axios/axios';
+import { useDispatch } from 'react-redux';
+
 
 const UserAccount = () => {
+  const dispatch = useDispatch();
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    userName: '',
+    phone: ''
+  })
+
+  const handleForm = (e) => {
+    e.preventDefault();
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  }
+
+  const handleUpdateProfile = async () => {
+    const userData = {
+      name: formData.name,
+      email: formData.email,
+      userName: formData.userName,
+      phone: formData.phone
+    }
+    dispatch(updateProfile(userData)); // Use dispatch instead of useDispatch
+  }
+
   return (
     <div className='dashboard_children'>
       <div className="dashboard_children_title">
@@ -9,23 +37,23 @@ const UserAccount = () => {
           <div className={u.inputArea}>
             <div className='formControl'>
               <label htmlFor="name">Full Name</label>
-              <input type="text" id="name" />
+              <input type="text" id="name" onChange={handleForm} />
             </div>
             <div className='formControl'>
               <label htmlFor="email">Email</label>
-              <input type="email" id="email" />
+              <input type="email" id="email" onChange={handleForm} />
             </div>
             <div className='formControl'>
               <label htmlFor="userName">User Name</label>
-              <input type="text" id="userName" />
+              <input type="text" id="userName" onChange={handleForm} />
             </div>
             <div className='formControl'>
               <label htmlFor="phone">Mobile Number</label>
-              <input type="tel" id="phone" />
+              <input type="tel" id="phone" onChange={handleForm} />
             </div>
           </div>
           <div className={u.btnArea}>
-            <button className='s_btn'>Update Profile</button>
+            <button className='s_btn' onClick={() => handleUpdateProfile()}>Update Profile</button>
             <button className='s_btn s_btn_t'>Reset</button>
           </div>
         </form>
