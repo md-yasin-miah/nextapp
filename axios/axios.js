@@ -4,22 +4,26 @@ import toast from 'react-hot-toast'
 
 // Base URL
 const baseURL = 'https://api.syscomatic.com/api/v1';
+// Authenticated config with Authorization header
 const config = {
   headers: {
     "Content-Type": "application/json",
     Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
   },
 };
+// Config with Content-Type header
+const configCT = {
+  headers: {
+    "Content-Type": "application/json",
+  },
+};
+
 // Async thunk action to handle registration
 export const registerUser = createAsyncThunk(
   'auth/registerUser',
   async (userData, { rejectWithValue }) => {
     try {
-      const response = await axios.post(`${baseURL}/auth/register`, userData, {
-        headers: {
-          'Content-Type': 'application/json',
-        }
-      });
+      const response = await axios.post(`${baseURL}/auth/register`, userData, configCT);
       toast.success(response?.data?.message)
       return response?.data;
     } catch (error) {
@@ -34,11 +38,7 @@ export const loginUser = createAsyncThunk(
   'auth/loginUser',
   async (userData, { rejectWithValue }) => {
     try {
-      const response = await axios.post(`${baseURL}/auth/login`, userData, {
-        headers: {
-          'Content-Type': 'application/json',
-        }
-      });
+      const response = await axios.post(`${baseURL}/auth/login`, userData, configCT);
       toast.success("Logged In Successfully!");
       localStorage.setItem('accessToken', response.data.accessToken);
       return response.data;
@@ -54,11 +54,7 @@ export const forgetPassword = createAsyncThunk(
   'auth/forgetPassword',
   async (email, { rejectWithValue }) => {
     try {
-      const response = await axios.post(`${baseURL}/auth/forgot-password`, email, {
-        headers: {
-          'Content-Type': 'application/json',
-        }
-      });
+      const response = await axios.post(`${baseURL}/auth/forgot-password`, email, configCT);
       toast.success(response?.data?.message);
       return response.data;
     } catch (error) {
@@ -99,22 +95,12 @@ export const updateProfile = createAsyncThunk(
 
 // Axios instance for creating voice
 export const createVoice = (voiceData) => {
-  return axios.post(`${baseURL}/voice`, voiceData, {
-    headers: {
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
-    }
-  });
+  return axios.post(`${baseURL}/voice`, voiceData, config);
 };
 
 // Axios instance for getting all voices
 export const getAllVoices = () => {
-  return axios.get(`${baseURL}/voice`, {
-    headers: {
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
-    }
-  });
+  return axios.get(`${baseURL}/voice`, config);
 };
 //get allPlans
 export const getAllPlans = createAsyncThunk(
@@ -145,66 +131,38 @@ export const subscribeToPlan = createAsyncThunk(
 
 // fetchUserMusic
 export const fetchUserMusic = createAsyncThunk('userMusic/fetchUserMusic', async () => {
-  const response = await axios.get(`${baseURL}/music/user`, {
-    headers: {
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
-    }
-  });
+  const response = await axios.get(`${baseURL}/music/user`, config);
   return response.data;
 });
 
 // createMusic
 export const convertMusic = createAsyncThunk('musicConversion/convertMusic', async (formData) => {
-  const response = await axios.post(`${baseURL}//music/convert`, formData, {
-    headers: {
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
-    }
-  });
+  const response = await axios.post(`${baseURL}//music/convert`, formData, config);
   return response.data;
 });
 
 // downloadMusic
 export const downloadMusic = createAsyncThunk('musicDownload/downloadMusic', async (musicId) => {
-  const response = await axios.get(`${baseURL}/music/${musicId}/download`, {
-    headers: {
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
-    }
-  });
+  const response = await axios.get(`${baseURL}/music/${musicId}/download`, config);
   return response.data;
 });
 
 // streamMusic
 export const streamMusic = createAsyncThunk('musicStream/streamMusic', async (musicId) => {
-  const response = await axios.get(`${baseURL}/music/${musicId}/stream`, {
-    headers: {
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
-    }
-  });
+  const response = await axios.get(`${baseURL}/music/${musicId}/stream`, config);
   return response.data;
 });
 
 // verifyEmail
 export const verifyEmail = createAsyncThunk('emailVerification/verifyEmail', async (token) => {
-  const response = await axios.post(`${baseURL}/auth/verify-email`, { token }, {
-    headers: {
-      'Content-Type': 'application/json',
-    }
-  });
+  const response = await axios.post(`${baseURL}/auth/verify-email`, { token }, configCT);
   return response.data;
 });
 
 // authentication with google
 export const authenticateWithGoogle = createAsyncThunk('auth/authenticateWithGoogle', async () => {
   try {
-    const response = await axios.get(`${baseURL}/auth/google`, {
-      headers: {
-        'Content-Type': 'application/json',
-      }
-    });
+    const response = await axios.get(`${baseURL}/auth/google`, configCT);
     toast.success(response?.data?.message || "Logged In Successfully!");
     return response.data;
   } catch (error) {
