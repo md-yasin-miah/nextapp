@@ -4,7 +4,7 @@ import signUp from '../../styles/pages/auth.module.css'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useDispatch, useSelector } from 'react-redux';
-import { registerUser } from '../../axios/axios';
+import { registerUser, authenticateWithGoogle } from '../../axios/axios';
 import { useRouter } from 'next/navigation';
 
 const SignUpPage = () => {
@@ -31,6 +31,13 @@ const SignUpPage = () => {
       router.push('/login');
     }
   };
+
+  const handleGoogleLogin = async () => {
+    await dispatch(authenticateWithGoogle());
+    if (localStorage.getItem('accessToken') && !error) {
+      router.push('/login');
+    }
+  }
 
   return (
     <div>
@@ -82,6 +89,7 @@ const SignUpPage = () => {
                     width={32}
                     height={32}
                     alt="google"
+                    onClick={handleGoogleLogin}
                   />
                   <Image
                     src="/img/facebook.png"
