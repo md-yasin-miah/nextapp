@@ -4,7 +4,12 @@ import toast from 'react-hot-toast'
 
 // Base URL
 const baseURL = 'https://api.syscomatic.com/api/v1';
-
+const config = {
+  headers: {
+    "Content-Type": "application/json",
+    Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+  },
+};
 // Async thunk action to handle registration
 export const registerUser = createAsyncThunk(
   'auth/registerUser',
@@ -68,12 +73,7 @@ export const getProfile = createAsyncThunk(
   'user/fetchUserData',
   async (_, thunkAPI) => {
     try {
-      const response = await axios.get(`${baseURL}/auth/me`, {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
-        },
-      });
+      const response = await axios.get(`${baseURL}/auth/me`, config);
       console.log('response', response.data);
       return response.data;
     } catch (error) {
@@ -87,12 +87,7 @@ export const updateProfile = createAsyncThunk(
   'user/updateUserData',
   async (userData, thunkAPI) => {
     try {
-      const response = await axios.put(`${baseURL}/user/profile`, userData, {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
-        },
-      });
+      const response = await axios.put(`${baseURL}/user/profile`, userData, config);
       toast.success(response?.data?.message);
       return response.data;
     } catch (error) {
@@ -126,12 +121,7 @@ export const getAllPlans = createAsyncThunk(
   'plan/getAllPlans',
   async (_, thunkAPI) => {
     try {
-      const response = await axios.get(`${baseURL}/plan`, {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
-        },
-      });
+      const response = await axios.get(`${baseURL}/plan`, config);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -144,12 +134,7 @@ export const subscribeToPlan = createAsyncThunk(
   'plan/subscribeToPlan',
   async (priceId, thunkAPI) => {
     try {
-      const response = await axios.post(`${baseURL}/plan/price/${priceId}/checkout`, {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
-        },
-      });
+      const response = await axios.post(`${baseURL}/plan/price/${priceId}/checkout`, config);
       console.log('response', response.data);
       return response.data;
     } catch (error) {
@@ -214,14 +199,14 @@ export const verifyEmail = createAsyncThunk('emailVerification/verifyEmail', asy
 
 // authentication with google
 export const authenticateWithGoogle = createAsyncThunk('auth/authenticateWithGoogle', async () => {
- try {
-  const response = await axios.get(`${baseURL}/auth/google`, {
-    headers: {
-      'Content-Type': 'application/json',
-    }
-  });
-  toast.success(response?.data?.message || "Logged In Successfully!");
-  return response.data;
+  try {
+    const response = await axios.get(`${baseURL}/auth/google`, {
+      headers: {
+        'Content-Type': 'application/json',
+      }
+    });
+    toast.success(response?.data?.message || "Logged In Successfully!");
+    return response.data;
   } catch (error) {
     toast.error(error?.response?.data?.message || "Something went wrong!");
     return error.response.data;
