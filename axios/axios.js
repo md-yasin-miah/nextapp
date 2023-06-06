@@ -82,6 +82,26 @@ export const getProfile = createAsyncThunk(
   }
 );
 
+// Async thunk action to handle update user details
+export const updateProfile = createAsyncThunk(
+  'user/updateUserData',
+  async (userData, thunkAPI) => {
+    try {
+      const response = await axios.put(`${baseURL}/user/profile`, userData, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+        },
+      });
+      toast.success(response?.data?.message);
+      return response.data;
+    } catch (error) {
+      toast.error(error?.response?.data?.message);
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
 // Axios instance for creating voice
 export const createVoice = (voiceData) => {
   return axios.post(`${baseURL}/voice`, voiceData, {
@@ -101,3 +121,47 @@ export const getAllVoices = () => {
     }
   });
 }
+
+// fetchUserMusic
+export const fetchUserMusic = createAsyncThunk('userMusic/fetchUserMusic', async () => {
+  const response = await axios.get(`${baseURL}/user/music`, {
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
+    }
+  });
+  return response.data;
+});
+
+// createMusic
+export const convertMusic = createAsyncThunk('musicConversion/convertMusic', async (formData) => {
+  const response = await axios.post(`${baseURL}/music`, formData, {
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
+    }
+  });
+  return response.data;
+});
+
+// downloadMusic
+export const downloadMusic = createAsyncThunk('musicDownload/downloadMusic', async (musicId) => {
+  const response = await axios.get(`${baseURL}/music/${musicId}/download`, {
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
+    }
+  });
+  return response.data;
+});
+
+// streamMusic
+export const streamMusic = createAsyncThunk('musicStream/streamMusic', async (musicId) => {
+  const response = await axios.get(`${baseURL}/music/${musicId}/stream`, {
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
+    }
+  });
+  return response.data;
+});
