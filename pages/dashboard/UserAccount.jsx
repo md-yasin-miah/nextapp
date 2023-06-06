@@ -15,18 +15,18 @@ const UserAccount = () => {
   })
 
   const handleForm = (e) => {
-    e.preventDefault();
     setFormData({ ...formData, [e.target.name]: e.target.value });
   }
 
-  const handleUpdateProfile = async () => {
-    const userData = {
-      name: formData.name,
-      email: formData.email,
-      userName: formData.userName,
-      phone: formData.phone
-    }
-    dispatch(updateProfile(userData)); // Use dispatch instead of useDispatch
+  const handleUpdateProfile = async (e) => {
+    e.preventDefault();
+    // const userData = {
+    //   name: formData.name,
+    //   email: formData.email,
+    //   userName: formData.userName,
+    //   phone: formData.phone
+    // }
+    await dispatch(updateProfile(formData)); // Use dispatch instead of useDispatch
   }
 
   return (
@@ -37,23 +37,23 @@ const UserAccount = () => {
           <div className={u.inputArea}>
             <div className='formControl'>
               <label htmlFor="name">Full Name</label>
-              <input type="text" id="name" onChange={handleForm} />
+              <input name='fullName' type="text" id="name" onChange={handleForm} />
             </div>
             <div className='formControl'>
               <label htmlFor="email">Email</label>
-              <input type="email" id="email" onChange={handleForm} />
+              <input name="email" type="email" id="email" onChange={handleForm} />
             </div>
             <div className='formControl'>
               <label htmlFor="userName">User Name</label>
-              <input type="text" id="userName" onChange={handleForm} />
+              <input name="username" type="text" id="userName" onChange={handleForm} />
             </div>
             <div className='formControl'>
               <label htmlFor="phone">Mobile Number</label>
-              <input type="tel" id="phone" onChange={handleForm} />
+              <input name="phoneNumber" type="tel" id="phone" onChange={handleForm} />
             </div>
           </div>
           <div className={u.btnArea}>
-            <button className='s_btn' onClick={() => handleUpdateProfile()}>Update Profile</button>
+            <button type='submit' className='s_btn' onClick={handleUpdateProfile}>Update Profile</button>
             <button className='s_btn s_btn_t'>Reset</button>
           </div>
         </form>
