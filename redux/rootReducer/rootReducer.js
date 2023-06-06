@@ -8,11 +8,13 @@ import musicDownloadReducer from '../features/music/musicDownloadSlice';
 import musicStreamReducer from '../features/music/musicStreamSlice';
 import userMusicReducer from '../features/music/userMusicSlice';
 import emailVerificationReducer from '../features/emailVerificationSlice';
+import planReducer from '../features/planSlice';
 
 const rootReducer = combineReducers({
     auth: authReducer,
     profile: profileReducer,
     voice: voiceReducer,
+    plan: planReducer,
     musicConversion: musicConversionReducer,
     musicDownload: musicDownloadReducer,
     musicStream: musicStreamReducer,
