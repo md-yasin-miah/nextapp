@@ -100,4 +100,39 @@ export const getAllVoices = () => {
       'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
     }
   });
-}
+};
+//get allPlans
+export const getAllPlans = createAsyncThunk(
+  'plan/getAllPlans',
+  async (_, thunkAPI) => {
+    try {
+      const response = await axios.get(`${baseURL}/plan`, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+        },
+      });
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+//subscribe to plan
+export const subscribeToPlan = createAsyncThunk(
+  'plan/subscribeToPlan',
+  async (priceId, thunkAPI) => {
+    try {
+      const response = await axios.post(`${baseURL}/plan/price/${priceId}/checkout`, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+        },
+      });
+      console.log('response', response.data);
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);

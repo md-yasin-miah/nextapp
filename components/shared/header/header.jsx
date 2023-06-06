@@ -13,19 +13,15 @@ const Header = () => {
   const dispatch = useDispatch();
   const [activeMobNav, setActiveMobNav] = useState(false);
   const [isLogin, setIsLogin] = useState(false);
-  const profile = useSelector((state) => state.profile.profile);
-  console.log('profile', profile);
+  const user = useSelector((state) => state.profile.profile);
 
-
+  console.log('user', user)
   useEffect(() => {
     if (localStorage.getItem('accessToken')) {
       setIsLogin(true);
       dispatch(getProfile());
     }
   }, []);
-
-  const user = useSelector((state) => state.auth.user);
-  console.log('user', user);
   const handleLogout = () => {
     localStorage.removeItem('accessToken');
     setIsLogin(false);
@@ -123,7 +119,7 @@ const Header = () => {
               <div className={header.profile}>
                 <div className={header.header_profile + ' ' + header.header_profile_logo} onClick={() => setActiveMobNav(!activeMobNav)}>
                   <Image src="/img/header/profile.png" width={40} height={40} alt='profile' />
-                  <p>Username</p>
+                  <p>{user?.fullName}</p>
                 </div>
                 {activeMobNav &&
                   <div className={header.profile_links}>

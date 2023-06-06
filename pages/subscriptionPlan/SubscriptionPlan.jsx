@@ -1,16 +1,24 @@
 "use client"
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import s from '../../styles/pages/subscription.module.css';
 import Image from 'next/image';
+import { useDispatch, useSelector } from 'react-redux';
+import { getAllPlans } from '@/axios/axios';
 
 const SubscriptionPlan = () => {
-  const [active, setActive] = useState('monthly')
+  const [active, setActive] = useState('month')
+  const dispatch = useDispatch()
+  const plans = useSelector(state => state.plan.plans);
+  console.log('plans', plans)
   const Check = () => (
     <Image src="/check.svg" width={24} height={24} alt="check" />
   )
   const Cross = () => (
     <Image src="/crossO.svg" width={24} height={24} alt="cross" />
   )
+  useEffect(() => {
+    dispatch(getAllPlans())
+  }, [])
   return (
     <div>
       <div className={s.subscriptionPlan}>
@@ -20,36 +28,41 @@ const SubscriptionPlan = () => {
         <div className={s.package}>
           <div className={s.box}>
             <div
-              onClick={() => setActive('monthly')}
-              className={s.monthly + ' ' + (active === 'monthly' && s.active)}>
+              onClick={() => setActive('month')}
+              className={s.monthly + ' ' + (active === 'month' && s.active)}>
               <span>Monthly</span>
             </div>
             <div
-              onClick={() => setActive('yearly')}
-              className={s.yearly + ' ' + (active === 'yearly' && s.active)}>
+              onClick={() => setActive('year')}
+              className={s.yearly + ' ' + (active === 'year' && s.active)}>
               <span>Yearly</span>
             </div>
           </div>
         </div>
         <div className={s.s_cards}>
           {
-            ['1', '2', '3'].map((item, i) => (
+            plans?.map((item, i) => (
               // conditional bg
-              <div className={s.s_card + ' ' + (i === 1 ? s.coloredBG : '')}>
+              <div className={s.s_card + ' ' + (i === 1 ? s.coloredBG : '')} key={item._id}>
                 <div className={s.s_card__header}>
-                  <h3>Basic</h3>
+                  <h3>{item?.title}</h3>
                 </div>
                 <div className={s.s_card__body}>
                   <div className={s.s_card__price}>
-                    <h1>$50</h1>
-                    <span>/per month</span>
+                    <h1>${active === 'month' ? item?.monthlyPricing : item?.annualPricing
+                    }</h1>
+                    <span>/per {active}</span>
                   </div>
                   <div className={s.s_card__features}>
                     <ul>
-                      <li><Check /><span>up to 50 users</span></li>
-                      <li><Check /><span>Collaboration features</span></li>
-                      <li><Check /><span>Smart analytics</span></li>
-                      <li><Check /><span>30-day free trail</span></li>
+                      {
+                        item?.features?.map(feature => (
+                          <li key={feature._id}>
+                            {feature?.isAvailable ? <Check /> : <Cross />}
+                            <span>{feature?.name}</span>
+                          </li>
+                        ))
+                      }
                     </ul>
                   </div>
                   <div className={s.s_card__button + ' ' + (i === 1 ? s.active : '')}>
