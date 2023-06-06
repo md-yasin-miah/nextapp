@@ -7,7 +7,8 @@ import { useRouter } from 'next/navigation';
 import Verify from '@/components/shared/Verify'
 import ResendEmail from '@/components/shared/ResendEmail'
 import { useDispatch, useSelector } from 'react-redux';
-import { loginUser } from '../../axios/axios';
+import { loginUser, authenticateWithGoogle } from '../../axios/axios';
+import toast from 'react-hot-toast'
 
 export default function LogInPage() {
   const [formData, setFormData] = useState({ email: '', password: '' })
@@ -16,6 +17,12 @@ export default function LogInPage() {
   const router = useRouter();
   const user = useSelector((state) => state.auth.user);
 
+  useEffect(() => {
+    if (user) {
+      router.push('/');
+    }
+  }, [user])
+
   const handleLogin = () => {
     const userData = {
       email: formData.email,
@@ -23,11 +30,11 @@ export default function LogInPage() {
     }
     dispatch(loginUser(userData)); // Use dispatch instead of useDispatch
   }
-  useEffect(() => {
-    if (user) {
-      router.push('/');
-    }
-  }, [user])
+
+  const handleGoogleLogin = () => {
+    dispatch(authenticateWithGoogle());
+  }
+
   const handleForm = (e) => {
     e.preventDefault();
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -81,6 +88,7 @@ export default function LogInPage() {
                     width={32}
                     height={32}
                     alt="google"
+                    onClick={() => handleGoogleLogin()}
                   />
                   <Image
                     src="/img/facebook.png"

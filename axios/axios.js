@@ -168,6 +168,26 @@ export const streamMusic = createAsyncThunk('musicStream/streamMusic', async (mu
 
 // verifyEmail
 export const verifyEmail = createAsyncThunk('emailVerification/verifyEmail', async (token) => {
-  const response = await axios.post(`${baseURL}/auth/verify-email`, { token });
+  const response = await axios.post(`${baseURL}/auth/verify-email`, { token }, {
+    headers: {
+      'Content-Type': 'application/json',
+    }
+  });
   return response.data;
+});
+
+// authentication with google
+export const authenticateWithGoogle = createAsyncThunk('auth/authenticateWithGoogle', async () => {
+ try {
+  const response = await axios.get(`${baseURL}/auth/google`, {
+    headers: {
+      'Content-Type': 'application/json',
+    }
+  });
+  toast.success(response?.data?.message || "Logged In Successfully!");
+  return response.data;
+  } catch (error) {
+    toast.error(error?.response?.data?.message || "Something went wrong!");
+    return error.response.data;
+  }
 });

@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { registerUser, loginUser, forgetPassword} from '@/axios/axios';
+import { registerUser, loginUser, forgetPassword, authenticateWithGoogle } from '@/axios/axios';
 
 // Auth slice
 const authSlice = createSlice({
@@ -61,6 +61,22 @@ const authSlice = createSlice({
     });
 
     builder.addCase(forgetPassword.rejected, (state, action) => {
+      state.loading = false;
+      state.error = action.payload;
+    });
+
+    // Handling the google authentication request
+    builder.addCase(authenticateWithGoogle.pending, (state) => {
+      state.loading = true;
+      state.error = null;
+    });
+
+    builder.addCase(authenticateWithGoogle.fulfilled, (state, action) => {
+      state.loading = false;
+      state.user = action.payload.user;
+    });
+
+    builder.addCase(authenticateWithGoogle.rejected, (state, action) => {
       state.loading = false;
       state.error = action.payload;
     });

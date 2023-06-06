@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { verifyEmail } from '../../axios/axios';
 
 const emailVerificationSlice = createSlice({
   name: 'emailVerification',
