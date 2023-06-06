@@ -6,7 +6,6 @@ import Link from 'next/link'
 import { useDispatch, useSelector } from 'react-redux';
 import { registerUser } from '../../axios/axios';
 import { useRouter } from 'next/navigation';
-import { useRouter } from 'next/navigation'
 
 const SignUpPage = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -14,7 +13,7 @@ const SignUpPage = () => {
   const dispatch = useDispatch();
   const loading = useSelector((state) => state.auth.loading);
   const error = useSelector((state) => state.auth.error);
-  const router = useRouter();
+
 
   const handleRegistration = async () => {
     const fullName = document.getElementById('name').value;
@@ -26,13 +25,11 @@ const SignUpPage = () => {
       email,
       password,
     };
+
     await dispatch(registerUser(userData));
     if (localStorage.getItem('accessToken') && !error) {
       router.push('/login');
     }
-
-    //verify email
-    router.push('/verify');
   };
 
   return (
