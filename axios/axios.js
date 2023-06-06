@@ -2,7 +2,9 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import toast from 'react-hot-toast'
 
+// Base URL
 const baseURL = 'https://api.syscomatic.com/api/v1';
+
 // Async thunk action to handle registration
 export const registerUser = createAsyncThunk(
   'auth/registerUser',
@@ -79,3 +81,23 @@ export const getProfile = createAsyncThunk(
     }
   }
 );
+
+// Axios instance for creating voice
+export const createVoice = (voiceData) => {
+  return axios.post(`${baseURL}/voice`, voiceData, {
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
+    }
+  });
+};
+
+// Axios instance for getting all voices
+export const getAllVoices = () => {
+  return axios.get(`${baseURL}/voice`, {
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
+    }
+  });
+}
