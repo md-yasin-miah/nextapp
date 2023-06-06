@@ -61,21 +61,21 @@ export const forgetPassword = createAsyncThunk(
   }
 );
 
-//get user details
-export const getUserDetails = createAsyncThunk(
-  'auth/getUserDetails',
-  async (getUserDetails, { rejectWithValue }) => {
+// Async thunk action to handle get user details
+export const getProfile = createAsyncThunk(
+  'user/fetchUserData',
+  async (_, thunkAPI) => {
     try {
-      const response = await axios.get(`${baseURL}/auth/me`, { getUserDetails }, {
+      const response = await axios.get(`${baseURL}/auth/me`, {
         headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
-        }
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+        },
       });
-      console.log('user', response.data);
+      console.log('response', response.data);
       return response.data;
     } catch (error) {
-      return rejectWithValue(error.response.data);
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );

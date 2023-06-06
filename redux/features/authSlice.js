@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { registerUser, loginUser, forgetPassword, getUserDetails } from '@/axios/axios';
+import { registerUser, loginUser, forgetPassword} from '@/axios/axios';
 
 // Auth slice
 const authSlice = createSlice({
@@ -49,7 +49,6 @@ const authSlice = createSlice({
       state.user = null;
     });
 
-    // Handling the forget password
     // Handling the forget password request
     builder.addCase(forgetPassword.pending, (state) => {
       state.loading = true;
@@ -65,24 +64,6 @@ const authSlice = createSlice({
       state.loading = false;
       state.error = action.payload;
     });
-
-    // Handling the get user details request
-    builder.addCase(getUserDetails.pending, (state) => {
-      state.loading = true;
-      state.error = null;
-    }
-    );
-    builder.addCase(getUserDetails.fulfilled, (state, action) => {
-      state.loading = false;
-      state.user = action.payload;
-      console.log('action.payload for  user', action.payload);
-    }
-    );
-    builder.addCase(getUserDetails.rejected, (state, action) => {
-      state.loading = false;
-      state.error = action.payload;
-    }
-    );
   },
 });
 

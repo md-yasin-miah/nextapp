@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
 import { useDispatch, useSelector } from 'react-redux';
-import { getUserDetails } from '@/axios/axios';
+import { getProfile } from '@/axios/axios';
 
 const Header = () => {
   const router = useRouter();
@@ -13,14 +13,17 @@ const Header = () => {
   const dispatch = useDispatch();
   const [activeMobNav, setActiveMobNav] = useState(false);
   const [isLogin, setIsLogin] = useState(false);
+  const profile = useSelector((state) => state.profile.profile);
+  console.log('profile', profile);
 
 
   useEffect(() => {
     if (localStorage.getItem('accessToken')) {
       setIsLogin(true);
-      dispatch(getUserDetails());
+      dispatch(getProfile());
     }
   }, []);
+
   const user = useSelector((state) => state.auth.user);
   console.log('user', user);
   const handleLogout = () => {
