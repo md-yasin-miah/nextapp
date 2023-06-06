@@ -124,7 +124,7 @@ export const getAllVoices = () => {
 
 // fetchUserMusic
 export const fetchUserMusic = createAsyncThunk('userMusic/fetchUserMusic', async () => {
-  const response = await axios.get(`${baseURL}/user/music`, {
+  const response = await axios.get(`${baseURL}/music/user`, {
     headers: {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
@@ -135,7 +135,7 @@ export const fetchUserMusic = createAsyncThunk('userMusic/fetchUserMusic', async
 
 // createMusic
 export const convertMusic = createAsyncThunk('musicConversion/convertMusic', async (formData) => {
-  const response = await axios.post(`${baseURL}/music`, formData, {
+  const response = await axios.post(`${baseURL}//music/convert`, formData, {
     headers: {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
