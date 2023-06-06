@@ -2,7 +2,10 @@ import Image from 'next/image';
 import o from '../../styles/pages/dashboard/overview.module.css';
 import SubscriptionPlanCard from '@/components/SubscriptionPlanCard';
 import Link from 'next/link';
+import { useSelector } from 'react-redux';
+
 const Overview = () => {
+  const user = useSelector(state => state.profile.profile);
   return (
     <div className='dashboard_children'>
       <div className={o.overviewCards}>
@@ -69,7 +72,7 @@ const Overview = () => {
           </div>
           <div className={o.p_info}>
             <p className={o.name}>User Name</p>
-            <p className={o.info}>Lannister25</p>
+            <p className={o.info}>{user?.username || 'N/A'}</p>
           </div>
           <div className={o.p_info}>
             <p className={o.name}>Birthday</p>

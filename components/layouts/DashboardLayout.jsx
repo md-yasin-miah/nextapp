@@ -11,11 +11,13 @@ import UserAccount from '@/pages/dashboard/UserAccount';
 import { useParams, useRouter } from 'next/navigation';
 import AudioPlayer from '../shared/AudioPlayer';
 import Link from 'next/link';
+import { useSelector } from 'react-redux';
 
 const DashboardLayout = () => {
   const [activeChildren, setActiveChildren] = useState(0);
   const router = useRouter();
   const param = useParams();
+  const user = useSelector(state => state.profile.profile);
   const Children = () => {
     switch (param.category) {
       case 'overview':
@@ -81,7 +83,7 @@ const DashboardLayout = () => {
                   <Image src='/svg/Plus.svg' width={20} height={20} alt='edit' />
                 </div>
               </div>
-              <h4>Md. Yasin Miah</h4>
+              <h4>{user?.fullName || "N/A"}</h4>
             </div>
             <ul className={d.lists}>
               {

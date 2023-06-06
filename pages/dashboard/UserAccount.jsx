@@ -20,12 +20,6 @@ const UserAccount = () => {
 
   const handleUpdateProfile = async (e) => {
     e.preventDefault();
-    // const userData = {
-    //   name: formData.name,
-    //   email: formData.email,
-    //   userName: formData.userName,
-    //   phone: formData.phone
-    // }
     await dispatch(updateProfile(formData)); // Use dispatch instead of useDispatch
   }
 
