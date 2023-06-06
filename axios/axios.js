@@ -165,3 +165,9 @@ export const streamMusic = createAsyncThunk('musicStream/streamMusic', async (mu
   });
   return response.data;
 });
+
+// verifyEmail
+export const verifyEmail = createAsyncThunk('emailVerification/verifyEmail', async (token) => {
+  const response = await axios.post(`${baseURL}/auth/verify-email`, { token });
+  return response.data;
+});

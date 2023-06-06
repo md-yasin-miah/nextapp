@@ -2,7 +2,7 @@ import Image from 'next/image';
 import v from '../../styles/verify.module.css';
 import Link from 'next/link';
 
-const Verify = () => {
+const VerifyPage = () => {
   return (
     <div className={v.verify}>
       <div className={v.verifyContainer}>
@@ -32,4 +32,4 @@ const Verify = () => {
   )
 }
 
-export default Verify
+export default VerifyPage;

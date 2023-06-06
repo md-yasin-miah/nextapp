@@ -5,9 +5,11 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useDispatch, useSelector } from 'react-redux';
 import { registerUser } from '../../axios/axios';
+import { useRouter } from 'next/navigation';
 
 const SignUpPage = () => {
-  const [showPassword, setShowPassword] = useState(false)
+  const [showPassword, setShowPassword] = useState(false);
+  const router = useRouter();
   const dispatch = useDispatch();
   const loading = useSelector((state) => state.auth.loading);
   const error = useSelector((state) => state.auth.error);
@@ -24,6 +26,8 @@ const SignUpPage = () => {
     };
 
     dispatch(registerUser(userData));
+    //verify email
+    router.push('/verify');
   };
 
   return (
