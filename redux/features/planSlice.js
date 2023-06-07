@@ -7,6 +7,7 @@ const planSlice = createSlice({
   initialState: {
     plans: null,
     loading: false,
+    planLoading: false,
     error: null
   },
   reducers: {},
@@ -25,12 +26,12 @@ const planSlice = createSlice({
     });
     //handle subscribe to plan
     builder.addCase(subscribeToPlan.pending, (state, action) => {
-      state.loading = true;
+      state.planLoading = true;
       state.error = null;
     }
     );
     builder.addCase(subscribeToPlan.fulfilled, (state, action) => {
-      state.loading = false;
+      state.planLoading = false;
       state.plans = action.payload;
     }
     );

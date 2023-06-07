@@ -3,13 +3,17 @@ import { useEffect, useState } from 'react';
 import s from '../../styles/pages/subscription.module.css';
 import Image from 'next/image';
 import { useDispatch, useSelector } from 'react-redux';
-import { getAllPlans } from '@/axios/axios';
+import { getAllPlans, subscribeToPlan } from '@/axios/axios';
+import Loading from '@/components/shared/Loading';
 
 const SubscriptionPlan = () => {
   const [active, setActive] = useState('month')
   const dispatch = useDispatch()
-  const plans = useSelector(state => state.plan.plans);
-  console.log('plans', plans)
+  const { plans, loading, planLoading } = useSelector(state => state.plan);
+  console.log('plans', plans);
+  const handleSubscribe = (priceId) => {
+    dispatch(subscribeToPlan(priceId))
+  }
   const Check = () => (
     <Image src="/check.svg" width={24} height={24} alt="check" />
   )
@@ -39,6 +43,9 @@ const SubscriptionPlan = () => {
             </div>
           </div>
         </div>
+        {
+          loading && <Loading width={'100px'} height={'100px'} />
+        }
         <div className={s.s_cards}>
           {
             plans?.map((item, i) => (
@@ -66,7 +73,11 @@ const SubscriptionPlan = () => {
                     </ul>
                   </div>
                   <div className={s.s_card__button + ' ' + (i === 1 ? s.active : '')}>
-                    <button>Choose Plan</button>
+                    <button
+                      disabled={planLoading}
+                      onClick={() => handleSubscribe(
+                        active === 'month' ? item?.monthlyPricingId : item?.annualPricingId
+                      )}>Choose Plan</button>
                   </div>
                 </div>
                 {/* conditional tsg */}

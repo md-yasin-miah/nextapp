@@ -4,11 +4,14 @@ import toast from 'react-hot-toast'
 
 // Base URL
 const baseURL = 'https://api.syscomatic.com/api/v1';
+const token = localStorage.getItem('accessToken');
+//stringify the token
+const tokenString = JSON.stringify(token);
 // Authenticated config with Authorization header
 const config = {
   headers: {
     "Content-Type": "application/json",
-    Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+    "Authorization": `Bearer ${token}`,
   },
 };
 
@@ -16,7 +19,7 @@ const configMT = {
   headers: {
     //multipart/form-data
     "Content-Type": "multipart/form-data",
-    Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+    Authorization: `Bearer ${token}`,
   },
 };
 // Config with Content-Type header
@@ -137,6 +140,7 @@ export const subscribeToPlan = createAsyncThunk(
   async (priceId, thunkAPI) => {
     try {
       const response = await axios.post(`${baseURL}/plan/price/${priceId}/checkout`, config);
+      console.log('subscribeToPlan', response);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
