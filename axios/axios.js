@@ -11,8 +11,9 @@ const tokenString = JSON.stringify(token);
 // Authenticated config with Authorization header
 const config = {
   headers: {
+    "Access-Control-Allow-Origin": "*",
     "Content-Type": "application/json",
-    "authorization": `Bearer ${token}`,
+    authorization: `Bearer ${token}`,
   },
 };
 
@@ -141,8 +142,8 @@ export const subscribeToPlan = createAsyncThunk(
   'plan/subscribeToPlan',
   async (priceId, thunkAPI) => {
     try {
-      const url = `https://0ea0-103-166-89-86.ngrok-free.app/api/v1/plan/price/${priceId}/checkout`;
-      // const url = `${baseURL}/plan/price/${priceId}/checkout`;
+      // const url = `https://0ea0-103-166-89-86.ngrok-free.app/api/v1/plan/price/${priceId}/checkout`;
+      const url = `${baseURL}/plan/price/${priceId}/checkout`;
       const response = await axios.get(url, config);
       console.log('subscribeToPlan', response);
       return response.data;
