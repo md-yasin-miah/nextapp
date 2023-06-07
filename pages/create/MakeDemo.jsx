@@ -1,5 +1,5 @@
 "use client"
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import d from '../../styles/pages/demo.module.css';
 import MainLayout from '@/components/layouts/MainLayout';
 import Image from 'next/image';
@@ -7,12 +7,23 @@ import { Splide, SplideSlide } from '@splidejs/react-splide';
 import '@splidejs/react-splide/css';
 import LoadingProgressModal from '@/components/LoadingProgressModal';
 import { useRouter } from 'next/navigation';
+import { toast } from 'react-hot-toast';
+import { useDispatch, useSelector } from 'react-redux';
+import { convertMusic, getAllVoices } from '@/axios/axios';
 
 const MakeDemo = () => {
   const router = useRouter();
+  const dispatch = useDispatch();
   const [step2, setStep2] = useState(false);
   const [step3, setStep3] = useState(false);
+  const [audioData, setAudioData] = useState({
+    voice: '',
+    artist: ''
+  });
   const [openProgress, setOpenProgress] = useState(false);
+  const { voices } = useSelector((state) => state.voice);
+  const { convertedMusic } = useSelector((state) => state.musicConversion);
+  console.log('convertedMusic', convertedMusic);
   const options = {
     perPage: 3,
     gap: '16px',
@@ -38,6 +49,44 @@ const MakeDemo = () => {
       },
     },
   }
+  useEffect(() => {
+    if (audioData.voice !== '') {
+      setStep2(true);
+      dispatch(getAllVoices());
+    }
+  }, [audioData]);
+  const fileInputRef = useRef(null);
+  const handleAudioUpload = (event) => {
+    const file = event.target.files[0];
+    if (file && file.type === 'audio/mpeg') {
+      setAudioData({
+        ...audioData,
+        voice: file
+      });
+    } else {
+      toast.error('Please upload audio file');
+    }
+  };
+  const selectArtist = (artistId) => {
+    setAudioData({
+      ...audioData,
+      artist: artistId
+    });
+  };
+
+  const handleLabelClick = () => {
+    fileInputRef.current.click();
+  };
+  const handleConvertMusic = () => {
+    if (audioData.artist === '') {
+      toast.error('Please select artist');
+    } else {
+      setOpenProgress(true);
+      dispatch(convertMusic(audioData));
+    }
+  };
+
+
   return (
     <MainLayout>
       <div className={d.demo}>
@@ -46,11 +95,11 @@ const MakeDemo = () => {
           <p>Choose Your Favorite Artist Voice to make your song</p>
         </div>
         <div className={d.progress}>
-          <div className={`${d.target} ${d.active}`}>
+          <div className={`${d.target} ${d.active}`} onClick={() => { setStep2(false); setStep3(false) }}>
             <span>01</span>
             <div className={d.circle} ></div>
           </div>
-          <div className={`${d.target} ${step2 ? d.active : ''}`}>
+          <div className={`${d.target} ${step2 ? d.active : ''}`} onClick={() => setStep3(false)}>
             <span>02</span>
             <div className={d.circle}></div>
           </div>
@@ -69,27 +118,25 @@ const MakeDemo = () => {
               <h4>Pick a voice</h4>
               <div className={d.p_v_cards}>
                 {
-                  [...Array(10)].map((e, i) => (
+                  voices?.map((v, i) => (
                     <div key={i} className={d.p_v_card}
-                      // conditional onClick if not premium
-                      onClick={() => i < 4 ? setStep3(true) : null}
                     >
-                      <div className={d.imgArea}>
-                        <Image className={d.asBG} src='/img/voice.png' width={380} height={296} alt='' />
+                      <div className={d.imgArea} onClick={() => { selectArtist(v?._id); setStep3(true) }}>
+                        <Image className={d.asBG} src={v?.artistImage} width={380} height={296} alt='' />
                         <Image className={d.checkIcon} src='/img/check.png' width={80} height={80} alt='' />
-                        <div className={d.tag}><p>Jass</p></div>
+                        <div className={d.tag}><p>{v?.genre}</p></div>
                       </div>
                       <div className={d.contentArea}>
                         <div className={d.p_v_titleArea}>
-                          <h3>Kanyea Singer</h3>
+                          <h3>{v?.name}</h3>
                           <div className={d.rating}>
                             <Image src='/img/rating.png' width={18} height={18} alt='star' />
-                            <span>4.5</span>
+                            <span>{v?.ratings}</span>
                           </div>
                         </div>
-                        <div className={d.category}>Rapper West</div>
+                        <div className={d.category}>{v?.code}</div>
                         <div className={d.p_v_btn}>
-                          <button>Try now</button>
+                          <button onClick={() => { selectArtist(v?._id); setStep3(true) }}>Try now</button>
                         </div>
                       </div>
                       {/* conditional if premium */}
@@ -111,19 +158,29 @@ const MakeDemo = () => {
             (!step3
               && <div className={d.upload}>
                 <h4>Upload Your Recording</h4>
-                <button onClick={() => setStep2(true)}>
-                  <Image src="/img/plus.png" width={50} height={50} alt='plus' />
-                </button>
+                <label htmlFor="uploadAudio" onClick={handleLabelClick}>
+                  <button>
+                    <Image src="/img/plus.png" width={50} height={50} alt='plus' />
+                  </button>
+                </label>
+                <input
+                  encType="multipart/form-data"
+                  type="file"
+                  id="uploadAudio"
+                  style={{ display: 'none' }}
+                  ref={fileInputRef}
+                  onChange={handleAudioUpload}
+                  accept="audio/mpeg"
+                />
               </div>
             )
         }
         {
           step2 && step3 &&
-          <div
-            className={d.getDemoBtn}
-            // open loading progress
-            onClick={() => setOpenProgress(true)}>
-            <button >Get your demo</button>
+          <div className={d.getDemoBtn}>
+            <button
+              onClick={handleConvertMusic}
+            >Get your demo</button>
           </div>
         }
         <div className={d.latestDemo}>

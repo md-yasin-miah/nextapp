@@ -35,6 +35,10 @@
   background: #2F4668;
 }
 
+.progress .active {
+  cursor: pointer;
+}
+
 .active .circle {
   background: linear-gradient(90deg, #19A7AD 11.69%, #1D8093 79.78%);
 }
@@ -165,6 +169,7 @@
 .imgArea {
   width: 100%;
   height: 296px;
+  cursor: pointer;
   position: relative;
 }
 

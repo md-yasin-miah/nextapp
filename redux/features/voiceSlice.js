@@ -1,17 +1,31 @@
+import { getAllVoices } from '@/axios/axios';
 import { createSlice } from '@reduxjs/toolkit';
 
 const voiceSlice = createSlice({
   name: 'voice',
-  initialState: {},
-  reducers: {
-    setVoice: (state, action) => {
-      return action.payload;
-    },
-    getVoice: (state) => {
-      return state;
-    }
+  initialState: {
+    voices: [],
+    loading: false,
+    error: null,
   },
+  reducers: {},
+  extraReducers: (builder) => {
+    builder.addCase(getAllVoices.pending, (state) => {
+      state.loading = true;
+      state.error = null;
+    });
+
+    builder.addCase(getAllVoices.fulfilled, (state, action) => {
+      state.loading = false;
+      state.voices = action.payload;
+    });
+
+    builder.addCase(getAllVoices.rejected, (state, action) => {
+      state.loading = false;
+      state.error = action;
+    });
+  }
 });
 
-export const { setVoice, getVoice } = voiceSlice.actions;
+
 export default voiceSlice.reducer;

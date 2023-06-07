@@ -11,6 +11,14 @@ const config = {
     Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
   },
 };
+
+const configMT = {
+  headers: {
+    //multipart/form-data
+    "Content-Type": "multipart/form-data",
+    Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+  },
+};
 // Config with Content-Type header
 const configCT = {
   headers: {
@@ -70,7 +78,6 @@ export const getProfile = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const response = await axios.get(`${baseURL}/auth/me`, config);
-      console.log('response', response.data);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -99,9 +106,18 @@ export const createVoice = (voiceData) => {
 };
 
 // Axios instance for getting all voices
-export const getAllVoices = () => {
-  return axios.get(`${baseURL}/voice`, config);
-};
+
+export const getAllVoices = createAsyncThunk(
+  'voice/getAllVoices',
+  async (_, thunkAPI) => {
+    try {
+      const response = await axios.get(`${baseURL}/voice`, config);
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
 //get allPlans
 export const getAllPlans = createAsyncThunk(
   'plan/getAllPlans',
@@ -121,7 +137,6 @@ export const subscribeToPlan = createAsyncThunk(
   async (priceId, thunkAPI) => {
     try {
       const response = await axios.post(`${baseURL}/plan/price/${priceId}/checkout`, config);
-      console.log('response', response.data);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -131,25 +146,26 @@ export const subscribeToPlan = createAsyncThunk(
 
 // fetchUserMusic
 export const fetchUserMusic = createAsyncThunk('userMusic/fetchUserMusic', async () => {
-  const response = await axios.get(`${baseURL}/music/user`, config);
+  const response = await axios.get(`${baseURL}/music/user`, configMT);
   return response.data;
 });
 
 // createMusic
 export const convertMusic = createAsyncThunk('musicConversion/convertMusic', async (formData) => {
-  const response = await axios.post(`${baseURL}//music/convert`, formData, config);
+  const response = await axios.post(`${baseURL}/music/convert`, formData, configMT);
+  console.log('response', response.data);
   return response.data;
 });
 
 // downloadMusic
 export const downloadMusic = createAsyncThunk('musicDownload/downloadMusic', async (musicId) => {
-  const response = await axios.get(`${baseURL}/music/${musicId}/download`, config);
+  const response = await axios.get(`${baseURL}/music/${musicId}/download`, configMT);
   return response.data;
 });
 
 // streamMusic
 export const streamMusic = createAsyncThunk('musicStream/streamMusic', async (musicId) => {
-  const response = await axios.get(`${baseURL}/music/${musicId}/stream`, config);
+  const response = await axios.get(`${baseURL}/music/${musicId}/stream`, configMT);
   return response.data;
 });
 

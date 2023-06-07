@@ -1,4 +1,4 @@
-import {  createSlice } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 import { convertMusic } from '@/axios/axios';
 
 const musicConversionSlice = createSlice({
