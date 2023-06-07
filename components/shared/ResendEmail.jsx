@@ -31,7 +31,7 @@ const ResendEmail = () => {
             If you not got any mail, please clicking button below
           </span>
         </p>
-        <button className={v.action}>confirm your email</button>
+        <button className={v.action}>Resend Email</button>
         <p className={v.haveIssue}>
           <span>Any Question? Email us at <Link href='mailto:anydemo@gmail.com'> <strong>anydemo@gmail.com</strong></Link></span>
         </p>
