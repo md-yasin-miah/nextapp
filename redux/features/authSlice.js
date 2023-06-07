@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { registerUser, loginUser, forgetPassword, authenticateWithGoogle } from '@/axios/axios';
+import { registerUser, loginUser, forgetPassword, authenticateWithGoogle, resetPassword } from '@/axios/axios';
 
 // Auth slice
 const authSlice = createSlice({
@@ -8,6 +8,8 @@ const authSlice = createSlice({
     user: null,
     loading: false,
     error: null,
+    resetPasswordStatus: null,
+    forgetPasswordStatus: null,
   },
   reducers: {},
   extraReducers: (builder) => {
@@ -61,6 +63,22 @@ const authSlice = createSlice({
     });
 
     builder.addCase(forgetPassword.rejected, (state, action) => {
+      state.loading = false;
+      state.error = action.payload;
+    });
+
+    // Handling the reset password request
+    builder.addCase(resetPassword.pending, (state) => {
+      state.loading = true;
+      state.error = null;
+    });
+
+    builder.addCase(resetPassword.fulfilled, (state, action) => {
+      state.loading = false;
+      state.resetPasswordStatus = action.payload;
+    });
+
+    builder.addCase(resetPassword.rejected, (state, action) => {
       state.loading = false;
       state.error = action.payload;
     });
