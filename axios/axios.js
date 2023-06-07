@@ -32,11 +32,11 @@ export const registerUser = createAsyncThunk(
   async (userData, { rejectWithValue }) => {
     try {
       const response = await axios.post(`${baseURL}/auth/register`, userData, configCT);
-      toast.success(response?.data?.message)
+      toast.success(response?.data?.message || "Registered Successfully!")
       return response?.data;
     } catch (error) {
       toast.error(error?.response?.data?.message)
-      return rejectWithValue(error?.response?.data);
+      return rejectWithValue(error?.response?.data || error?.message || "Something went wrong!");
     }
   }
 );
@@ -51,7 +51,7 @@ export const loginUser = createAsyncThunk(
       localStorage.setItem('accessToken', response.data.accessToken);
       return response.data;
     } catch (error) {
-      toast.error(error?.response?.data?.message);
+      toast.error(error?.response?.data?.message || "Something went wrong!");
       return rejectWithValue(error.response.data);
     }
   }
@@ -63,10 +63,10 @@ export const forgetPassword = createAsyncThunk(
   async (email, { rejectWithValue }) => {
     try {
       const response = await axios.post(`${baseURL}/auth/forgot-password`, email, configCT);
-      toast.success(response?.data?.message);
+      toast.success(response?.data?.message || "Password reset link sent to your email!");
       return response.data;
     } catch (error) {
-      toast.error(error?.response?.data?.message);
+      toast.error(error?.response?.data?.message || "Something went wrong!");
       return rejectWithValue(error.response.data);
     }
   }
@@ -91,10 +91,10 @@ export const updateProfile = createAsyncThunk(
   async (userData, thunkAPI) => {
     try {
       const response = await axios.put(`${baseURL}/user/profile`, userData, config);
-      toast.success(response?.data?.message);
+      toast.success(response?.data?.message || "Profile Updated Successfully!");
       return response.data;
     } catch (error) {
-      toast.error(error?.response?.data?.message);
+      toast.error(error?.response?.data?.message || "Something went wrong!");
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -106,7 +106,6 @@ export const createVoice = (voiceData) => {
 };
 
 // Axios instance for getting all voices
-
 export const getAllVoices = createAsyncThunk(
   'voice/getAllVoices',
   async (_, thunkAPI) => {
@@ -118,6 +117,7 @@ export const getAllVoices = createAsyncThunk(
     }
   }
 );
+
 //get allPlans
 export const getAllPlans = createAsyncThunk(
   'plan/getAllPlans',
@@ -171,8 +171,14 @@ export const streamMusic = createAsyncThunk('musicStream/streamMusic', async (mu
 
 // verifyEmail
 export const verifyEmail = createAsyncThunk('emailVerification/verifyEmail', async (token) => {
-  const response = await axios.post(`${baseURL}/auth/verify-email`, { token }, configCT);
-  return response.data;
+  try {
+    const response = await axios.post(`${baseURL}/auth/verify-email`, { token }, configCT);
+    toast.success(response?.data?.message || "Email verified successfully!");
+    return response.data;
+  } catch (error) {
+    toast.error(error?.response?.data?.message || "Something went wrong!");
+    return error.response.data;
+  }
 });
 
 // authentication with google
