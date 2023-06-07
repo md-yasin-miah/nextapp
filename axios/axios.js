@@ -4,14 +4,15 @@ import toast from 'react-hot-toast'
 
 // Base URL
 const baseURL = 'https://api.syscomatic.com/api/v1';
-const token = localStorage.getItem('accessToken');
+
+const token = typeof window !== 'undefined' && localStorage.getItem('accessToken');
 //stringify the token
 const tokenString = JSON.stringify(token);
 // Authenticated config with Authorization header
 const config = {
   headers: {
     "Content-Type": "application/json",
-    "Authorization": `Bearer ${token}`,
+    "authorization": `Bearer ${token}`,
   },
 };
 
@@ -19,7 +20,7 @@ const configMT = {
   headers: {
     //multipart/form-data
     "Content-Type": "multipart/form-data",
-    Authorization: `Bearer ${token}`,
+    "authorization": `Bearer ${token}`,
   },
 };
 // Config with Content-Type header
@@ -140,10 +141,13 @@ export const subscribeToPlan = createAsyncThunk(
   'plan/subscribeToPlan',
   async (priceId, thunkAPI) => {
     try {
-      const response = await axios.post(`${baseURL}/plan/price/${priceId}/checkout`, config);
+      const url = `https://0ea0-103-166-89-86.ngrok-free.app/api/v1/plan/price/${priceId}/checkout`;
+      // const url = `${baseURL}/plan/price/${priceId}/checkout`;
+      const response = await axios.get(url, config);
       console.log('subscribeToPlan', response);
       return response.data;
     } catch (error) {
+      console.log('subscribeToPlan');
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -151,15 +155,25 @@ export const subscribeToPlan = createAsyncThunk(
 
 // fetchUserMusic
 export const fetchUserMusic = createAsyncThunk('userMusic/fetchUserMusic', async () => {
-  const response = await axios.get(`${baseURL}/music/user`, configMT);
-  return response.data;
+  try {
+    const response = await axios.get(`${baseURL}/music/user`, configMT);
+    return response.data;
+  }
+  catch (error) {
+    return thunkAPI.rejectWithValue(error.message);
+  }
 });
 
 // createMusic
 export const convertMusic = createAsyncThunk('musicConversion/convertMusic', async (formData) => {
-  const response = await axios.post(`${baseURL}/music/convert`, formData, configMT);
-  console.log('response', response.data);
-  return response.data;
+  try {
+    const response = await axios.post(`${baseURL}/music/convert`, formData, configMT);
+    toast.success(response?.data?.message);
+    return response.data;
+  }
+  catch (error) {
+    return thunkAPI.rejectWithValue(error.message);
+  }
 });
 
 // downloadMusic
@@ -170,8 +184,14 @@ export const downloadMusic = createAsyncThunk('musicDownload/downloadMusic', asy
 
 // streamMusic
 export const streamMusic = createAsyncThunk('musicStream/streamMusic', async (musicId) => {
-  const response = await axios.get(`${baseURL}/music/${musicId}/stream`, configMT);
-  return response.data;
+  try {
+    const response = await axios.get(`${baseURL}/music/${musicId}/stream`, configMT);
+    console.log('streamMusic', response);
+    return response.data;
+  }
+  catch (error) {
+    return thunkAPI.rejectWithValue(error.message);
+  }
 });
 
 // verifyEmail

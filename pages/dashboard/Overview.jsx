@@ -15,7 +15,7 @@ const Overview = () => {
               <Image src="/svg/ic_outline-music-note.svg" width={18} height={18} alt="icon" />
             </div>
             <div className={o.content}>
-              <p className={o.counter}>12</p>
+              <p className={o.counter}>{user?.songCount || '00'}</p>
               <p className={o.name}>Created Songs</p>
             </div>
           </div>
@@ -26,7 +26,7 @@ const Overview = () => {
               <Image src="/svg/DownloadOutline.svg" width={18} height={18} alt="icon" />
             </div>
             <div className={o.content}>
-              <p className={o.counter}>32</p>
+              <p className={o.counter}>{user?.downloadCount || '0'}</p>
               <p className={o.name}>Downloaded</p>
             </div>
           </div>
@@ -37,7 +37,7 @@ const Overview = () => {
               <Image src="/svg/tag.svg" width={18} height={18} alt="icon" />
             </div>
             <div className={o.content}>
-              <p className={o.counter}>09</p>
+              <p className={o.counter}>{user?.sales || '0'}</p>
               <p className={o.name}>Sale Songs</p>
             </div>
           </div>
@@ -48,7 +48,7 @@ const Overview = () => {
               <Image src="/svg/grow.svg" width={18} height={18} alt="icon" />
             </div>
             <div className={o.content}>
-              <p className={o.counter}>$56</p>
+              <p className={o.counter}>${user?.revenue || '0'}</p>
               <p className={o.name}>Revenue</p>
             </div>
           </div>
@@ -64,11 +64,11 @@ const Overview = () => {
         <div className={o.profile_info}>
           <div className={o.p_info}>
             <p className={o.name}>Email</p>
-            <p className={o.info}>bill.sanders@example.com</p>
+            <p className={o.info}>{user?.email || 'N/A'}</p>
           </div>
           <div className={o.p_info}>
             <p className={o.name}>Mobile Number</p>
-            <p className={o.info}>244-1139-006</p>
+            <p className={o.info}>{user?.phoneNumber || 'N/A'}</p>
           </div>
           <div className={o.p_info}>
             <p className={o.name}>User Name</p>
@@ -76,7 +76,7 @@ const Overview = () => {
           </div>
           <div className={o.p_info}>
             <p className={o.name}>Birthday</p>
-            <p className={o.info}>August 30, 1996</p>
+            <p className={o.info}>{user?.birthday || 'N/A'}</p>
           </div>
         </div>
       </div>

@@ -10,7 +10,7 @@ const SubscriptionPlan = () => {
   const [active, setActive] = useState('month')
   const dispatch = useDispatch()
   const { plans, loading, planLoading } = useSelector(state => state.plan);
-  console.log('plans', plans);
+  console.log('plans', plans, planLoading);
   const handleSubscribe = (priceId) => {
     dispatch(subscribeToPlan(priceId))
   }
@@ -75,9 +75,7 @@ const SubscriptionPlan = () => {
                   <div className={s.s_card__button + ' ' + (i === 1 ? s.active : '')}>
                     <button
                       disabled={planLoading}
-                      onClick={() => handleSubscribe(
-                        active === 'month' ? item?.monthlyPricingId : item?.annualPricingId
-                      )}>Choose Plan</button>
+                      onClick={() => handleSubscribe(active === 'month' ? item?.monthlyPricingId : item?.annualPricingId)}>Choose Plan</button>
                   </div>
                 </div>
                 {/* conditional tsg */}
