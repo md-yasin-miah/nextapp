@@ -197,3 +197,15 @@ export const authenticateWithGoogle = createAsyncThunk('auth/authenticateWithGoo
     return error.response.data;
   }
 });
+
+// resetPassword
+export const resetPassword = createAsyncThunk('auth/resetPassword', async (data) => {
+  try {
+    const response = await axios.post(`${baseURL}/auth/reset-password`, data, configCT);
+    toast.success(response?.data?.message || "Password reset successfully!");
+    return response.data;
+  } catch (error) {
+    toast.error(error?.response?.data?.message || "Something went wrong!");
+    return error.response.data;
+  }
+});
