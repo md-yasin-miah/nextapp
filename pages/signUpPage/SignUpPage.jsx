@@ -27,8 +27,9 @@ const SignUpPage = () => {
     };
 
     await dispatch(registerUser(userData));
-    if (localStorage.getItem('accessToken') && !error) {
-      router.push('/login');
+    if (!error) {
+      localStorage.setItem('email', email);
+      router.push('/checkMailToVerify');
     }
   };
 

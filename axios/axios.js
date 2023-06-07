@@ -52,6 +52,7 @@ export const loginUser = createAsyncThunk(
       const response = await axios.post(`${baseURL}/auth/login`, userData, configCT);
       toast.success("Logged In Successfully!");
       localStorage.setItem('accessToken', response.data.accessToken);
+      localStorage.removeItem('email');
       return response.data;
     } catch (error) {
       toast.error(error?.response?.data?.message || "Something went wrong!");

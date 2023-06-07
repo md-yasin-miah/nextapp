@@ -1,8 +1,10 @@
+'use client'
 import Link from 'next/link';
 import v from '../../styles/resendEmail.module.css';
 import Image from 'next/image';
 
 const ResendEmail = () => {
+  const email = localStorage.getItem('email');
   return (
     <div className={v.resendEmail}>
       <div className={v.resendEmailContainer}>
@@ -12,7 +14,7 @@ const ResendEmail = () => {
         <h2 className={v.title}>verify your email address</h2>
         <p className={v.tag}>
           <span>
-            You’ve entered <strong>xxxxxxxxxxxxx@hotmail.com</strong> as the email address for your account
+            You’ve entered <strong>{email || "N/A"}</strong> as the email address for your account
           </span>
         </p>
         <p className={v.note}>
