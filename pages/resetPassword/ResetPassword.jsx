@@ -21,7 +21,7 @@ const ResetPassword = () => {
   const handleResetPassword = () => {
     const data = {
       token,
-      password,
+      newPassword: password,
     }
 
     if (password === confirmPassword) {
