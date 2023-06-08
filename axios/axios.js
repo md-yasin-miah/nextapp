@@ -37,7 +37,10 @@ export const registerUser = createAsyncThunk(
   async (userData, { rejectWithValue }) => {
     try {
       const response = await axios.post(`${baseURL}/auth/register`, userData, configCT);
-      toast.success(response?.data?.message || "Registered Successfully!")
+      toast.success(response?.data?.message || "Registered Successfully!");
+      if (response.status === 200) {
+        localStorage.setItem('email', userData.email);
+      }
       return response?.data;
     } catch (error) {
       toast.error(error?.response?.data?.message)
@@ -179,8 +182,16 @@ export const convertMusic = createAsyncThunk('musicConversion/convertMusic', asy
 
 // downloadMusic
 export const downloadMusic = createAsyncThunk('musicDownload/downloadMusic', async (musicId) => {
-  const response = await axios.get(`${baseURL}/music/${musicId}/download`, configMT);
-  return response.data;
+  try {
+    const response = await axios.get(`${baseURL}/music/${musicId}/download`, config);
+    console.log('downloadMusic response', response)
+    return response.data;
+  }
+  catch (error) {
+    console.log('downloadMusic error', error)
+    toast.error(error?.response?.data?.message || "Something went wrong!");
+    return thunkAPI.rejectWithValue(error.message);
+  }
 });
 
 // streamMusic

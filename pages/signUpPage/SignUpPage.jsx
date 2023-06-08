@@ -1,5 +1,5 @@
 "use client"
-import React, { useState } from 'react'
+import React, { use, useState } from 'react'
 import signUp from '../../styles/pages/auth.module.css'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -11,9 +11,8 @@ const SignUpPage = () => {
   const [showPassword, setShowPassword] = useState(false);
   const router = useRouter();
   const dispatch = useDispatch();
-  const loading = useSelector((state) => state.auth.loading);
-  const error = useSelector((state) => state.auth.error);
-
+  const { loading, error } = useSelector((state) => state.auth);
+  console.log('error sign Up', error);
 
   const handleRegistration = async () => {
     const fullName = document.getElementById('name').value;
@@ -27,12 +26,10 @@ const SignUpPage = () => {
     };
 
     await dispatch(registerUser(userData));
-    if (!error) {
-      localStorage.setItem('email', email);
+    if (localStorage.getItem('email') === email) {
       router.push('/checkMailToVerify');
     }
   };
-
   const handleGoogleLogin = async () => {
     await dispatch(authenticateWithGoogle());
     if (localStorage.getItem('accessToken') && !error) {
