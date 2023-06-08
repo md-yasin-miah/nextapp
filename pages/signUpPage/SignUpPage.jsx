@@ -8,6 +8,7 @@ import { registerUser, authenticateWithGoogle } from '../../axios/axios';
 import { useRouter } from 'next/navigation';
 
 const SignUpPage = () => {
+  const [formData, setFormData] = useState({ fullName: '', email: '', password: ''})
   const [showPassword, setShowPassword] = useState(false);
   const router = useRouter();
   const dispatch = useDispatch();
@@ -15,21 +16,20 @@ const SignUpPage = () => {
   console.log('error sign Up', error);
 
   const handleRegistration = async () => {
-    const fullName = document.getElementById('name').value;
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
+    const { fullName, email, password } = formData;
 
     const userData = {
       fullName,
       email,
-      password,
-    };
+      password
+    }
 
     await dispatch(registerUser(userData));
     if (localStorage.getItem('email') === email) {
       router.push('/checkMailToVerify');
     }
   };
+
   const handleGoogleLogin = async () => {
     await dispatch(authenticateWithGoogle());
     if (localStorage.getItem('accessToken') && !error) {
@@ -37,6 +37,10 @@ const SignUpPage = () => {
     }
   }
 
+  const handleForm = (e) => {
+    e.preventDefault();
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  }
   return (
     <div>
       <div className={signUp.header_logo}>
@@ -62,19 +66,19 @@ const SignUpPage = () => {
             <div className='form'>
               <div className='formControl'>
                 <label htmlFor="text">Full Name</label>
-                <input type="text" id="name" placeholder="Enter your full name" />
+                <input onChange={handleForm} type="text" id="name" name="fullName" placeholder="Enter your full name" />
               </div>
               <div className='formControl'>
                 <label htmlFor="email">Email</label>
-                <input type="email" id="email" placeholder="Enter your email" />
+                <input onChange={handleForm} type="email" id="email" name="email" placeholder="Enter your email" />
               </div>
               <div className='formControl'>
                 <label htmlFor="password">Password</label>
-                <input type={showPassword ? "text" : "password"} id="password" placeholder="Type your Password" />
+                <input onChange={handleForm} type={showPassword ? "text" : "password"} id="password" name="password" placeholder="Type your Password" />
               </div>
               <div className="controlPassword">
                 <div className="showPassword">
-                  <input onClick={() => setShowPassword(!showPassword)} type="checkbox" id="showPassword" />
+                  <input onChange={handleForm} onClick={() => setShowPassword(!showPassword)} type="checkbox" id="showPassword" />
                   <label htmlFor="showPassword">Show Password</label>
                 </div>
               </div>
