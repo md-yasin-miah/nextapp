@@ -209,8 +209,7 @@ const MakeDemo = () => {
           <LoadingProgressModal
             title='AI preparing your music'
             open={openProgress}
-            setOpen={setOpenProgress}
-            percent={'65%'} />
+            setOpen={setOpenProgress} />
         }
       </div>
     </MainLayout>

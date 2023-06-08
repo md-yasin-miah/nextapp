@@ -11,73 +11,24 @@ const MyMusic = () => {
   const { streamingMusic, loading } = useSelector(state => state.musicStream);
   const { downloadedMusic, error } = useSelector(state => state.musicDownload);
   console.log('downloadedMusic', downloadedMusic, error);
-  //decode base64 mp3 data and play it
-  const base64ToArrayBuffer = (base64) => {
-    const binaryString = window.atob(base64);
-    const len = binaryString.length;
-    const bytes = new Uint8Array(len);
-    for (let i = 0; i < len; i++) {
-      bytes[i] = binaryString.charCodeAt(i);
+
+
+
+  const fileName = "audio.mp3";
+
+  const downloadMP3 = (base64Data, fileName) => {
+    const link = document.createElement('a');
+    link.href = `data:audio/mp3;base64,${base64Data}`;
+    link.download = fileName;
+    link.click();
+  };
+
+  const handleDownloadClick = () => {
+    if (downloadedMusic) {
+      downloadMP3(downloadedMusic, fileName);
     }
-    return bytes.buffer;
-  }
-  const arrayBufferToBase64 = (buffer) => {
-    let binary = '';
-    const bytes = new Uint8Array(buffer);
-    const len = bytes.byteLength;
-    for (let i = 0; i < len; i++) {
-      binary += String.fromCharCode(bytes[i]);
-    }
-    return window.btoa(binary);
-  }
+  };
 
-
-  const playMusic = () => {
-    const base64Data = "Base64-encoded-audio-data";
-    const arrayBuffer = base64ToArrayBuffer(base64Data);
-    const blob = new Blob([arrayBuffer], { type: 'audio/mp3' });
-    const url = URL.createObjectURL(blob);
-    const audio = document.createElement('audio');
-    audio.src = url;
-    audio.controls = true;
-    const container = document.getElementById('audio-container');
-    container.appendChild(audio);
-  }
-
-
-
-  const handleStream = (id) => {
-    dispatch(streamMusic(id));
-    if (streamingMusic) {
-      <Mp3Player encodedAudio={streamingMusic} />
-      // // Convert the encoded audio data to an ArrayBuffer
-      // const encodedAudioData = atob(streamingMusic);
-      // const arrayBuffer = new ArrayBuffer(encodedAudioData.length);
-      // const view = new Uint8Array(arrayBuffer);
-      // for (let i = 0; i < encodedAudioData.length; i++) {
-      //   view[i] = encodedAudioData.charCodeAt(i) & 0xff;
-      // }
-
-      // // Create an AudioContext instance
-      // const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-
-      // // Decode the audio data
-      // audioContext.decodeAudioData(arrayBuffer, function (decodedData) {
-      //   // Create a buffer source node
-      //   const source = audioContext.createBufferSource();
-      //   // Set the decoded audio data as the buffer for the source node
-      //   source.buffer = decodedData;
-      //   // Connect the source node to the audio context destination (e.g., speakers)
-      //   source.connect(audioContext.destination);
-      //   // Start playing the audio
-      //   source.start(0);
-      //   console.log('Error decoding audio:');
-      // }, function (error) {
-      //   // Error handling if decoding fails
-      //   console.error('Error decoding audio:', error);
-      // });
-    }
-  }
   const handleDownload = (id) => {
     dispatch(downloadMusic(id));
   }
@@ -103,7 +54,7 @@ const MyMusic = () => {
               <div className={m.musicCardContent}>
                 <div className={m.info}>
                   <small>{item?.genre}</small>
-                  <h4 onClick={() => playMusic()}>{item?.title}</h4>
+                  <h4 onClick={() => handleDownloadClick()}>{item?.title}</h4>
                   <span>Duration : {item?.duration}m</span>
                 </div>
                 {/* <button disabled={loading} onClick={() => handleStream(item?._id)}>Stream</button> */}

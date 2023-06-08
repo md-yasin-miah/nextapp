@@ -149,6 +149,8 @@ export const subscribeToPlan = createAsyncThunk(
       const url = `${baseURL}/plan/price/${priceId}/checkout`;
       const response = await axios.get(url, config);
       console.log('subscribeToPlan', response);
+      //redirect to checkout page with blank page
+      window.open(response.data.checkoutUrl, '_blank');
       return response.data;
     } catch (error) {
       console.log('subscribeToPlan');
@@ -173,9 +175,11 @@ export const convertMusic = createAsyncThunk('musicConversion/convertMusic', asy
   try {
     const response = await axios.post(`${baseURL}/music/convert`, formData, configMT);
     toast.success(response?.data?.message);
+    console.log('convertMusic response', response);
     return response.data;
   }
   catch (error) {
+    toast.error(error?.response?.data?.message || "Something went wrong!");
     return thunkAPI.rejectWithValue(error.message);
   }
 });
@@ -185,6 +189,19 @@ export const downloadMusic = createAsyncThunk('musicDownload/downloadMusic', asy
   try {
     const response = await axios.get(`${baseURL}/music/${musicId}/download`, config);
     console.log('downloadMusic response', response)
+    return response.data;
+  }
+  catch (error) {
+    console.log('downloadMusic error', error)
+    toast.error(error?.response?.data?.message || "Something went wrong!");
+    return thunkAPI.rejectWithValue(error.message);
+  }
+});
+// fetch user downloaded music list
+export const downloadedMusicList = createAsyncThunk('musicDownload/downloadedMusicList', async () => {
+  try {
+    const response = await axios.get(`${baseURL}/music/user/download`, config);
+    console.log('downloaded_Music_List', response)
     return response.data;
   }
   catch (error) {
