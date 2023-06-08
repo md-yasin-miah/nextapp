@@ -1,10 +1,18 @@
 'use client';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import d from '../../styles/pages/dashboard/downloads.module.css';
 import Image from 'next/image';
 import AudioPlayer from '@/components/shared/AudioPlayer';
+import { useDispatch, useSelector } from 'react-redux';
+import { downloadedMusicList } from '@/axios/axios';
 const Downloads = () => {
   const [showOptions, setShowOptions] = useState(null);
+  const dispatch = useDispatch();
+  const { downloadedMusic_List } = useSelector((state) => state.musicDownload);
+  console.log('downloadedMusicList', downloadedMusic_List)
+  useEffect(() => {
+    dispatch(downloadedMusicList());
+  }, []);
   return (
     <div className='dashboard_children'>
       <div className="dashboard_children_title">

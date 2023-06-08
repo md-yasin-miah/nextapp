@@ -10,9 +10,8 @@ const SubscriptionPlan = () => {
   const [active, setActive] = useState('month')
   const dispatch = useDispatch()
   const { plans, loading, planLoading } = useSelector(state => state.plan);
-  console.log('plans', plans, planLoading);
   const handleSubscribe = (priceId) => {
-    dispatch(subscribeToPlan(priceId))
+    dispatch(subscribeToPlan(priceId));
   }
   const Check = () => (
     <Image src="/check.svg" width={24} height={24} alt="check" />

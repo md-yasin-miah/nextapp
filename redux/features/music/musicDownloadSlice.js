@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { downloadMusic } from '@/axios/axios';
+import { downloadMusic, downloadedMusicList } from '@/axios/axios';
 
 const musicDownloadSlice = createSlice({
   name: 'musicDownload',
@@ -7,10 +7,12 @@ const musicDownloadSlice = createSlice({
     downloadedMusic: null,
     loading: false,
     error: null,
+    downloadedMusic_List: null,
   },
   reducers: {},
   extraReducers: (builder) => {
     builder
+      //download music
       .addCase(downloadMusic.pending, (state) => {
         state.loading = true;
       })
@@ -21,7 +23,20 @@ const musicDownloadSlice = createSlice({
       .addCase(downloadMusic.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message;
+      })
+      //downloaded music list
+      .addCase(downloadedMusicList.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(downloadedMusicList.fulfilled, (state, action) => {
+        state.loading = false;
+        state.downloadedMusic_List = action.payload;
+      })
+      .addCase(downloadedMusicList.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error.message;
       });
+
   },
 });
 
