@@ -3,9 +3,11 @@ import u from '../../styles/pages/dashboard/userAccount.module.css';
 import { useState } from 'react';
 import { updateProfile } from '../../axios/axios';
 import { useDispatch } from 'react-redux';
+import Link from 'next/link';
 
 
 const UserAccount = () => {
+  const token = localStorage.getItem('accessToken') || null;
   const dispatch = useDispatch();
   const [formData, setFormData] = useState({
     name: '',
@@ -56,7 +58,7 @@ const UserAccount = () => {
         <h4 className='title'>Password</h4>
         <div className={u.subCard}>
           <p>Once I have this information, I can guide you through the process of changing your password</p>
-          <button className='s_btn'>Change password</button>
+          <Link href={token ? `/reset-password?token=${token}` : '/login'}><button className='s_btn' >Change password</button></Link>
         </div>
       </div>
       <div className="dashboard_children_title">
