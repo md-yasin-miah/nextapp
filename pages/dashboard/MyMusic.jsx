@@ -1,9 +1,15 @@
+'use client'
 import Image from 'next/image'
 import m from '../../styles/pages/dashboard/myMusic.module.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react';
 import { downloadMusic, fetchUserMusic, streamMusic } from '@/axios/axios';
 import Mp3Player from '@/components/Mp3Player';
+import { NoDataFound } from '@/components/helper';
+
+// import decode, { decoders } from 'audio-decode';
+import decodeAudio from 'audio-decode';
+// import buffer from 'audio-lena/mp3';
 
 const MyMusic = () => {
   const dispatch = useDispatch();
@@ -14,18 +20,30 @@ const MyMusic = () => {
 
 
 
-  const fileName = "audio.mp3";
+  const downloadMP3 = async (base64Data) => {
+    const binaryString = window.atob(base64Data);
+    const bytes = new Uint8Array(binaryString.length);
+    for (let i = 0; i < binaryString.length; i++) {
+      bytes[i] = binaryString.charCodeAt(i);
+    }
 
-  const downloadMP3 = (base64Data, fileName) => {
-    const link = document.createElement('a');
-    link.href = `data:audio/mp3;base64,${base64Data}`;
-    link.download = fileName;
-    link.click();
+    const decoder = new TextDecoder('utf-8');
+    const decodedData = decoder.decode(bytes);
+
+    const blob = new Blob([decodedData], { type: 'audio/mp3' });
+
+    const blobUrl = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.style.display = 'none';
+    a.href = blobUrl;
+    a.download = 'audio_file.mp3'; // set the desired filename
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
   };
-
   const handleDownloadClick = () => {
     if (downloadedMusic) {
-      downloadMP3(downloadedMusic, fileName);
+      downloadMP3(downloadedMusic);
     }
   };
 
@@ -65,7 +83,7 @@ const MyMusic = () => {
         }
       </div>
       {
-        music?.length <= 0 && <div style={{ display: 'flex', justifyContent: 'center' }}><Image src='/img/no__data.png' width={300} height={300} alt='empty' /></div>
+        music?.length <= 0 && <NoDataFound />
       }
     </div>
   )

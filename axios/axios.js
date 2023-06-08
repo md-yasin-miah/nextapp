@@ -1,13 +1,12 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import toast from 'react-hot-toast'
+import { useSelector } from 'react-redux';
 
 // Base URL
 const baseURL = 'https://api.syscomatic.com/api/v1';
 
 const token = typeof window !== 'undefined' && localStorage.getItem('accessToken');
-//stringify the token
-const tokenString = JSON.stringify(token);
 // Authenticated config with Authorization header
 const config = {
   headers: {
@@ -145,15 +144,28 @@ export const subscribeToPlan = createAsyncThunk(
   'plan/subscribeToPlan',
   async (priceId, thunkAPI) => {
     try {
-      // const url = `https://0ea0-103-166-89-86.ngrok-free.app/api/v1/plan/price/${priceId}/checkout`;
+      // const user = useSelector((state) => state.profile.profile);
       const url = `${baseURL}/plan/price/${priceId}/checkout`;
       const response = await axios.get(url, config);
-      console.log('subscribeToPlan', response);
       //redirect to checkout page with blank page
       window.open(response.data.checkoutUrl, '_blank');
       return response.data;
     } catch (error) {
-      console.log('subscribeToPlan');
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+//cancel subscribe
+export const cancelSubscription = createAsyncThunk(
+  'plan/cancelSubscription',
+  async (thunkAPI) => {
+    try {
+      const url = `${baseURL}/plan/cancel`;
+      const response = await axios.delete(url, config);
+      toast.success(response?.data?.message || "Subscription Cancelled Successfully!");
+      return response.data;
+    } catch (error) {
+      toast.error(error?.response?.data?.message || "Something went wrong!");
       return thunkAPI.rejectWithValue(error.message);
     }
   }

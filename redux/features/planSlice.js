@@ -1,4 +1,4 @@
-import { getAllPlans, subscribeToPlan } from "@/axios/axios";
+import { cancelSubscription, getAllPlans, subscribeToPlan } from "@/axios/axios";
 
 const { createSlice } = require("@reduxjs/toolkit");
 
@@ -34,6 +34,27 @@ const planSlice = createSlice({
     builder.addCase(subscribeToPlan.fulfilled, (state, action) => {
       state.planLoading = false;
       state.subscribedPlan = action.payload;
+    }
+    );
+    builder.addCase(subscribeToPlan.rejected, (state, action) => {
+      state.planLoading = false;
+      state.error = action.payload;
+    }
+    );
+    //handle unsubscribe from plan
+    builder.addCase(cancelSubscription.pending, (state, action) => {
+      state.planLoading = true;
+      state.error = null;
+    }
+    );
+    builder.addCase(cancelSubscription.fulfilled, (state, action) => {
+      state.planLoading = false;
+      state.subscribedPlan = action.payload;
+    }
+    );
+    builder.addCase(cancelSubscription.rejected, (state, action) => {
+      state.planLoading = false;
+      state.error = action.payload;
     }
     );
   }
