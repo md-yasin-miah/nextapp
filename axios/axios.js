@@ -23,6 +23,13 @@ const configMT = {
     "authorization": `Bearer ${token}`,
   },
 };
+const configOT = {
+  headers: {
+    //multipart/form-data
+    "Content-Type": "application/octet-stream",
+    "authorization": `Bearer ${token}`,
+  },
+};
 // Config with Content-Type header
 const configCT = {
   headers: {
@@ -199,7 +206,7 @@ export const convertMusic = createAsyncThunk('musicConversion/convertMusic', asy
 // downloadMusic
 export const downloadMusic = createAsyncThunk('musicDownload/downloadMusic', async (musicId) => {
   try {
-    const response = await axios.get(`${baseURL}/music/${musicId}/download`, config);
+    const response = await axios.get(`${baseURL}/music/${musicId}/download`, configOT);
     console.log('downloadMusic response', response)
     return response.data;
   }

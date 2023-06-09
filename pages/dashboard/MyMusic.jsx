@@ -7,9 +7,6 @@ import { downloadMusic, fetchUserMusic, streamMusic } from '@/axios/axios';
 import Mp3Player from '@/components/Mp3Player';
 import { NoDataFound } from '@/components/helper';
 
-// import decode, { decoders } from 'audio-decode';
-import decodeAudio from 'audio-decode';
-// import buffer from 'audio-lena/mp3';
 
 const MyMusic = () => {
   const dispatch = useDispatch();
@@ -18,33 +15,57 @@ const MyMusic = () => {
   const { downloadedMusic, error } = useSelector(state => state.musicDownload);
   console.log('downloadedMusic', downloadedMusic, error);
 
+  const contentType = 'audio/mpeg';
+  const fileName = 'music.mp3';
+  // function downloadAudio(base64Data, fileName, contentType) {
+  //   const byteCharacters = atob(base64Data);
+  //   const byteArrays = [];
 
+  //   for (let offset = 0; offset < byteCharacters.length; offset += 512) {
+  //     const slice = byteCharacters.slice(offset, offset + 512);
 
-  const downloadMP3 = async (base64Data) => {
-    const binaryString = window.atob(base64Data);
-    const bytes = new Uint8Array(binaryString.length);
-    for (let i = 0; i < binaryString.length; i++) {
-      bytes[i] = binaryString.charCodeAt(i);
-    }
+  //     const byteNumbers = new Array(slice.length);
+  //     for (let i = 0; i < slice.length; i++) {
+  //       byteNumbers[i] = slice.charCodeAt(i);
+  //     }
 
-    const decoder = new TextDecoder('utf-8');
-    const decodedData = decoder.decode(bytes);
+  //     const byteArray = new Uint8Array(byteNumbers);
+  //     byteArrays.push(byteArray);
+  //   }
 
-    const blob = new Blob([decodedData], { type: 'audio/mp3' });
+  //   const blob = new Blob(byteArrays, { type: contentType });
 
-    const blobUrl = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.style.display = 'none';
-    a.href = blobUrl;
-    a.download = 'audio_file.mp3'; // set the desired filename
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-  };
+  //   const url = URL.createObjectURL(blob);
+
+  //   const link = document.createElement('a');
+  //   link.href = url;
+  //   link.download = fileName;
+  //   link.click();
+
+  //   URL.revokeObjectURL(url);
+  // }
+  function downloadAudioChunks(audioData) {
+    // 1. Extract audio data by removing the ID3 tag
+    const audioDataWithoutID3 = audioData.substring(10);
+
+    // 2. Convert data to the desired format if needed
+
+    // 3. Create a downloadable Blob
+    const blob = new Blob([audioDataWithoutID3], { type: 'audio/mpeg' });
+
+    // 4. Generate a download link
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = 'audio.mp3';
+
+    // Trigger the download
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  }
   const handleDownloadClick = () => {
-    if (downloadedMusic) {
-      downloadMP3(downloadedMusic);
-    }
+    downloadAudioChunks(downloadedMusic);
   };
 
   const handleDownload = (id) => {
@@ -72,7 +93,7 @@ const MyMusic = () => {
               <div className={m.musicCardContent}>
                 <div className={m.info}>
                   <small>{item?.genre}</small>
-                  <h4 onClick={() => handleDownloadClick()}>{item?.title}</h4>
+                  <h4 onClick={() => handleDownloadClick(item?._id)}>{item?.title}</h4>
                   <span>Duration : {item?.duration}m</span>
                 </div>
                 {/* <button disabled={loading} onClick={() => handleStream(item?._id)}>Stream</button> */}
