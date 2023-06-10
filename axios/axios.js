@@ -1,17 +1,18 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-import toast from 'react-hot-toast'
-import { useSelector } from 'react-redux';
+import toast from 'react-hot-toast';
+import { saveAs } from 'file-saver';
 
 // Base URL
 const baseURL = 'https://api.syscomatic.com/api/v1';
+// const baseURL = 'http://localhost:5050/api/v1';
 
-const token = typeof window !== 'undefined' && localStorage.getItem('accessToken');
+const token =typeof window !== 'undefined' && localStorage.getItem('accessToken');
 // Authenticated config with Authorization header
 const config = {
   headers: {
-    "Access-Control-Allow-Origin": "*",
-    "Content-Type": "application/json",
+    'Access-Control-Allow-Origin': '*',
+    'Content-Type': 'application/json',
     authorization: `Bearer ${token}`,
   },
 };
@@ -19,21 +20,21 @@ const config = {
 const configMT = {
   headers: {
     //multipart/form-data
-    "Content-Type": "multipart/form-data",
-    "authorization": `Bearer ${token}`,
+    'Content-Type': 'multipart/form-data',
+    authorization: `Bearer ${token}`,
   },
 };
 const configOT = {
   headers: {
     //multipart/form-data
-    "Content-Type": "application/octet-stream",
-    "authorization": `Bearer ${token}`,
+    'Content-Type': 'application/octet-stream',
+    authorization: `Bearer ${token}`,
   },
 };
 // Config with Content-Type header
 const configCT = {
   headers: {
-    "Content-Type": "application/json",
+    'Content-Type': 'application/json',
   },
 };
 
@@ -42,15 +43,21 @@ export const registerUser = createAsyncThunk(
   'auth/registerUser',
   async (userData, { rejectWithValue }) => {
     try {
-      const response = await axios.post(`${baseURL}/auth/register`, userData, configCT);
-      toast.success(response?.data?.message || "Registered Successfully!");
+      const response = await axios.post(
+        `${baseURL}/auth/register`,
+        userData,
+        configCT
+      );
+      toast.success(response?.data?.message || 'Registered Successfully!');
       if (response.status === 200) {
         localStorage.setItem('email', userData.email);
       }
       return response?.data;
     } catch (error) {
-      toast.error(error?.response?.data?.message)
-      return rejectWithValue(error?.response?.data || error?.message || "Something went wrong!");
+      toast.error(error?.response?.data?.message);
+      return rejectWithValue(
+        error?.response?.data || error?.message || 'Something went wrong!'
+      );
     }
   }
 );
@@ -60,13 +67,17 @@ export const loginUser = createAsyncThunk(
   'auth/loginUser',
   async (userData, { rejectWithValue }) => {
     try {
-      const response = await axios.post(`${baseURL}/auth/login`, userData, configCT);
-      toast.success("Logged In Successfully!");
+      const response = await axios.post(
+        `${baseURL}/auth/login`,
+        userData,
+        configCT
+      );
+      toast.success('Logged In Successfully!');
       localStorage.setItem('accessToken', response.data.accessToken);
       localStorage.removeItem('email');
       return response.data;
     } catch (error) {
-      toast.error(error?.response?.data?.message || "Something went wrong!");
+      toast.error(error?.response?.data?.message || 'Something went wrong!');
       return rejectWithValue(error.response.data);
     }
   }
@@ -77,11 +88,17 @@ export const forgetPassword = createAsyncThunk(
   'auth/forgetPassword',
   async (email, { rejectWithValue }) => {
     try {
-      const response = await axios.post(`${baseURL}/auth/forgot-password`, email, configCT);
-      toast.success(response?.data?.message || "Password reset link sent to your email!");
+      const response = await axios.post(
+        `${baseURL}/auth/forgot-password`,
+        email,
+        configCT
+      );
+      toast.success(
+        response?.data?.message || 'Password reset link sent to your email!'
+      );
       return response.data;
     } catch (error) {
-      toast.error(error?.response?.data?.message || "Something went wrong!");
+      toast.error(error?.response?.data?.message || 'Something went wrong!');
       return rejectWithValue(error.response.data);
     }
   }
@@ -105,11 +122,15 @@ export const updateProfile = createAsyncThunk(
   'user/updateUserData',
   async (userData, thunkAPI) => {
     try {
-      const response = await axios.put(`${baseURL}/user/profile`, userData, config);
-      toast.success(response?.data?.message || "Profile Updated Successfully!");
+      const response = await axios.put(
+        `${baseURL}/user/profile`,
+        userData,
+        config
+      );
+      toast.success(response?.data?.message || 'Profile Updated Successfully!');
       return response.data;
     } catch (error) {
-      toast.error(error?.response?.data?.message || "Something went wrong!");
+      toast.error(error?.response?.data?.message || 'Something went wrong!');
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -169,111 +190,160 @@ export const cancelSubscription = createAsyncThunk(
     try {
       const url = `${baseURL}/plan/cancel`;
       const response = await axios.delete(url, config);
-      toast.success(response?.data?.message || "Subscription Cancelled Successfully!");
+      toast.success(
+        response?.data?.message || 'Subscription Cancelled Successfully!'
+      );
       return response.data;
     } catch (error) {
-      toast.error(error?.response?.data?.message || "Something went wrong!");
+      toast.error(error?.response?.data?.message || 'Something went wrong!');
       return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
 
 // fetchUserMusic
-export const fetchUserMusic = createAsyncThunk('userMusic/fetchUserMusic', async () => {
-  try {
-    const response = await axios.get(`${baseURL}/music/user`, configMT);
-    return response.data;
+export const fetchUserMusic = createAsyncThunk(
+  'userMusic/fetchUserMusic',
+  async () => {
+    try {
+      const response = await axios.get(`${baseURL}/music/user`, configMT);
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
   }
-  catch (error) {
-    return thunkAPI.rejectWithValue(error.message);
-  }
-});
+);
 
 // createMusic
-export const convertMusic = createAsyncThunk('musicConversion/convertMusic', async (formData) => {
-  try {
-    const response = await axios.post(`${baseURL}/music/convert`, formData, configMT);
-    toast.success(response?.data?.message);
-    console.log('convertMusic response', response);
-    return response.data;
+export const convertMusic = createAsyncThunk(
+  'musicConversion/convertMusic',
+  async (formData) => {
+    try {
+      const response = await axios.post(
+        `${baseURL}/music/convert`,
+        formData,
+        configMT
+      );
+      toast.success(response?.data?.message);
+      console.log('convertMusic response', response);
+      return response.data;
+    } catch (error) {
+      toast.error(error?.response?.data?.message || 'Something went wrong!');
+      return thunkAPI.rejectWithValue(error.message);
+    }
   }
-  catch (error) {
-    toast.error(error?.response?.data?.message || "Something went wrong!");
-    return thunkAPI.rejectWithValue(error.message);
-  }
-});
+);
 
 // downloadMusic
-export const downloadMusic = createAsyncThunk('musicDownload/downloadMusic', async (musicId) => {
-  try {
-    const response = await axios.get(`${baseURL}/music/${musicId}/download`, configOT);
-    console.log('downloadMusic response', response)
-    return response.data;
+export const downloadMusic = createAsyncThunk(
+  'musicDownload/downloadMusic',
+  async (music) => {
+    try {
+      const response = await axios.get(
+        `${baseURL}/music/${music._id}/download`,
+        {
+          ...configOT,
+          responseType: 'blob',
+        }
+      );
+
+      const blob = new Blob([response.data]);
+
+      saveAs(blob, music.song);
+
+      return response.data;
+    } catch (error) {
+      console.log({ error });
+      toast.error(error?.response?.data?.message || 'Something went wrong!');
+      return thunkAPI.rejectWithValue(error.message);
+    }
   }
-  catch (error) {
-    console.log('downloadMusic error', error)
-    toast.error(error?.response?.data?.message || "Something went wrong!");
-    return thunkAPI.rejectWithValue(error.message);
-  }
-});
+);
 // fetch user downloaded music list
-export const downloadedMusicList = createAsyncThunk('musicDownload/downloadedMusicList', async () => {
-  try {
-    const response = await axios.get(`${baseURL}/music/user/download`, config);
-    console.log('downloaded_Music_List', response)
-    return response.data;
+export const downloadedMusicList = createAsyncThunk(
+  'musicDownload/downloadedMusicList',
+  async () => {
+    try {
+      const response = await axios.get(
+        `${baseURL}/music/user/download`,
+        config
+      );
+      console.log('downloaded_Music_List', response);
+      return response.data;
+    } catch (error) {
+      console.log('downloadMusic error', error);
+      toast.error(error?.response?.data?.message || 'Something went wrong!');
+      return thunkAPI.rejectWithValue(error.message);
+    }
   }
-  catch (error) {
-    console.log('downloadMusic error', error)
-    toast.error(error?.response?.data?.message || "Something went wrong!");
-    return thunkAPI.rejectWithValue(error.message);
-  }
-});
+);
 
 // streamMusic
-export const streamMusic = createAsyncThunk('musicStream/streamMusic', async (musicId) => {
-  try {
-    const response = await axios.get(`${baseURL}/music/${musicId}/stream`, configMT);
-    console.log('streamMusic', response);
-    return response.data;
+export const streamMusic = createAsyncThunk(
+  'musicStream/streamMusic',
+  async (musicId) => {
+    try {
+      const response = await axios.get(
+        `${baseURL}/music/${musicId}/stream`,
+        configMT
+      );
+      console.log('streamMusic', response);
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
   }
-  catch (error) {
-    return thunkAPI.rejectWithValue(error.message);
-  }
-});
+);
 
 // verifyEmail
-export const verifyEmail = createAsyncThunk('emailVerification/verifyEmail', async (token) => {
-  try {
-    const response = await axios.post(`${baseURL}/auth/verify-email`, { token }, configCT);
-    toast.success(response?.data?.message || "Email verified successfully!");
-    return response.data;
-  } catch (error) {
-    toast.error(error?.response?.data?.message || "Something went wrong!");
-    return error.response.data;
+export const verifyEmail = createAsyncThunk(
+  'emailVerification/verifyEmail',
+  async (token) => {
+    try {
+      const response = await axios.post(
+        `${baseURL}/auth/verify-email`,
+        { token },
+        configCT
+      );
+      toast.success(response?.data?.message || 'Email verified successfully!');
+      return response.data;
+    } catch (error) {
+      toast.error(error?.response?.data?.message || 'Something went wrong!');
+      return error.response.data;
+    }
   }
-});
+);
 
 // authentication with google
-export const authenticateWithGoogle = createAsyncThunk('auth/authenticateWithGoogle', async () => {
-  try {
-    const response = await axios.get(`${baseURL}/auth/google`, configCT);
-    toast.success(response?.data?.message || "Logged In Successfully!");
-    return response.data;
-  } catch (error) {
-    toast.error(error?.response?.data?.message || "Something went wrong!");
-    return error.response.data;
+export const authenticateWithGoogle = createAsyncThunk(
+  'auth/authenticateWithGoogle',
+  async () => {
+    try {
+      const response = await axios.get(`${baseURL}/auth/google`, configCT);
+      toast.success(response?.data?.message || 'Logged In Successfully!');
+      return response.data;
+    } catch (error) {
+      toast.error(error?.response?.data?.message || 'Something went wrong!');
+      return error.response.data;
+    }
   }
-});
+);
 
 // resetPassword
-export const resetPassword = createAsyncThunk('auth/resetPassword', async (data) => {
-  try {
-    const response = await axios.post(`${baseURL}/auth/reset-password`, data, configCT);
-    toast.success(response?.data?.message || "Password reset successfully!");
-    return response.data;
-  } catch (error) {
-    toast.error(error?.response?.data?.message || "Something went wrong!");
-    return error.response.data;
+export const resetPassword = createAsyncThunk(
+  'auth/resetPassword',
+  async (data) => {
+    try {
+      const response = await axios.post(
+        `${baseURL}/auth/reset-password`,
+        data,
+        configCT
+      );
+      toast.success(response?.data?.message || 'Password reset successfully!');
+      return response.data;
+    } catch (error) {
+      toast.error(error?.response?.data?.message || 'Something went wrong!');
+      return error.response.data;
+    }
   }
-});
+);
