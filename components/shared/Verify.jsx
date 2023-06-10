@@ -7,7 +7,7 @@ import { useDispatch } from 'react-redux';
 import { useRouter } from 'next/navigation';
 
 const VerifyPage = () => {
-  const urlString= window.location.href;
+  const urlString = typeof window !== 'undefined' && window.location.href;
   const url = new URL(urlString);
   const searchParams = new URLSearchParams(url.search);
   const token = searchParams.get('token');
@@ -19,26 +19,33 @@ const VerifyPage = () => {
       dispatch(verifyEmail(token));
       router.push('/login');
     }
-  }
+  };
   return (
     <div className={v.verify}>
       <div className={v.verifyContainer}>
         <div className={v.imgBox}>
-          <Image src="/img/logoBig.png" width={80} height={80} alt="" />
+          <Image src='/img/logoBig.png' width={80} height={80} alt='' />
         </div>
         <h2 className={v.title}>Verify your identity</h2>
         <p className={v.tag}>
           <span>
-            Thank you for signing up. Please verify your email address by clicking the following link
+            Thank you for signing up. Please verify your email address by
+            clicking the following link
           </span>
         </p>
-        <button className={v.action} onClick={handleVerify}>confirm your email</button>
+        <button className={v.action} onClick={handleVerify}>
+          confirm your email
+        </button>
         <p className={v.haveIssue}>
-          <span>Have any issues? Visit</span> <Link href='#'> contact us</Link></p>
+          <span>Have any issues? Visit</span> <Link href='#'> contact us</Link>
+        </p>
         <p className={v.contact}>
           <span>
-            If you got this mail as spam then click on "looks safe" or "Not spam". Hopefully, the button will work, If the button not working then mail your email address at
-          </span> <Link href="mailto:web@anydemo.com">web@anydemo.com</Link>
+            If you got this mail as spam then click on "looks safe" or "Not
+            spam". Hopefully, the button will work, If the button not working
+            then mail your email address at
+          </span>{' '}
+          <Link href='mailto:web@anydemo.com'>web@anydemo.com</Link>
           <span> or Call at </span>
           <Link href='tel:0244545254245'></Link>
           <span>, </span>
@@ -46,7 +53,7 @@ const VerifyPage = () => {
         </p>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default VerifyPage;

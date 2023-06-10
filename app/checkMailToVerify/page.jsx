@@ -1,10 +1,8 @@
-import ResendEmail from '@/components/shared/ResendEmail'
-import React from 'react'
+import ResendEmail from '@/components/shared/ResendEmail';
+import React from 'react';
 
 const page = () => {
-  return (
-    <ResendEmail />
-  )
-}
+  return <ResendEmail />;
+};
 
-export default page
+export default page;

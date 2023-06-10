@@ -4,10 +4,11 @@ import toast from 'react-hot-toast';
 import { saveAs } from 'file-saver';
 
 // Base URL
-const baseURL = 'https://api.syscomatic.com/api/v1';
-// const baseURL = 'http://localhost:5050/api/v1';
+const baseURL =
+  process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:5050/api/v1';
 
-const token =typeof window !== 'undefined' && localStorage.getItem('accessToken');
+const token =
+  typeof window !== 'undefined' && localStorage.getItem('accessToken');
 // Authenticated config with Authorization header
 const config = {
   headers: {
