@@ -10,6 +10,7 @@ import { useRouter } from 'next/navigation';
 import { toast } from 'react-hot-toast';
 import { useDispatch, useSelector } from 'react-redux';
 import { convertMusic, getAllVoices } from '@/axios/axios';
+import { NoDataFound } from '@/components/helper';
 
 const MakeDemo = () => {
   const router = useRouter();
@@ -117,7 +118,7 @@ const MakeDemo = () => {
             <div className={d.pickVoice}>
               <h4>Pick a voice</h4>
               <div className={d.p_v_cards}>
-                {
+                {voices?.length > 0 &&
                   voices?.map((v, i) => (
                     <div key={i} className={d.p_v_card}
                     >
@@ -151,7 +152,10 @@ const MakeDemo = () => {
                     </div>
                   ))
                 }
-
+                {
+                  voices?.length === 0 &&
+                  <NoDataFound />
+                }
               </div>
             </div>
             :
