@@ -2,12 +2,12 @@
 import React, { useState } from 'react'
 import reset from '../../styles/pages/auth.module.css'
 import Image from 'next/image'
-import { resetPassword } from '@/axios/axios'
 import { useDispatch } from 'react-redux'
 import { useRouter } from 'next/navigation';
+import { resetPassword } from '../../axios/axios'
 
 const ResetPassword = () => {
-  const urlString= window.location.href;
+  const urlString = window.location.href;
   const url = new URL(urlString);
   const searchParams = new URLSearchParams(url.search);
   const token = searchParams.get('token');
@@ -69,8 +69,8 @@ const ResetPassword = () => {
             </div>
             <div className={`formControl ${reset.mb_16}`}>
               <label htmlFor="password">Confirm Password</label>
-              <input type={showPassword ? "text" : "password"} id="password" placeholder="Type your Password"  value={confirmPassword} onChange={handleChangeConfirmPassword} onBlur={validatePassword} />
-              {passwordError && <div style={{color: "red"}}>{passwordError}</div>}
+              <input type={showPassword ? "text" : "password"} id="password" placeholder="Type your Password" value={confirmPassword} onChange={handleChangeConfirmPassword} onBlur={validatePassword} />
+              {passwordError && <div style={{ color: "red" }}>{passwordError}</div>}
             </div>
             <div className="controlPassword">
               <div className="showPassword">

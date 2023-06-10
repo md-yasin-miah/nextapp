@@ -1,10 +1,9 @@
 'use client'
 import React, { useEffect, useState } from 'react'
-import SubscriptionPlanCard from '@/components/SubscriptionPlanCard';
 import s from '../../styles/pages/subscription.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { NoDataFound } from '@/components/helper';
-import { cancelSubscription, getAllPlans } from '@/axios/axios';
+import { cancelSubscription, getAllPlans } from '../../axios/axios';
+import SubscriptionPlanCard from '../../components/SubscriptionPlanCard';
 
 const ManageSubscription = () => {
   const [selectedPlan, setSelectedPlan] = useState({});

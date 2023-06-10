@@ -3,9 +3,8 @@ import Image from 'next/image';
 import m from '../../styles/pages/dashboard/myMusic.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { downloadMusic, fetchUserMusic, streamMusic } from '@/axios/axios';
-import Mp3Player from '@/components/Mp3Player';
-import { NoDataFound } from '@/components/helper';
+import { downloadMusic, fetchUserMusic, streamMusic } from '../../axios/axios';
+import { NoDataFound } from '../../components/helper';
 
 const MyMusic = () => {
   const dispatch = useDispatch();
@@ -16,55 +15,6 @@ const MyMusic = () => {
   );
   console.log('downloadedMusic', downloadedMusic, error);
 
-  const contentType = 'audio/mpeg';
-  const fileName = 'music.mp3';
-  // function downloadAudio(base64Data, fileName, contentType) {
-  //   const byteCharacters = atob(base64Data);
-  //   const byteArrays = [];
-
-  //   for (let offset = 0; offset < byteCharacters.length; offset += 512) {
-  //     const slice = byteCharacters.slice(offset, offset + 512);
-
-  //     const byteNumbers = new Array(slice.length);
-  //     for (let i = 0; i < slice.length; i++) {
-  //       byteNumbers[i] = slice.charCodeAt(i);
-  //     }
-
-  //     const byteArray = new Uint8Array(byteNumbers);
-  //     byteArrays.push(byteArray);
-  //   }
-
-  //   const blob = new Blob(byteArrays, { type: contentType });
-
-  //   const url = URL.createObjectURL(blob);
-
-  //   const link = document.createElement('a');
-  //   link.href = url;
-  //   link.download = fileName;
-  //   link.click();
-
-  //   URL.revokeObjectURL(url);
-  // }
-  function downloadAudioChunks(audioData) {
-    // 1. Extract audio data by removing the ID3 tag
-    const audioDataWithoutID3 = audioData.substring(10);
-
-    // 2. Convert data to the desired format if needed
-
-    // 3. Create a downloadable Blob
-    const blob = new Blob([audioDataWithoutID3], { type: 'audio/mpeg' });
-
-    // 4. Generate a download link
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement('a');
-    link.href = url;
-    link.download = 'audio.mp3';
-
-    // Trigger the download
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  }
   const handleDownloadClick = () => {
     downloadAudioChunks(downloadedMusic);
   };

@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchUserMusic } from '@/axios/axios';
+import { fetchUserMusic } from '../../../axios/axios';
 
 const userMusicSlice = createSlice({
   name: 'userMusic',

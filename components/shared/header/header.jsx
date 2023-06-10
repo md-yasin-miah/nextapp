@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
 import { useDispatch, useSelector } from 'react-redux';
-import { getProfile } from '@/axios/axios';
+import { getProfile } from '../../../axios/axios';
 
 const Header = () => {
   const router = useRouter();

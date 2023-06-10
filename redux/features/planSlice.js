@@ -1,4 +1,4 @@
-import { cancelSubscription, getAllPlans, subscribeToPlan } from "@/axios/axios";
+import { cancelSubscription, getAllPlans, subscribeToPlan } from "../../axios/axios";
 
 const { createSlice } = require("@reduxjs/toolkit");
 

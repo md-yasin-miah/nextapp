@@ -2,9 +2,10 @@
 import { useEffect, useState } from 'react';
 import d from '../../styles/pages/dashboard/downloads.module.css';
 import Image from 'next/image';
-import AudioPlayer from '@/components/shared/AudioPlayer';
 import { useDispatch, useSelector } from 'react-redux';
-import { downloadedMusicList } from '@/axios/axios';
+import AudioPlayer from '../../components/shared/AudioPlayer';
+import { NoDataFound } from '../../components/helper';
+import { downloadedMusicList } from '../../axios/axios';
 const Downloads = () => {
   const [showOptions, setShowOptions] = useState(null);
   const dispatch = useDispatch();
@@ -20,18 +21,18 @@ const Downloads = () => {
       </div>
       <div className={d.container}>
         <div className={d.songs}>
-          {
-            [1, 2, 3, 4, 5, 6, 7, 8].map((item, index) => (
+          {downloadedMusic_List?.length > 0 &&
+            downloadedMusic_List.map((item, index) => (
               <div key={index} className={d.song}>
                 <div className={d.song_title}>
                   <div className={d.song_img}>
                     <Image width={48} height={48} src="/img/song.png" alt="" />
                   </div>
-                  <span className={d.songName}>A Sky Full</span>
+                  <span className={d.songName}>{item.title.length > 20 ? item.title.slice(0, 20) + '...' : item.title}</span>
                 </div>
 
                 <div className={d.info}>
-                  <span className={d.category}>Bettles</span>
+                  <span className={d.category}>{item.genre}</span>
                   <span className={d.time}>5:21</span>
                   <div className={d.icons}>
                     <div className={d.playIcon}>
@@ -52,6 +53,10 @@ const Downloads = () => {
                 </div>
               </div>
             ))
+          }
+          {
+            downloadedMusic_List?.length <= 0 &&
+            <NoDataFound />
           }
         </div>
       </div>

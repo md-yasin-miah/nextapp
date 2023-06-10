@@ -4,8 +4,6 @@ import login from '../../styles/pages/auth.module.css'
 import { use, useEffect, useState } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation';
-import Verify from '@/components/shared/Verify'
-import ResendEmail from '@/components/shared/ResendEmail'
 import { useDispatch, useSelector } from 'react-redux';
 import { loginUser, authenticateWithGoogle } from '../../axios/axios';
 import toast from 'react-hot-toast'
@@ -106,8 +104,6 @@ export default function LogInPage() {
           </div>
         </div>
       </div>
-      {/* <Verify /> */}
-      {/* <ResendEmail /> */}
     </div>
   )
 }

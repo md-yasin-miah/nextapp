@@ -1,4 +1,4 @@
-import LogInPage from "@/pages/loginPage/loginPage"
+import LogInPage from "../../pages/loginPage/loginPage";
 
 export default function LogIn() {
   return (

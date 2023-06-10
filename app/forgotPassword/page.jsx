@@ -1,5 +1,4 @@
-import ForgotPassword from "@/pages/forgotPassword/ForgotPassword";
-
+import ForgotPassword from "../../pages/forgotPassword/ForgotPassword";
 
 export default function ForgotPass() {
   return (

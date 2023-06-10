@@ -1,5 +1,5 @@
-import MainLayout from "@/components/layouts/MainLayout"
-import Join from "@/pages/join/Join"
+import MainLayout from "../../components/layouts/MainLayout"
+import Join from "../../pages/join/Join"
 
 export const metadata = {
   title: 'Join Us',

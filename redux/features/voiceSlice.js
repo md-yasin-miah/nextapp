@@ -1,5 +1,5 @@
-import { getAllVoices } from '@/axios/axios';
 import { createSlice } from '@reduxjs/toolkit';
+import { getAllVoices } from '../../axios/axios';
 
 const voiceSlice = createSlice({
   name: 'voice',

@@ -3,8 +3,8 @@ import { useEffect, useState } from 'react';
 import s from '../../styles/pages/subscription.module.css';
 import Image from 'next/image';
 import { useDispatch, useSelector } from 'react-redux';
-import { getAllPlans, subscribeToPlan } from '@/axios/axios';
-import Loading from '@/components/shared/Loading';
+import { getAllPlans, subscribeToPlan } from '../../axios/axios';
+import Loading from '../../components/shared/Loading';
 
 const SubscriptionPlan = () => {
   const [active, setActive] = useState('month')
