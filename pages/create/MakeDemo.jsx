@@ -1,6 +1,6 @@
 "use client"
 import { useEffect, useRef, useState } from 'react';
-import d from '../../styles/pages/demo.module.css';
+import styles from '../../styles/pages/demo.module.css';
 import MainLayout from '@/components/layouts/MainLayout';
 import Image from 'next/image';
 import { Splide, SplideSlide } from '@splidejs/react-splide';
@@ -23,7 +23,6 @@ const MakeDemo = () => {
   const [openProgress, setOpenProgress] = useState(false);
   const { voices } = useSelector((state) => state.voice);
   const { convertedMusic } = useSelector((state) => state.musicConversion);
-  console.log('convertedMusic', convertedMusic);
   const options = {
     perPage: 3,
     gap: '16px',
@@ -89,59 +88,59 @@ const MakeDemo = () => {
 
   return (
     <MainLayout>
-      <div className={d.demo}>
+      <div className={styles.demo}>
         <div className="pageTitle">
           <h1>Make a demo</h1>
           <p>Choose Your Favorite Artist Voice to make your song</p>
         </div>
-        <div className={d.progress}>
-          <div className={`${d.target} ${d.active}`} onClick={() => { setStep2(false); setStep3(false) }}>
+        <div className={styles.progress}>
+          <div className={`${styles.target} ${styles.active}`} onClick={() => { setStep2(false); setStep3(false) }}>
             <span>01</span>
-            <div className={d.circle} ></div>
+            <div className={styles.circle} ></div>
           </div>
-          <div className={`${d.target} ${step2 ? d.active : ''}`} onClick={() => setStep3(false)}>
+          <div className={`${styles.target} ${step2 ? styles.active : ''}`} onClick={() => setStep3(false)}>
             <span>02</span>
-            <div className={d.circle}></div>
+            <div className={styles.circle}></div>
           </div>
-          <div className={`${d.target} ${step3 ? d.active : ''}`}>
+          <div className={`${styles.target} ${step3 ? styles.active : ''}`}>
             <span>03</span>
-            <div className={d.circle}></div>
+            <div className={styles.circle}></div>
           </div>
-          <div className={d.line}>
-            <div className={d.line1 + ' ' + (step2 ? d.solid : '')}></div>
-            <div className={d.line1 + ' ' + (step3 ? d.solid : '')}></div>
+          <div className={styles.line}>
+            <div className={styles.line1 + ' ' + (step2 ? styles.solid : '')}></div>
+            <div className={styles.line1 + ' ' + (step3 ? styles.solid : '')}></div>
           </div>
         </div>
         {
           step2 && !step3 ?
-            <div className={d.pickVoice}>
+            <div className={styles.pickVoice}>
               <h4>Pick a voice</h4>
-              <div className={d.p_v_cards}>
+              <div className={styles.p_v_cards}>
                 {
                   voices?.map((v, i) => (
-                    <div key={i} className={d.p_v_card}
+                    <div key={i} className={styles.p_v_card}
                     >
-                      <div className={d.imgArea} onClick={() => { selectArtist(v?._id); setStep3(true) }}>
-                        <Image className={d.asBG} src={v?.artistImage} width={380} height={296} alt='' />
-                        <Image className={d.checkIcon} src='/img/check.png' width={80} height={80} alt='' />
-                        <div className={d.tag}><p>{v?.genre}</p></div>
+                      <div className={styles.imgArea} onClick={() => { selectArtist(v?._id); setStep3(true) }}>
+                        <Image className={styles.asBG} src={v?.artistImage} width={380} height={296} alt='' />
+                        <Image className={styles.checkIcon} src='/img/check.png' width={80} height={80} alt='' />
+                        <div className={styles.tag}><p>{v?.genre}</p></div>
                       </div>
-                      <div className={d.contentArea}>
-                        <div className={d.p_v_titleArea}>
+                      <div className={styles.contentArea}>
+                        <div className={styles.p_v_titleArea}>
                           <h3>{v?.name}</h3>
-                          <div className={d.rating}>
+                          <div className={styles.rating}>
                             <Image src='/img/rating.png' width={18} height={18} alt='star' />
                             <span>{v?.ratings}</span>
                           </div>
                         </div>
-                        <div className={d.category}>{v?.code}</div>
-                        <div className={d.p_v_btn}>
+                        <div className={styles.category}>{v?.code}</div>
+                        <div className={styles.p_v_btn}>
                           <button onClick={() => { selectArtist(v?._id); setStep3(true) }}>Try now</button>
                         </div>
                       </div>
                       {/* conditional if premium */}
                       {i >= 4 &&
-                        <div className={d.premium}
+                        <div className={styles.premium}
                           // redirect to subscribe page
                           onClick={() => router.push('/subscriptionPlan')}
                         >
@@ -156,7 +155,7 @@ const MakeDemo = () => {
             </div>
             :
             (!step3
-              && <div className={d.upload}>
+              && <div className={styles.upload}>
                 <h4>Upload Your Recording</h4>
                 <label htmlFor="uploadAudio" onClick={handleLabelClick}>
                   <button>
@@ -177,25 +176,25 @@ const MakeDemo = () => {
         }
         {
           step2 && step3 &&
-          <div className={d.getDemoBtn}>
+          <div className={styles.getDemoBtn}>
             <button
               onClick={handleConvertMusic}
             >Get your demo</button>
           </div>
         }
-        <div className={d.latestDemo}>
+        <div className={styles.latestDemo}>
           <h4>Latest Demo</h4>
-          <div className={d.latestDemo__content}>
+          <div className={styles.latestDemo__content}>
             <Splide options={options}>
               {
                 ['1', '2', '3', '4'].map((demo, index) => {
                   return (
                     <SplideSlide key={index}>
-                      <div className={d.demoCard}>
-                        <div className={d.demoCard__img}>
+                      <div className={styles.demoCard}>
+                        <div className={styles.demoCard__img}>
                           <Image src='/img/demo01.png' width={295} height={363} alt='' />
                         </div>
-                        <Image className={d.playBtn} src='/svg/play.svg' width={64} height={64} alt='' />
+                        <Image className={styles.playBtn} src='/svg/play.svg' width={64} height={64} alt='' />
                       </div>
                     </SplideSlide>
                   )

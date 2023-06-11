@@ -1,7 +1,7 @@
 'use client'
 import React, { useEffect, useState } from 'react'
 import SubscriptionPlanCard from '@/components/SubscriptionPlanCard';
-import s from '../../styles/pages/subscription.module.css';
+import styles from '../../styles/pages/subscription.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { NoDataFound } from '@/components/helper';
 import { cancelSubscription, getAllPlans } from '@/axios/axios';
@@ -12,7 +12,6 @@ const ManageSubscription = () => {
   const user = useSelector((state) => state.profile.profile);
   const { plans } = useSelector(state => state.plan);
   const subscription = user?.subscription;
-  console.log('subscription', subscription, plans);
 
   const handleCancelSubscription = () => {
     dispatch(cancelSubscription());
@@ -31,7 +30,6 @@ const ManageSubscription = () => {
     //find my selected plan
     const myPlan = plans?.find(plan => plan.annualPricingId || plan.monthlyPricingId === subscription?.priceId);
     setSelectedPlan(myPlan);
-    console.log('myPlan', myPlan)
   }, [plans, subscription])
 
   return (
@@ -42,32 +40,32 @@ const ManageSubscription = () => {
       </div>
       <div className="dashboard_children_title">
         <h4 className='title'>Purchases</h4>
-        <div className={s.subCard}>
-          <div className={s.p_info}>
-            <span className={s.name}>Recurring Purchases</span>
-            <span className={s.time}>1 year 2month</span>
+        <div className={styles.subCard}>
+          <div className={styles.p_info}>
+            <span className={styles.name}>Recurring Purchases</span>
+            <span className={styles.time}>1 year 2month</span>
           </div>
           <button className='s_btn' onClick={handleCancelSubscription}>Cancel Subscription</button>
         </div>
       </div>
       <div className="dashboard_children_title">
         <h4 className='title'>Device Management</h4>
-        <div className={s.subCard}>
-          <div className={s.p_info}>
-            <span className={s.name}>No of Device</span>
-            <span className={s.management_count}>3</span>
+        <div className={styles.subCard}>
+          <div className={styles.p_info}>
+            <span className={styles.name}>No of Device</span>
+            <span className={styles.management_count}>3</span>
           </div>
-          <span className={s.textBtn}>Manage</span>
+          <span className={styles.textBtn}>Manage</span>
         </div>
       </div>
       <div className="dashboard_children_title">
         <h4 className='title'>Subscription History</h4>
-        <div className={s.subCard + ' ' + s.subscriptionHistory}>
-          <div className={s.p_info + ' ' + s.history}>
+        <div className={styles.subCard + ' ' + styles.subscriptionHistory}>
+          <div className={styles.p_info + ' ' + styles.history}>
             <span>Billing Issue</span>
             <small>{convertDate(subscription?.billingDate)}</small>
           </div>
-          <div className={s.p_info + ' ' + s.history}>
+          <div className={styles.p_info + ' ' + styles.history}>
             <span>Ending Date</span>
             <small>{convertDate(subscription?.endDate)}</small>
           </div>

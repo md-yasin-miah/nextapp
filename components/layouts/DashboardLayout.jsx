@@ -1,6 +1,6 @@
 'use client'
 import Header from '../shared/header/header';
-import d from '../../styles/pages/dashboard/dashboard.module.css';
+import styles from '../../styles/pages/dashboard/dashboarstyles.module.css';
 import Image from 'next/image';
 import { useState } from 'react';
 import Overview from '@/pages/dashboard/Overview';
@@ -72,25 +72,25 @@ const DashboardLayout = () => {
       <div className="bgEffect2"></div>
       <Header />
       <div className="container">
-        <div className={d.dashboardBody}>
-          <div className={d.mainArea}>
-            <div className={d.profile}>
-              <div className={d.imgArea}>
-                <div className={d.profileImage}>
+        <div className={styles.dashboardBody}>
+          <div className={styles.mainArea}>
+            <div className={styles.profile}>
+              <div className={styles.imgArea}>
+                <div className={styles.profileImage}>
                   <Image src='/img/header/profile.png' width={120} height={120} alt='profile' />
                 </div>
-                <div className={d.edit}>
+                <div className={styles.edit}>
                   <Image src='/svg/Plus.svg' width={20} height={20} alt='edit' />
                 </div>
               </div>
               <h4>{user?.fullName || "N/A"}</h4>
             </div>
-            <ul className={d.lists}>
+            <ul className={styles.lists}>
               {
                 lists.map((list, index) => (
                   <Link key={index} href={list?.link}>
-                    <li className={list.link.includes(param.category) ? d.active : ''}>
-                      <div className={d.icon}>
+                    <li className={list.link.includes(param.category) ? styles.active : ''}>
+                      <div className={styles.icon}>
                         <Image src={list.icon} width={28} height={28} alt='icon' />
                       </div>
                       <span>{list.title}</span>
@@ -99,9 +99,9 @@ const DashboardLayout = () => {
                 ))
               }
             </ul>
-            <div className={d.divider}></div>
+            <div className={styles.divider}></div>
           </div>
-          <div className={d.childrenArea}>
+          <div className={styles.childrenArea}>
             <Children />
           </div>
         </div>

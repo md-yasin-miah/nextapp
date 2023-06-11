@@ -1,6 +1,6 @@
 "use client"
 import React, { use, useState } from 'react'
-import signUp from '../../styles/pages/auth.module.css'
+import styles from '../../styles/pages/auth.module.css'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useDispatch, useSelector } from 'react-redux';
@@ -8,12 +8,11 @@ import { registerUser, authenticateWithGoogle } from '../../axios/axios';
 import { useRouter } from 'next/navigation';
 
 const SignUpPage = () => {
-  const [formData, setFormData] = useState({ fullName: '', email: '', password: ''})
+  const [formData, setFormData] = useState({ fullName: '', email: '', password: '' })
   const [showPassword, setShowPassword] = useState(false);
   const router = useRouter();
   const dispatch = useDispatch();
   const { loading, error } = useSelector((state) => state.auth);
-  console.log('error sign Up', error);
 
   const handleRegistration = async () => {
     const { fullName, email, password } = formData;
@@ -43,18 +42,18 @@ const SignUpPage = () => {
   }
   return (
     <div>
-      <div className={signUp.header_logo}>
+      <div className={styles.header_logo}>
         <Link href='/'>
           <Image src="/img/header/logo.png" width={40} height={40} alt='logo' />
         </Link>
       </div>
-      <div className={signUp.signUp}>
+      <div className={styles.signUp}>
         <div className="authContainer">
           <div className="loginImgArea">
             <div className="imgBox">
               <div className="bg"></div>
               <Image
-                src="/img/signup.png"
+                src="/img/styles.png"
                 width={445}
                 height={485}
                 alt=""

@@ -1,6 +1,6 @@
 "use client"
 import Image from 'next/image'
-import login from '../../styles/pages/auth.module.css'
+import styles from '../../styles/pages/auth.module.css'
 import { use, useEffect, useState } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation';
@@ -42,19 +42,19 @@ export default function LogInPage() {
 
   return (
     <div>
-      <div className={login.header_logo}>
+      <div className={styles.header_logo}>
         <Link href='/'>
           <Image src="/img/header/logo.png" width={40} height={40} alt='logo' />
         </Link>
       </div>
-      <div className={login.login}>
+      <div className={styles.login}>
 
         <div className="authContainer">
           <div className="loginImgArea">
             <div className="imgBox">
               <div className="bg"></div>
               <Image
-                src="/img/login.png"
+                src="/img/styles.png"
                 width={445}
                 height={485}
                 alt=""

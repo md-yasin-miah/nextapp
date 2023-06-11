@@ -4,7 +4,6 @@ import React from 'react'
 
 const SubscriptionPlanCard = (props) => {
   const { data, selected } = props || {};
-  console.log(data)
   return (
     <div className='subscriptionPlanCard'>
       <div className="subscriptionPlanCard_header">

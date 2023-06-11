@@ -1,6 +1,6 @@
 'use client'
 import Image from 'next/image';
-import header from './../../../styles/pages/header.module.css';
+import styles from './../../../styles/pages/styles.module.css';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
@@ -15,7 +15,6 @@ const Header = () => {
   const [isLogin, setIsLogin] = useState(false);
   const user = useSelector((state) => state.profile.profile);
 
-  console.log('user', user)
   useEffect(() => {
     if (localStorage.getItem('accessToken')) {
       setIsLogin(true);
@@ -89,18 +88,18 @@ const Header = () => {
   ]
 
   return (
-    <div className={header.header}>
+    <div className={styles.header}>
       <div className="container">
-        <header className={header.header_container}>
-          <div className={header.header_logo}>
+        <header className={styles.header_container}>
+          <div className={styles.header_logo}>
             <Link href='/'>
               <Image src="/img/header/logo.png" width={40} height={40} alt='logo' />
             </Link>
           </div>
-          <div className={header.header_links + ' ' + (isLogin ? header.profile_sm : '')} style={{ display: activeMobNav ? 'flex' : '' }}>
+          <div className={styles.header_links + ' ' + (isLogin ? styles.profile_sm : '')} style={{ display: activeMobNav ? 'flex' : '' }}>
             <ul>
               {mainMenu.map((menu, index) => (
-                <li key={index} style={{ opacity: menu.status === 'disabled' ? .4 : 1 }} className={pathName.includes(menu.path) ? header.active : ''}>
+                <li key={index} style={{ opacity: menu.status === 'disabled' ? .4 : 1 }} className={pathName.includes(menu.path) ? styles.active : ''}>
                   {
                     menu.status === 'disabled' ?
                       <span>{menu.title}</span> :
@@ -109,20 +108,20 @@ const Header = () => {
                 </li>
               ))}
               {isLogin && <li className='lg_d_none' onClick={() => handleLogout()}>
-                <Link href="" style={{ gap: '18px' }} className={header.auth + ' ' + 'primaryBtn fillBtn'}>
+                <Link href="" style={{ gap: '18px' }} className={styles.auth + ' ' + 'primaryBtn fillBtn'}>
                   <Image src='/svg/LogoutOutline.svg' width={18} height={18} alt='icon' />
                   Log Out</Link>
               </li>
               }
             </ul>
             {isLogin ?
-              <div className={header.profile}>
-                <div className={header.header_profile + ' ' + header.header_profile_logo} onClick={() => setActiveMobNav(!activeMobNav)}>
+              <div className={styles.profile}>
+                <div className={styles.header_profile + ' ' + styles.header_profile_logo} onClick={() => setActiveMobNav(!activeMobNav)}>
                   <Image src="/img/header/profile.png" width={40} height={40} alt='profile' />
                   <p>{user?.fullName}</p>
                 </div>
                 {activeMobNav &&
-                  <div className={header.profile_links}>
+                  <div className={styles.profile_links}>
                     <ul>
                       {
                         lists.map((list, index) => (
@@ -146,13 +145,13 @@ const Header = () => {
                   </div>}
               </div>
               :
-              <div className={header.header_profile}>
-                <Link href="/login" className={header.auth + ' ' + 'primaryBtn btnTransparent'}>Sign In</Link>
-                <Link href="/signUp" className={header.auth + ' ' + 'primaryBtn fillBtn'}>Sign Up</Link>
+              <div className={styles.header_profile}>
+                <Link href="/login" className={styles.auth + ' ' + 'primaryBtn btnTransparent'}>Sign In</Link>
+                <Link href="/signUp" className={styles.auth + ' ' + 'primaryBtn fillBtn'}>Sign Up</Link>
               </div>
             }
           </div>
-          <div className={header.bar} onClick={() => setActiveMobNav(!activeMobNav)}>
+          <div className={styles.bar} onClick={() => setActiveMobNav(!activeMobNav)}>
             <Image src="/img/header/burger.png" width={16.5} height={10.5} alt='bar' />
           </div>
         </header>

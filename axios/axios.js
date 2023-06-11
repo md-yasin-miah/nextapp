@@ -194,7 +194,6 @@ export const convertMusic = createAsyncThunk('musicConversion/convertMusic', asy
   try {
     const response = await axios.post(`${baseURL}/music/convert`, formData, configMT);
     toast.success(response?.data?.message);
-    console.log('convertMusic response', response);
     return response.data;
   }
   catch (error) {
@@ -207,11 +206,9 @@ export const convertMusic = createAsyncThunk('musicConversion/convertMusic', asy
 export const downloadMusic = createAsyncThunk('musicDownload/downloadMusic', async (musicId) => {
   try {
     const response = await axios.get(`${baseURL}/music/${musicId}/download`, configOT);
-    console.log('downloadMusic response', response)
     return response.data;
   }
   catch (error) {
-    console.log('downloadMusic error', error)
     toast.error(error?.response?.data?.message || "Something went wrong!");
     return thunkAPI.rejectWithValue(error.message);
   }
@@ -220,11 +217,9 @@ export const downloadMusic = createAsyncThunk('musicDownload/downloadMusic', asy
 export const downloadedMusicList = createAsyncThunk('musicDownload/downloadedMusicList', async () => {
   try {
     const response = await axios.get(`${baseURL}/music/user/download`, config);
-    console.log('downloaded_Music_List', response)
     return response.data;
   }
   catch (error) {
-    console.log('downloadMusic error', error)
     toast.error(error?.response?.data?.message || "Something went wrong!");
     return thunkAPI.rejectWithValue(error.message);
   }
@@ -234,7 +229,6 @@ export const downloadedMusicList = createAsyncThunk('musicDownload/downloadedMus
 export const streamMusic = createAsyncThunk('musicStream/streamMusic', async (musicId) => {
   try {
     const response = await axios.get(`${baseURL}/music/${musicId}/stream`, configMT);
-    console.log('streamMusic', response);
     return response.data;
   }
   catch (error) {

@@ -1,6 +1,6 @@
 "use client"
 import React, { useState } from 'react'
-import forgotPass from '../../styles/pages/auth.module.css'
+import styles from '../../styles/pages/auth.module.css'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation';
 import { useDispatch } from 'react-redux';
@@ -15,11 +15,10 @@ const ForgotPassword = () => {
     const email = {
       email: userMail,
     }
-    console.log(email);
     dispatch(forgetPassword(email)); // Use dispatch instead of useDispatch
   }
   return (
-    <div className={forgotPass.forgotPass}>
+    <div className={styles.forgotPass}>
       <div className="authContainer">
         <div className="loginImgArea">
           <div className="imgBox">
@@ -35,7 +34,7 @@ const ForgotPassword = () => {
         <div className="formArea">
           <h4>Forgot Password?</h4>
           <div className='form'>
-            <div className={`formControl ${forgotPass.mb_0}`}>
+            <div className={`formControl ${styles.mb_0}`}>
               <label htmlFor="email">Email</label>
               <input onChange={(e) => setUserMail(e.target.value)} type="email" id="email" placeholder="Enter your email" />
             </div>

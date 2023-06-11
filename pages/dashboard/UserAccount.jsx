@@ -1,5 +1,5 @@
 'use client'
-import u from '../../styles/pages/dashboard/userAccount.module.css';
+import styles from '../../styles/pages/dashboard/userAccount.module.css';
 import { useState } from 'react';
 import { updateProfile } from '../../axios/axios';
 import { useDispatch } from 'react-redux';
@@ -30,7 +30,7 @@ const UserAccount = () => {
       <div className="dashboard_children_title">
         <h4 className='title'>Profile</h4>
         <form className='form'>
-          <div className={u.inputArea}>
+          <div className={styles.inputArea}>
             <div className='formControl'>
               <label htmlFor="name">Full Name</label>
               <input name='fullName' type="text" id="name" onChange={handleForm} />
@@ -48,7 +48,7 @@ const UserAccount = () => {
               <input name="phoneNumber" type="tel" id="phone" onChange={handleForm} />
             </div>
           </div>
-          <div className={u.btnArea}>
+          <div className={styles.btnArea}>
             <button type='submit' className='s_btn' onClick={handleUpdateProfile}>Update Profile</button>
             <button className='s_btn s_btn_t'>Reset</button>
           </div>
@@ -56,14 +56,14 @@ const UserAccount = () => {
       </div>
       <div className="dashboard_children_title">
         <h4 className='title'>Password</h4>
-        <div className={u.subCard}>
+        <div className={styles.subCard}>
           <p>Once I have this information, I can guide you through the process of changing your password</p>
           <Link href={token ? `/reset-password?token=${token}` : '/login'}><button className='s_btn' >Change password</button></Link>
         </div>
       </div>
       <div className="dashboard_children_title">
         <h4 className='title'>Delete Account</h4>
-        <div className={u.subCard}>
+        <div className={styles.subCard}>
           <p>Once I have this information, I can guide you through the process of changing your password</p>
           <button className='s_btn'>Delete Account</button>
         </div>

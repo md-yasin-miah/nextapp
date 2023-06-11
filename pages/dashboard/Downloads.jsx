@@ -1,6 +1,6 @@
 'use client';
 import { useEffect, useState } from 'react';
-import d from '../../styles/pages/dashboard/downloads.module.css';
+import styles from '../../styles/pages/dashboard/downloads.module.css';
 import Image from 'next/image';
 import AudioPlayer from '@/components/shared/AudioPlayer';
 import { useDispatch, useSelector } from 'react-redux';
@@ -9,7 +9,6 @@ const Downloads = () => {
   const [showOptions, setShowOptions] = useState(null);
   const dispatch = useDispatch();
   const { downloadedMusic_List } = useSelector((state) => state.musicDownload);
-  console.log('downloadedMusicList', downloadedMusic_List)
   useEffect(() => {
     dispatch(downloadedMusicList());
   }, []);
@@ -18,29 +17,29 @@ const Downloads = () => {
       <div className="dashboard_children_title">
         <h4>Listen Your Downloaded Music</h4>
       </div>
-      <div className={d.container}>
-        <div className={d.songs}>
+      <div className={styles.container}>
+        <div className={styles.songs}>
           {
             [1, 2, 3, 4, 5, 6, 7, 8].map((item, index) => (
-              <div key={index} className={d.song}>
-                <div className={d.song_title}>
-                  <div className={d.song_img}>
+              <div key={index} className={styles.song}>
+                <div className={styles.song_title}>
+                  <div className={styles.song_img}>
                     <Image width={48} height={48} src="/img/song.png" alt="" />
                   </div>
-                  <span className={d.songName}>A Sky Full</span>
+                  <span className={styles.songName}>A Sky Full</span>
                 </div>
 
-                <div className={d.info}>
-                  <span className={d.category}>Bettles</span>
-                  <span className={d.time}>5:21</span>
-                  <div className={d.icons}>
-                    <div className={d.playIcon}>
+                <div className={styles.info}>
+                  <span className={styles.category}>Bettles</span>
+                  <span className={styles.time}>5:21</span>
+                  <div className={styles.icons}>
+                    <div className={styles.playIcon}>
                       <Image width={32} height={32} src="/svg/play.svg" alt="" />
                     </div>
-                    <div className={d.threeDotsIcon}>
+                    <div className={styles.threeDotsIcon}>
                       <Image width={20} height={20} src="/svg/threeDots.svg" alt="" onClick={() => setShowOptions(showOptions === index ? null : index)} />
                       {showOptions === index &&
-                        <div className={d.options}>
+                        <div className={styles.options}>
                           <ul>
                             <li>Remove from list</li>
                             <li>Share</li>
@@ -55,7 +54,7 @@ const Downloads = () => {
           }
         </div>
       </div>
-      <div className={d.player}>
+      <div className={styles.player}>
         <AudioPlayer />
       </div>
     </div>

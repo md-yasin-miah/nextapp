@@ -1,26 +1,26 @@
 'use client'
 import Image from 'next/image';
-import a from '../../styles/audioPlayer.module.css';
+import styles from '../../styles/audioPlayer.module.css';
 
 const AudioPlayer = () => {
   return (
-    <div className={a.player}>
-      <div className={a.songInfoContainer}>
-        <div className={a.songInfo}>
-          <div className={a.playerImg}>
+    <div className={styles.player}>
+      <div className={styles.songInfoContainer}>
+        <div className={styles.songInfo}>
+          <div className={styles.playerImg}>
             <Image width={48} height={48} src="/img/song.png" alt="songPoster" />
           </div>
-          <div className={a.sName}>
+          <div className={styles.sName}>
             <p>i don't know</p>
             <span>random rain</span>
           </div>
         </div>
-        <svg className={a.sm_option} width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg className={styles.sm_option} width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path fill-rule="evenodd" clip-rule="evenodd" d="M3.75 3.375L0.75 5.25V1.5L3.75 3.375ZM11.25 3.75H6V4.5H11.25V3.75ZM11.25 6.75V7.5H0.75V6.75H11.25ZM11.25 10.5V9.75H0.75V10.5H11.25Z" fill="#B2B2B2" />
         </svg>
       </div>
-      <div className={a.controlArea}>
-        <div className={a.controller}>
+      <div className={styles.controlArea}>
+        <div className={styles.controller}>
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M4.45205 6.62727L5.12329 5.86364C4.06849 4.62273 2.53425 3.95455 1 3.95455V4.90909C2.24658 4.90909 3.49315 5.48182 4.35616 6.43636L4.45205 6.62727ZM11.6438 11.1136C10.4932 11.1136 9.43836 10.6364 8.57534 9.87273L8 10.6364C8.9589 11.5909 10.3014 12.0682 11.6438 12.0682V13.5L15 11.5909L11.6438 9.68182V11.1136ZM11.6438 5.38636V6.81818L15 4.90909L11.6438 3V4.43182C10.1096 4.43182 8.57534 5.1 7.61644 6.34091L4.35616 10.0636C3.49315 11.0182 2.24658 11.5909 1 11.5909V12.5455C2.53425 12.5455 4.06849 11.8773 5.0274 10.6364L8.28767 6.91364C9.15068 5.95909 10.3973 5.38636 11.6438 5.38636Z" fill="#1FC2C7" />
           </svg>
@@ -67,24 +67,24 @@ const AudioPlayer = () => {
           </svg>
 
         </div>
-        <div className={a.timeProgress}>
+        <div className={styles.timeProgress}>
           <span>0:00</span>
-          <div className={a.progress}>
-            <div className={a.progressFill} style={{ width: '45%' }}></div>
+          <div className={styles.progress}>
+            <div className={styles.progressFill} style={{ width: '45%' }}></div>
           </div>
           <span>3:20</span>
         </div>
       </div>
-      <div className={a.volumeArea}>
+      <div className={styles.volumeArea}>
         <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path fill-rule="evenodd" clip-rule="evenodd" d="M3.75 3.375L0.75 5.25V1.5L3.75 3.375ZM11.25 3.75H6V4.5H11.25V3.75ZM11.25 6.75V7.5H0.75V6.75H11.25ZM11.25 10.5V9.75H0.75V10.5H11.25Z" fill="#B2B2B2" />
         </svg>
-        <div className={a.volumeProgress}>
+        <div className={styles.volumeProgress}>
           <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M9.79154 0.75L9.29837 1.32713C10.4912 2.43298 11.2423 4.0078 11.2423 5.7581C11.2423 7.50839 10.4904 9.08321 9.29837 10.1891L9.79078 10.7662C10.4868 10.1308 11.0427 9.35726 11.4231 8.495C11.8034 7.63275 11.9999 6.70069 12 5.75826C12.0001 4.81584 11.8037 3.88374 11.4235 3.02143C11.0432 2.15912 10.4874 1.38553 9.79154 0.75V0.75ZM8.07301 2.76201L7.5806 3.33914C7.90185 3.65488 8.15699 4.03144 8.33113 4.44685C8.50527 4.86226 8.59493 5.3082 8.59486 5.75863C8.59479 6.20907 8.50499 6.65498 8.33072 7.07033C8.15645 7.48569 7.90119 7.86217 7.57984 8.17781L8.07225 8.75493C8.8589 7.99854 9.35132 6.93656 9.35132 5.75885C9.35132 4.58114 8.85966 3.51841 8.07301 2.76201V2.76201ZM0 3.48891V8.02728H2.12093L6.05116 10.2965V1.21972L2.12093 3.48891H0ZM5.29477 2.5298V8.98639L2.32365 7.27089H0.756396V4.2453H2.32365L5.29477 2.5298Z" fill="#B2B2B2" />
           </svg>
-          <div className={a.volumeProgressFill}>
-            <div className={a.volumeProgressFillInner} style={{ width: '20%' }}>
+          <div className={styles.volumeProgressFill}>
+            <div className={styles.volumeProgressFillInner} style={{ width: '20%' }}>
             </div>
           </div>
 

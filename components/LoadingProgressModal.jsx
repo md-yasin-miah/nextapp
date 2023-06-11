@@ -6,7 +6,6 @@ const LoadingProgressModal = (props) => {
   const { title, open, setOpen } = props;
   const [percent, setPercent] = useState(0);
   const { convertedMusic, loading } = useSelector((state) => state.musicConversion);
-  console.log('percent', percent)
   useEffect(() => {
     if (open) {
       let interval;

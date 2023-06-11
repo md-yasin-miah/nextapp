@@ -1,12 +1,12 @@
 import Image from 'next/image';
-import fo from '../../../styles/pages/footer.module.css';
+import styles from '../../../styles/pages/footer.module.css';
 const Footer = () => {
   return (
-    <div className={fo.footer}>
+    <div className={styles.footer}>
       <div className="container">
-        <div className={fo.container}>
-          <div className={fo.row}>
-            <div className={fo.col}>
+        <div className={styles.container}>
+          <div className={styles.row}>
+            <div className={styles.col}>
               <h4>Product</h4>
               <ul>
                 <li><a href="#">Features</a></li>
@@ -15,7 +15,7 @@ const Footer = () => {
                 <li><a href="#">Product updates</a></li>
               </ul>
             </div>
-            <div className={fo.col}>
+            <div className={styles.col}>
               <h4>Resources</h4>
               <ul>
                 <li><a href="#">Blog</a></li>
@@ -26,14 +26,14 @@ const Footer = () => {
                 <li><a href="#">Privacy</a></li>
               </ul>
             </div>
-            <div className={fo.col}>
+            <div className={styles.col}>
               <h4>Company</h4>
               <ul>
                 <li><a href="#">About us</a></li>
                 <li><a href="#">Careers</a></li>
               </ul>
             </div>
-            <div className={fo.col}>
+            <div className={styles.col}>
               <h4>Subscribe to our newsletter</h4>
               <ul>
                 <li>
@@ -46,10 +46,10 @@ const Footer = () => {
               </ul>
             </div>
           </div>
-          <div className={fo.divider}></div>
-          <div className={fo.social}>
-            <p className={fo.terms}>©️ 2023 AnyDemo, Inc . Privacy . Terms . Sitemap</p>
-            <ul className={fo.icons}>
+          <div className={styles.divider}></div>
+          <div className={styles.social}>
+            <p className={styles.terms}>©️ 2023 AnyDemo, Inc . Privacy . Terms . Sitemap</p>
+            <ul className={styles.icons}>
               <li><Image src='/img/footer/facebook.png' width={32} height={32} alt='facebook' /></li>
               <li><Image src='/img/footer/youtube.png' width={32} height={32} alt='youtube' /></li>
               <li><Image src='/img/footer/instagram.png' width={32} height={32} alt='instagram' /></li>

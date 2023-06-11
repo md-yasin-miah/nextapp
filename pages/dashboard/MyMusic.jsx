@@ -1,6 +1,6 @@
 'use client'
 import Image from 'next/image'
-import m from '../../styles/pages/dashboard/myMusic.module.css'
+import styles from '../../styles/pages/dashboard/myMusic.module.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react';
 import { downloadMusic, fetchUserMusic, streamMusic } from '@/axios/axios';
@@ -13,37 +13,9 @@ const MyMusic = () => {
   const { music } = useSelector(state => state.userMusic);
   const { streamingMusic, loading } = useSelector(state => state.musicStream);
   const { downloadedMusic, error } = useSelector(state => state.musicDownload);
-  console.log('downloadedMusic', downloadedMusic, error);
 
   const contentType = 'audio/mpeg';
   const fileName = 'music.mp3';
-  // function downloadAudio(base64Data, fileName, contentType) {
-  //   const byteCharacters = atob(base64Data);
-  //   const byteArrays = [];
-
-  //   for (let offset = 0; offset < byteCharacters.length; offset += 512) {
-  //     const slice = byteCharacters.slice(offset, offset + 512);
-
-  //     const byteNumbers = new Array(slice.length);
-  //     for (let i = 0; i < slice.length; i++) {
-  //       byteNumbers[i] = slice.charCodeAt(i);
-  //     }
-
-  //     const byteArray = new Uint8Array(byteNumbers);
-  //     byteArrays.push(byteArray);
-  //   }
-
-  //   const blob = new Blob(byteArrays, { type: contentType });
-
-  //   const url = URL.createObjectURL(blob);
-
-  //   const link = document.createElement('a');
-  //   link.href = url;
-  //   link.download = fileName;
-  //   link.click();
-
-  //   URL.revokeObjectURL(url);
-  // }
   function downloadAudioChunks(audioData) {
     // 1. Extract audio data by removing the ID3 tag
     const audioDataWithoutID3 = audioData.substring(10);
@@ -75,23 +47,21 @@ const MyMusic = () => {
   useEffect(() => {
     dispatch(fetchUserMusic());
   }, [])
-  console.log('music stream', music)
-  // console.log('streamingMusic', streamingMusic)
   return (
     <div className='dashboard_children'>
-      <div className={m.musicCards}>
+      <div className={styles.musicCards}>
         {
           music?.map((item, index) => (
-            <div key={index} className={m.musicCard}>
-              <div className={m.musicCardImg}>
-                <Image className={m.songPoster} src='/img/poster.png' width={226} height={230} alt='songPoster' />
-                <Image className={m.playBtn} src='/svg/play.svg' width={53.33} height={53.33} alt='playButton' />
-                <div className={m.share}>
+            <div key={index} className={styles.musicCard}>
+              <div className={styles.musicCardImg}>
+                <Image className={styles.songPoster} src='/img/poster.png' width={226} height={230} alt='songPoster' />
+                <Image className={styles.playBtn} src='/svg/play.svg' width={53.33} height={53.33} alt='playButton' />
+                <div className={styles.share}>
                   <Image src='/svg/share.svg' width={16} height={16} alt='share' />
                 </div>
               </div>
-              <div className={m.musicCardContent}>
-                <div className={m.info}>
+              <div className={styles.musicCardContent}>
+                <div className={styles.info}>
                   <small>{item?.genre}</small>
                   <h4 onClick={() => handleDownloadClick(item?._id)}>{item?.title}</h4>
                   <span>Duration : {item?.duration}m</span>

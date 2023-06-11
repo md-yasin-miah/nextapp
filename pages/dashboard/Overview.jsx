@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import o from '../../styles/pages/dashboard/overview.module.css';
+import styles from '../../styles/pages/dashboard/overview.module.css';
 import SubscriptionPlanCard from '@/components/SubscriptionPlanCard';
 import Link from 'next/link';
 import { useSelector } from 'react-redux';
@@ -8,75 +8,75 @@ const Overview = () => {
   const user = useSelector(state => state.profile.profile);
   return (
     <div className='dashboard_children'>
-      <div className={o.overviewCards}>
-        <div className={o.card}>
+      <div className={styles.overviewCards}>
+        <div className={styles.card}>
           <div>
-            <div className={o.icon}>
+            <div className={styles.icon}>
               <Image src="/svg/ic_outline-music-note.svg" width={18} height={18} alt="icon" />
             </div>
-            <div className={o.content}>
-              <p className={o.counter}>{user?.songCount || '00'}</p>
-              <p className={o.name}>Created Songs</p>
+            <div className={styles.content}>
+              <p className={styles.counter}>{user?.songCount || '00'}</p>
+              <p className={styles.name}>Created Songs</p>
             </div>
           </div>
         </div>
-        <div className={o.card}>
+        <div className={styles.card}>
           <div>
-            <div className={o.icon}>
+            <div className={styles.icon}>
               <Image src="/svg/DownloadOutline.svg" width={18} height={18} alt="icon" />
             </div>
-            <div className={o.content}>
-              <p className={o.counter}>{user?.downloadCount || '0'}</p>
-              <p className={o.name}>Downloaded</p>
+            <div className={styles.content}>
+              <p className={styles.counter}>{user?.downloadCount || '0'}</p>
+              <p className={styles.name}>Downloaded</p>
             </div>
           </div>
         </div>
-        <div className={o.card}>
+        <div className={styles.card}>
           <div>
-            <div className={o.icon}>
+            <div className={styles.icon}>
               <Image src="/svg/tag.svg" width={18} height={18} alt="icon" />
             </div>
-            <div className={o.content}>
-              <p className={o.counter}>{user?.sales || '0'}</p>
-              <p className={o.name}>Sale Songs</p>
+            <div className={styles.content}>
+              <p className={styles.counter}>{user?.sales || '0'}</p>
+              <p className={styles.name}>Sale Songs</p>
             </div>
           </div>
         </div>
-        <div className={o.card} style={{ display: 'none' }}>
+        <div className={styles.card} style={{ display: 'none' }}>
           <div>
-            <div className={o.icon}>
+            <div className={styles.icon}>
               <Image src="/svg/grow.svg" width={18} height={18} alt="icon" />
             </div>
-            <div className={o.content}>
-              <p className={o.counter}>${user?.revenue || '0'}</p>
-              <p className={o.name}>Revenue</p>
+            <div className={styles.content}>
+              <p className={styles.counter}>${user?.revenue || '0'}</p>
+              <p className={styles.name}>Revenue</p>
             </div>
           </div>
         </div>
       </div>
       <div className="dashboard_children_title">
-        <div className={o.profileTitle}>
-          <h4 className={o.p_title + ' ' + 'title'}>Profile</h4>
+        <div className={styles.profileTitle}>
+          <h4 className={styles.p_title + ' ' + 'title'}>Profile</h4>
           <Link href='/dashboard/userAccount'>
             <button className='s_btn'>Edit Profile</button>
           </Link>
         </div>
-        <div className={o.profile_info}>
-          <div className={o.p_info}>
-            <p className={o.name}>Email</p>
-            <p className={o.info}>{user?.email || 'N/A'}</p>
+        <div className={styles.profile_info}>
+          <div className={styles.p_info}>
+            <p className={styles.name}>Email</p>
+            <p className={styles.info}>{user?.email || 'N/A'}</p>
           </div>
-          <div className={o.p_info}>
-            <p className={o.name}>Mobile Number</p>
-            <p className={o.info}>{user?.phoneNumber || 'N/A'}</p>
+          <div className={styles.p_info}>
+            <p className={styles.name}>Mobile Number</p>
+            <p className={styles.info}>{user?.phoneNumber || 'N/A'}</p>
           </div>
-          <div className={o.p_info}>
-            <p className={o.name}>User Name</p>
-            <p className={o.info}>{user?.username || 'N/A'}</p>
+          <div className={styles.p_info}>
+            <p className={styles.name}>User Name</p>
+            <p className={styles.info}>{user?.username || 'N/A'}</p>
           </div>
-          <div className={o.p_info}>
-            <p className={o.name}>Birthday</p>
-            <p className={o.info}>{user?.birthday || 'N/A'}</p>
+          <div className={styles.p_info}>
+            <p className={styles.name}>Birthday</p>
+            <p className={styles.info}>{user?.birthday || 'N/A'}</p>
           </div>
         </div>
       </div>

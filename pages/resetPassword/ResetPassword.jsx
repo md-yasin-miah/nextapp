@@ -1,13 +1,13 @@
 "use client"
 import React, { useState } from 'react'
-import reset from '../../styles/pages/auth.module.css'
+import styles from '../../styles/pages/auth.module.css'
 import Image from 'next/image'
 import { resetPassword } from '@/axios/axios'
 import { useDispatch } from 'react-redux'
 import { useRouter } from 'next/navigation';
 
 const ResetPassword = () => {
-  const urlString= window.location.href;
+  const urlString = window.location.href;
   const url = new URL(urlString);
   const searchParams = new URLSearchParams(url.search);
   const token = searchParams.get('token');
@@ -47,7 +47,7 @@ const ResetPassword = () => {
   }
 
   return (
-    <div className={reset.reset}>
+    <div className={styles.reset}>
       <div className="authContainer">
         <div className="loginImgArea">
           <div className="imgBox">
@@ -63,14 +63,14 @@ const ResetPassword = () => {
         <div className="formArea">
           <h4>Create New Password</h4>
           <div className='form'>
-            <div className={`formControl ${reset.mb_40}`}>
+            <div className={`formControl ${styles.mb_40}`}>
               <label htmlFor="password">New Password</label>
               <input type={showPassword ? "text" : "password"} id="password" placeholder="Type your Password" value={password} onChange={handleChangePassword} />
             </div>
-            <div className={`formControl ${reset.mb_16}`}>
+            <div className={`formControl ${styles.mb_16}`}>
               <label htmlFor="password">Confirm Password</label>
-              <input type={showPassword ? "text" : "password"} id="password" placeholder="Type your Password"  value={confirmPassword} onChange={handleChangeConfirmPassword} onBlur={validatePassword} />
-              {passwordError && <div style={{color: "red"}}>{passwordError}</div>}
+              <input type={showPassword ? "text" : "password"} id="password" placeholder="Type your Password" value={confirmPassword} onChange={handleChangeConfirmPassword} onBlur={validatePassword} />
+              {passwordError && <div style={{ color: "red" }}>{passwordError}</div>}
             </div>
             <div className="controlPassword">
               <div className="showPassword">

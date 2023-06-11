@@ -1,6 +1,6 @@
 "use client"
 import { useEffect, useState } from 'react';
-import s from '../../styles/pages/subscription.module.css';
+import styles from '../../styles/pages/subscription.module.css';
 import Image from 'next/image';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllPlans, subscribeToPlan } from '@/axios/axios';
@@ -24,20 +24,20 @@ const SubscriptionPlan = () => {
   }, [])
   return (
     <div>
-      <div className={s.subscriptionPlan}>
+      <div className={styles.subscriptionPlan}>
         <div className="pageTitle">
           <h1>Subscription Plan</h1>
         </div>
-        <div className={s.package}>
-          <div className={s.box}>
+        <div className={styles.package}>
+          <div className={styles.box}>
             <div
               onClick={() => setActive('month')}
-              className={s.monthly + ' ' + (active === 'month' && s.active)}>
+              className={styles.monthly + ' ' + (active === 'month' && styles.active)}>
               <span>Monthly</span>
             </div>
             <div
               onClick={() => setActive('year')}
-              className={s.yearly + ' ' + (active === 'year' && s.active)}>
+              className={styles.yearly + ' ' + (active === 'year' && styles.active)}>
               <span>Yearly</span>
             </div>
           </div>
@@ -45,25 +45,25 @@ const SubscriptionPlan = () => {
         {
           loading && <Loading width={'100px'} height={'100px'} />
         }
-        <div className={s.s_cards}>
+        <div className={styles.s_cards}>
           {
             plans?.map((item, i) => (
               // conditional bg
-              <div className={s.s_card + ' ' + (i === 1 ? s.coloredBG : '')} key={item._id}>
-                <div className={s.s_card__header}>
+              <div className={styles.s_card + ' ' + (i === 1 ? styles.coloredBG : '')} key={i}>
+                <div className={styles.s_card__header}>
                   <h3>{item?.title}</h3>
                 </div>
-                <div className={s.s_card__body}>
-                  <div className={s.s_card__price}>
+                <div className={styles.s_card__body}>
+                  <div className={styles.s_card__price}>
                     <h1>${active === 'month' ? item?.monthlyPricing : item?.annualPricing
                     }</h1>
                     <span>/per {active}</span>
                   </div>
-                  <div className={s.s_card__features}>
+                  <div className={styles.s_card__features}>
                     <ul>
                       {
-                        item?.features?.map(feature => (
-                          <li key={feature._id}>
+                        item?.features?.map((feature, i) => (
+                          <li key={i}>
                             {feature?.isAvailable ? <Check /> : <Cross />}
                             <span>{feature?.name}</span>
                           </li>
@@ -71,30 +71,30 @@ const SubscriptionPlan = () => {
                       }
                     </ul>
                   </div>
-                  <div className={s.s_card__button + ' ' + (i === 1 ? s.active : '')}>
+                  <div className={styles.s_card__button + ' ' + (i === 1 ? styles.active : '')}>
                     <button
                       disabled={planLoading}
                       onClick={() => handleSubscribe(active === 'month' ? item?.monthlyPricingId : item?.annualPricingId)}>Choose Plan</button>
                   </div>
                 </div>
                 {/* conditional tsg */}
-                {i === 1 && <div className={s.s_popular}><span>Popular</span></div>}
+                {i === 1 && <div className={styles.s_popular}><span>Popular</span></div>}
               </div>
             ))
           }
         </div>
       </div>
-      <div className={s.c_subscriptionPlan}>
+      <div className={styles.c_subscriptionPlan}>
         <div className="pageTitle">
           <h1>Compare Subscription Plan</h1>
         </div>
-        <div className={s.s_cards + ' ' + s.s_cards_c}>
-          <div className={s.s_card_cf}>
-            <div className={s.c_card_feature}>
-              <div className={s.s_card__header_c}>
+        <div className={styles.s_cards + ' ' + styles.s_cards_c}>
+          <div className={styles.s_card_cf}>
+            <div className={styles.c_card_feature}>
+              <div className={styles.s_card__header_c}>
                 <h3>Key features</h3>
               </div>
-              <div className={s.s_card__features_c}>
+              <div className={styles.s_card__features_c}>
                 <ul>
                   <li>Create and send invoices</li>
                   <li>Track expenses</li>
@@ -103,11 +103,11 @@ const SubscriptionPlan = () => {
                 </ul>
               </div>
             </div>
-            <div className={s.c_card_feature}>
-              <div className={s.s_card__header_c}>
+            <div className={styles.c_card_feature}>
+              <div className={styles.s_card__header_c}>
                 <h3>Advanced features</h3>
               </div>
-              <div className={s.s_card__features_c}>
+              <div className={styles.s_card__features_c}>
                 <ul>
                   <li>Create and send invoices</li>
                   <li>Track expenses</li>
@@ -119,20 +119,20 @@ const SubscriptionPlan = () => {
           </div>
           {
             ['1', '2', '3'].map((item, i) => (
-              <div className={s.s_card + ' ' + s.s_card_c + ' ' + (i === 1 ? s.coloredBG : '')}>
-                <div className={s.s_card__header}>
+              <div key={i} className={styles.s_card + ' ' + styles.s_card_c + ' ' + (i === 1 ? styles.coloredBG : '')}>
+                <div className={styles.s_card__header}>
                   <h3>Personal</h3>
                 </div>
-                <div className={s.s_card__body}>
-                  <div className={s.s_card__price}>
+                <div className={styles.s_card__body}>
+                  <div className={styles.s_card__price}>
                     <h1>$50</h1>
                     <span>/per month</span>
                   </div>
-                  <div className={s.s_card__button + ' ' + (i === 1 ? s.active : '')}>
+                  <div className={styles.s_card__button + ' ' + (i === 1 ? styles.active : '')}>
                     <button>Choose Plan</button>
                   </div>
-                  <div className={s.s_card__features}>
-                    <div className={s.s_card__header_c}>
+                  <div className={styles.s_card__features}>
+                    <div className={styles.s_card__header_c}>
                       <h3>Key features</h3>
                     </div>
                     <ul>
@@ -142,8 +142,8 @@ const SubscriptionPlan = () => {
                       <li><span>Multi - currency</span><Check /></li>
                     </ul>
                   </div>
-                  <div className={s.s_card__features}>
-                    <div className={s.s_card__header_c}>
+                  <div className={styles.s_card__features}>
+                    <div className={styles.s_card__header_c}>
                       <h3>Advanced features</h3>
                     </div>
                     <ul>
@@ -155,7 +155,7 @@ const SubscriptionPlan = () => {
                   </div>
                 </div>
                 {/* conditional tsg */}
-                {/* {i === 1 && <div className={s.s_popular}><span>Popular</span></div>} */}
+                {/* {i === 1 && <div className={styles.s_popular}><span>Popular</span></div>} */}
               </div>
             ))
           }

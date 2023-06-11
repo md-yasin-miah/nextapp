@@ -1,13 +1,13 @@
 'use client';
 import Image from 'next/image';
-import v from '../../styles/verify.module.css';
+import styles from '../../styles/verify.module.css';
 import Link from 'next/link';
 import { verifyEmail } from '../../axios/axios';
 import { useDispatch } from 'react-redux';
 import { useRouter } from 'next/navigation';
 
 const VerifyPage = () => {
-  const urlString= window.location.href;
+  const urlString = window.location.href;
   const url = new URL(urlString);
   const searchParams = new URLSearchParams(url.search);
   const token = searchParams.get('token');
@@ -21,21 +21,21 @@ const VerifyPage = () => {
     }
   }
   return (
-    <div className={v.verify}>
-      <div className={v.verifyContainer}>
-        <div className={v.imgBox}>
+    <div className={styles.verify}>
+      <div className={styles.verifyContainer}>
+        <div className={styles.imgBox}>
           <Image src="/img/logoBig.png" width={80} height={80} alt="" />
         </div>
-        <h2 className={v.title}>Verify your identity</h2>
-        <p className={v.tag}>
+        <h2 className={styles.title}>Verify your identity</h2>
+        <p className={styles.tag}>
           <span>
             Thank you for signing up. Please verify your email address by clicking the following link
           </span>
         </p>
-        <button className={v.action} onClick={handleVerify}>confirm your email</button>
-        <p className={v.haveIssue}>
+        <button className={styles.action} onClick={handleVerify}>confirm your email</button>
+        <p className={styles.haveIssue}>
           <span>Have any issues? Visit</span> <Link href='#'> contact us</Link></p>
-        <p className={v.contact}>
+        <p className={styles.contact}>
           <span>
             If you got this mail as spam then click on "looks safe" or "Not spam". Hopefully, the button will work, If the button not working then mail your email address at
           </span> <Link href="mailto:web@anydemo.com">web@anydemo.com</Link>
