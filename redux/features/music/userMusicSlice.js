@@ -6,7 +6,7 @@ const userMusicSlice = createSlice({
   initialState: {
     music: [],
     loading: false,
-    error: null,
+    error: {},
   },
   reducers: {},
   extraReducers: (builder) => {

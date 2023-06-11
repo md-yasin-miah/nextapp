@@ -5,15 +5,15 @@ import { getProfile, updateProfile } from '@/axios/axios';
 const profileSlice = createSlice({
   name: 'profile',
   initialState: {
-    profile: null,
+    profile: {},
     loading: false,
-    error: null,
+    error: {},
   },
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(getProfile.pending, (state) => {
       state.loading = true;
-      state.error = null;
+      state.error = {};
     });
 
     builder.addCase(getProfile.fulfilled, (state, action) => {
@@ -29,7 +29,7 @@ const profileSlice = createSlice({
     //Update Profile
     builder.addCase(updateProfile.pending, (state) => {
       state.loading = true;
-      state.error = null;
+      state.error = {};
     });
 
     builder.addCase(updateProfile.fulfilled, (state, action) => {

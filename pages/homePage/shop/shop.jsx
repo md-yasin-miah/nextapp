@@ -1,4 +1,4 @@
-import styles from '../../../styles/pages/styles.module.css'
+import styles from '../../../styles/pages/shop.module.css'
 import Image from 'next/image'
 
 export default function Shop() {

@@ -5,11 +5,11 @@ import { registerUser, loginUser, forgetPassword, authenticateWithGoogle, resetP
 const authSlice = createSlice({
   name: 'auth',
   initialState: {
-    user: null,
+    user: {},
     loading: false,
-    error: null,
-    resetPasswordStatus: null,
-    forgetPasswordStatus: null,
+    error: {},
+    resetPasswordStatus: '',
+    forgetPasswordStatus: '',
   },
   reducers: {},
   extraReducers: (builder) => {

@@ -4,9 +4,9 @@ import { verifyEmail } from '../../axios/axios';
 const emailVerificationSlice = createSlice({
   name: 'emailVerification',
   initialState: {
-    verificationStatus: null,
+    verificationStatus: '',
     loading: false,
-    error: null,
+    error: {},
   },
   reducers: {},
   extraReducers: (builder) => {

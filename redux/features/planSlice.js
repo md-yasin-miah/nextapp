@@ -5,17 +5,17 @@ const { createSlice } = require("@reduxjs/toolkit");
 const planSlice = createSlice({
   name: 'plan',
   initialState: {
-    plans: null,
-    subscribedPlan: null,
+    plans: {},
+    subscribedPlan: {},
     loading: false,
     planLoading: false,
-    error: null
+    error: {}
   },
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(getAllPlans.pending, state => {
       state.loading = true;
-      state.error = null;
+      state.error = {};
     });
     builder.addCase(getAllPlans.fulfilled, (state, action) => {
       state.loading = false;
@@ -28,7 +28,7 @@ const planSlice = createSlice({
     //handle subscribe to plan
     builder.addCase(subscribeToPlan.pending, (state, action) => {
       state.planLoading = true;
-      state.error = null;
+      state.error = {};
     }
     );
     builder.addCase(subscribeToPlan.fulfilled, (state, action) => {
@@ -44,7 +44,7 @@ const planSlice = createSlice({
     //handle unsubscribe from plan
     builder.addCase(cancelSubscription.pending, (state, action) => {
       state.planLoading = true;
-      state.error = null;
+      state.error = {};
     }
     );
     builder.addCase(cancelSubscription.fulfilled, (state, action) => {

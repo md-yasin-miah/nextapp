@@ -4,9 +4,9 @@ import { convertMusic } from '@/axios/axios';
 const musicConversionSlice = createSlice({
   name: 'musicConversion',
   initialState: {
-    convertedMusic: null,
+    convertedMusic: {},
     loading: false,
-    error: null,
+    error: {},
   },
   reducers: {},
   extraReducers: (builder) => {

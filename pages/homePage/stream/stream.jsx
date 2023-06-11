@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import styles from '../../../styles/pages/styles.module.css'
+import styles from '../../../styles/pages/stream.module.css'
 
 export default function Stream() {
   return (

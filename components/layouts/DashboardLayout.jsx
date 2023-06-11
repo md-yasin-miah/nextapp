@@ -1,6 +1,6 @@
 'use client'
 import Header from '../shared/header/header';
-import styles from '../../styles/pages/dashboard/dashboarstyles.module.css';
+import styles from '../../styles/pages/dashboard/dashboard.module.css';
 import Image from 'next/image';
 import { useState } from 'react';
 import Overview from '@/pages/dashboard/Overview';

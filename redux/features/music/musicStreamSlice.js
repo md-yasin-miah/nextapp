@@ -4,9 +4,9 @@ import { streamMusic } from '@/axios/axios';
 const musicStreamSlice = createSlice({
   name: 'musicStream',
   initialState: {
-    streamingMusic: null,
+    streamingMusic: {},
     loading: false,
-    error: null,
+    error: {},
   },
   reducers: {},
   extraReducers: (builder) => {

@@ -4,10 +4,10 @@ import { downloadMusic, downloadedMusicList } from '@/axios/axios';
 const musicDownloadSlice = createSlice({
   name: 'musicDownload',
   initialState: {
-    downloadedMusic: null,
+    downloadedMusic: {},
     loading: false,
-    error: null,
-    downloadedMusic_List: null,
+    error: {},
+    downloadedMusic_List: {},
   },
   reducers: {},
   extraReducers: (builder) => {

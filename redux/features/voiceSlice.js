@@ -6,13 +6,13 @@ const voiceSlice = createSlice({
   initialState: {
     voices: [],
     loading: false,
-    error: null,
+    error: {},
   },
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(getAllVoices.pending, (state) => {
       state.loading = true;
-      state.error = null;
+      state.error = {};
     });
 
     builder.addCase(getAllVoices.fulfilled, (state, action) => {
