@@ -2,12 +2,15 @@
 import './../styles/globals.css'
 import { Inter } from 'next/font/google'
 import { Provider } from 'react-redux';
-import store from '@/redux/store/store';
 import { Toaster } from 'react-hot-toast';
+import { configureStore } from '@reduxjs/toolkit';
+import rootReducer from '@/redux/rootReducer/rootReducer';
 
 const inter = Inter({ subsets: ['latin'] })
 
-
+const store = configureStore({
+  reducer: rootReducer,
+});
 
 // export const metadata = {
 //   title: 'Stream AI Music',
