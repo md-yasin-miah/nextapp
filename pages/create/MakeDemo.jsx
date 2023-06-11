@@ -1,16 +1,16 @@
 "use client"
 import { useEffect, useRef, useState } from 'react';
 import d from '../../styles/pages/demo.module.css';
-import MainLayout from '../../components/layouts/MainLayout';
+import MainLayout from '@/components/layouts/MainLayout';
 import Image from 'next/image';
 import { Splide, SplideSlide } from '@splidejs/react-splide';
 import '@splidejs/react-splide/css';
 import { useRouter } from 'next/navigation';
 import { toast } from 'react-hot-toast';
 import { useDispatch, useSelector } from 'react-redux';
-import { convertMusic, getAllVoices } from '../../axios/axios';
-import { NoDataFound } from '../../components/helper';
-import LoadingProgressModal from '../../components/LoadingProgressModal';
+import { convertMusic, getAllVoices } from '@/axios/axios';
+import { NoDataFound } from '@/components/helper';
+import LoadingProgressModal from '@/components/LoadingProgressModal';
 
 const MakeDemo = () => {
   const router = useRouter();

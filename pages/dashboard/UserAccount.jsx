@@ -1,7 +1,7 @@
 'use client'
 import u from '../../styles/pages/dashboard/userAccount.module.css';
 import { useState } from 'react';
-import { updateProfile } from '../../axios/axios';
+import { updateProfile } from '@/axios/axios';
 import { useDispatch } from 'react-redux';
 import Link from 'next/link';
 

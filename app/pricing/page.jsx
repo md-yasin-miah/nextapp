@@ -1,4 +1,4 @@
-import MainLayout from '../../components/layouts/MainLayout'
+import MainLayout from '@/components/layouts/MainLayout'
 import React from 'react'
 import SubscriptionPlan from '../../pages/subscriptionPlan/SubscriptionPlan'
 export const metadata = {

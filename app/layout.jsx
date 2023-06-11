@@ -1,7 +1,7 @@
 import './../styles/globals.css';
 import { Inter } from 'next/font/google';
 import { Toaster } from 'react-hot-toast';
-import ReduxStoreProvider from '../components/provider/ReduxStoreProvider';
+import ReduxStoreProvider from '@/components/provider/ReduxStoreProvider';
 
 const inter = Inter({ subsets: ['latin'] });
 

@@ -2,8 +2,8 @@
 import React, { useEffect, useState } from 'react'
 import s from '../../styles/pages/subscription.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { cancelSubscription, getAllPlans } from '../../axios/axios';
-import SubscriptionPlanCard from '../../components/SubscriptionPlanCard';
+import { cancelSubscription, getAllPlans } from '@/axios/axios';
+import SubscriptionPlanCard from '@/components/SubscriptionPlanCard';
 
 const ManageSubscription = () => {
   const [selectedPlan, setSelectedPlan] = useState({});

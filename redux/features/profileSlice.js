@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getProfile, updateProfile } from '../../axios/axios';
+import { getProfile, updateProfile } from '@/axios/axios';
 
 // Profile slice
 const profileSlice = createSlice({

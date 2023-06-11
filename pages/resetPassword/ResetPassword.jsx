@@ -4,7 +4,7 @@ import reset from '../../styles/pages/auth.module.css'
 import Image from 'next/image'
 import { useDispatch } from 'react-redux'
 import { useRouter } from 'next/navigation';
-import { resetPassword } from '../../axios/axios'
+import { resetPassword } from '@/axios/axios'
 
 const ResetPassword = () => {
   const urlString = window.location.href;

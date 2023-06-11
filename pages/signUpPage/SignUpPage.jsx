@@ -4,11 +4,11 @@ import signUp from '../../styles/pages/auth.module.css'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useDispatch, useSelector } from 'react-redux';
-import { registerUser, authenticateWithGoogle } from '../../axios/axios';
+import { registerUser, authenticateWithGoogle } from '@/axios/axios';
 import { useRouter } from 'next/navigation';
 
 const SignUpPage = () => {
-  const [formData, setFormData] = useState({ fullName: '', email: '', password: ''})
+  const [formData, setFormData] = useState({ fullName: '', email: '', password: '' })
   const [showPassword, setShowPassword] = useState(false);
   const router = useRouter();
   const dispatch = useDispatch();

@@ -3,8 +3,8 @@ import Image from 'next/image';
 import m from '../../styles/pages/dashboard/myMusic.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { downloadMusic, fetchUserMusic, streamMusic } from '../../axios/axios';
-import { NoDataFound } from '../../components/helper';
+import { downloadMusic, fetchUserMusic, streamMusic } from '@/axios/axios';
+import { NoDataFound } from '@/components/helper';
 
 const MyMusic = () => {
   const dispatch = useDispatch();

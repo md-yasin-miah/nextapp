@@ -2,7 +2,7 @@
 import Image from 'next/image';
 import v from '../../styles/verify.module.css';
 import Link from 'next/link';
-import { verifyEmail } from '../../axios/axios';
+import { verifyEmail } from '@/axios/axios';
 import { useDispatch } from 'react-redux';
 import { useRouter } from 'next/navigation';
 

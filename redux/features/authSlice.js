@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { registerUser, loginUser, forgetPassword, authenticateWithGoogle, resetPassword } from '../../axios/axios';
+import { registerUser, loginUser, forgetPassword, authenticateWithGoogle, resetPassword } from '@/axios/axios';
 
 // Auth slice
 const authSlice = createSlice({

@@ -1,4 +1,4 @@
-import MainLayout from "../../components/layouts/MainLayout"
+import MainLayout from "@/components/layouts/MainLayout"
 import Join from "../../pages/join/Join"
 
 export const metadata = {

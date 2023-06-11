@@ -2,7 +2,7 @@ import Image from 'next/image';
 import o from '../../styles/pages/dashboard/overview.module.css';
 import Link from 'next/link';
 import { useSelector } from 'react-redux';
-import SubscriptionPlanCard from '../../components/SubscriptionPlanCard';
+import SubscriptionPlanCard from '@/components/SubscriptionPlanCard';
 
 const Overview = () => {
   const user = useSelector(state => state.profile.profile);

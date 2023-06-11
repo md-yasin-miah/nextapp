@@ -5,7 +5,7 @@ import { use, useEffect, useState } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation';
 import { useDispatch, useSelector } from 'react-redux';
-import { loginUser, authenticateWithGoogle } from '../../axios/axios';
+import { loginUser, authenticateWithGoogle } from '@/axios/axios';
 import toast from 'react-hot-toast'
 
 export default function LogInPage() {

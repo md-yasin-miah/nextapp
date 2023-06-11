@@ -3,9 +3,9 @@ import { useEffect, useState } from 'react';
 import d from '../../styles/pages/dashboard/downloads.module.css';
 import Image from 'next/image';
 import { useDispatch, useSelector } from 'react-redux';
-import AudioPlayer from '../../components/shared/AudioPlayer';
-import { NoDataFound } from '../../components/helper';
-import { downloadedMusicList } from '../../axios/axios';
+import AudioPlayer from '@/components/shared/AudioPlayer';
+import { NoDataFound } from '@/components/helper';
+import { downloadedMusicList } from '@/axios/axios';
 const Downloads = () => {
   const [showOptions, setShowOptions] = useState(null);
   const dispatch = useDispatch();

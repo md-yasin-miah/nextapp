@@ -4,7 +4,7 @@ import forgotPass from '../../styles/pages/auth.module.css'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation';
 import { useDispatch } from 'react-redux';
-import { forgetPassword } from '../../axios/axios';
+import { forgetPassword } from '@/axios/axios';
 
 const ForgotPassword = () => {
   const router = useRouter();

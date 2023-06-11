@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { convertMusic } from '../../../axios/axios';
+import { convertMusic } from '@/axios/axios';
 
 const musicConversionSlice = createSlice({
   name: 'musicConversion',

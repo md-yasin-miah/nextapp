@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { downloadMusic, downloadedMusicList } from '../../../axios/axios';
+import { downloadMusic, downloadedMusicList } from '@/axios/axios';
 
 const musicDownloadSlice = createSlice({
   name: 'musicDownload',
